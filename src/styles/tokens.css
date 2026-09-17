@@ -1,0 +1,107 @@
+/*
+ * Design tokens — source of truth is CLAUDE.md §6.
+ * Never fork these values into a component; tune here, in browser, then
+ * update CLAUDE.md to match.
+ */
+
+:root {
+  /* Surface */
+  --bg-base: #f4f3f1;
+  --bg-raised: #ffffff;
+  --bg-overlay: #ededea;
+  --surface-dark: #202020;
+  --border-subtle: rgba(207, 206, 204, 0.5);
+  --border-strong: #cfcecc;
+
+  /* Text */
+  --text-primary: #101010;
+  --text-secondary: #5a5856;
+  --text-muted: #8a8886;
+  --text-on-dark: #f4f3f1;
+
+  /* Accent */
+  --accent: #e9762b;
+  --accent-hover: #f58b44;
+  --accent-muted: rgba(233, 118, 43, 0.12);
+
+  /* Radius — always zero. Do not add radius tokens above 0. */
+  --r-sm: 0px;
+  --r-md: 0px;
+  --r-lg: 0px;
+  --r-full: 0px;
+
+  /* Grid */
+  --grid-max-width: 1520px;
+  --grid-gutter: 32px;
+  --grid-col: 245px;
+  --rail-width: 490px;
+  --rail-heading-max: 370px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 200ms;
+  --dur-base: 500ms;
+  --dur-slow: 900ms;
+
+  /* Type scale — fluid, clamp() based */
+  --fs-display: clamp(44px, 7vw, 96px);
+  --fs-h2: clamp(32px, 4.5vw, 60px);
+  --fs-h3: clamp(20px, 2vw, 28px);
+  --fs-body-lg: clamp(17px, 1.2vw, 20px);
+  --fs-body: clamp(15px, 1vw, 17px);
+  --fs-label: clamp(12px, 1vw, 15px);
+}
+
+@theme inline {
+  /* Surface */
+  --color-bg-base: var(--bg-base);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-overlay: var(--bg-overlay);
+  --color-surface-dark: var(--surface-dark);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-on-dark: var(--text-on-dark);
+
+  /* Accent */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-muted: var(--accent-muted);
+
+  /* Radius — force every Tailwind radius scale step to 0 so no rounded-*
+     utility (including rounded-full) can produce a visible radius. */
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+  --radius-full: 0px;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+
+  /* Fluid type scale */
+  --text-display: var(--fs-display);
+  --text-h2: var(--fs-h2);
+  --text-h3: var(--fs-h3);
+  --text-body-lg: var(--fs-body-lg);
+  --text-body: var(--fs-body);
+  --text-label: var(--fs-label);
+}
+
+/*
+ * Grid sizes (--grid-max-width, --grid-gutter, --grid-col, --rail-width,
+ * --rail-heading-max) are consumed directly via var() in arbitrary Tailwind
+ * values (e.g. max-w-[var(--rail-width)]) rather than mapped into a Tailwind
+ * theme namespace, since Tailwind v4's spacing/container namespaces are
+ * tuned for the numeric scale, not one-off layout constants.
+ */

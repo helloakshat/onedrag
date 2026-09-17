@@ -1,0 +1,14 @@
+{
+  "hero": {
+    "chip": { "number": "01", "label": "Intro" },
+    "heading": "We build the systems behind ambitious teams",
+    "subheading": "Automation, e-commerce, web, and product design for teams who move fast.",
+    "primaryCtaLabel": "Schedule an assessment",
+    "secondaryCtaLabel": "How it works",
+    "stats": [
+      { "label": "Projects shipped", "value": "40+" },
+      { "label": "Avg. time to launch", "value": "6 weeks" },
+      { "label": "Client retention", "value": "92%" }
+    ]
+  }
+}
