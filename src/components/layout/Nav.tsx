@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Grid } from "@/components/layout/Grid";
@@ -20,36 +21,43 @@ export interface SectionRef {
 
 interface NavProps {
   site: SiteContent;
-  /** In page order — the header chip tracks whichever one holds the viewport midpoint. */
-  sections: SectionRef[];
+  /** Rendered on the server, until the page's own sections resolve on mount. */
+  defaultChip: SectionRef;
 }
 
 /**
+ * The observed sections are read off the DOM — every section carries its
+ * own chip as data attributes (see SectionShell) — so the header tracks
+ * whatever page is mounted without the layout holding a per-page list.
+ *
  * A zero-height root line at the viewport midpoint: a section "wins" the
  * chip the moment it crosses the middle of the screen. Because the observed
  * sections are contiguous, at most one is intersecting at a time.
  */
-function useSectionSpy(sections: SectionRef[]) {
-  const [activeId, setActiveId] = useState(sections[0]?.id);
-  const ids = useMemo(() => sections.map((s) => s.id), [sections]);
-  const key = ids.join(",");
+function useSectionSpy(defaultChip: SectionRef) {
+  const pathname = usePathname();
+  const [chip, setChip] = useState(defaultChip);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
 
-    const els = key
-      .split(",")
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-chip-number]"));
     if (els.length === 0) return;
+
+    const chipFor = (el: HTMLElement): SectionRef => ({
+      id: el.id,
+      number: el.dataset.chipNumber ?? "",
+      label: el.dataset.chipLabel ?? "",
+    });
+
+    setChip(chipFor(els[0]));
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           // Gaps between observed sections (e.g. the trusted-by strip) leave
           // nothing intersecting — hold the last value rather than clearing.
-          if (entry.isIntersecting) setActiveId(entry.target.id);
+          if (entry.isIntersecting) setChip(chipFor(entry.target as HTMLElement));
         }
       },
       { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
@@ -57,9 +65,9 @@ function useSectionSpy(sections: SectionRef[]) {
 
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [key]);
+  }, [pathname]);
 
-  return activeId;
+  return chip;
 }
 
 /**
@@ -67,10 +75,9 @@ function useSectionSpy(sections: SectionRef[]) {
  * the CTA + hamburger closing flush on C6. The bottom rule is edge-to-edge,
  * not container width.
  */
-export function Nav({ site, sections }: NavProps) {
+export function Nav({ site, defaultChip }: NavProps) {
   const [open, setOpen] = useState(false);
-  const activeId = useSectionSpy(sections);
-  const chip = sections.find((s) => s.id === activeId) ?? sections[0];
+  const chip = useSectionSpy(defaultChip);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-subtle bg-paper">

@@ -5,11 +5,14 @@ import { SectionShell } from "@/components/layout/SectionShell";
 import { Button } from "@/components/ui/Button";
 import { FounderNote } from "@/components/ui/FounderNote";
 import { cn } from "@/lib/utils";
-import type { FaqItem, HomeContent, SiteContent } from "@/lib/content";
+import type { FaqBlock, FaqItem, SiteContent } from "@/lib/content";
 
 interface FaqProps {
   site: SiteContent;
-  home: HomeContent;
+  /** Home and every service page render this same accordion from their own copy. */
+  content: FaqBlock;
+  /** Home sits on white; the service page puts this band on paper. */
+  bg?: "white" | "paper";
 }
 
 function AccordionItem({
@@ -67,8 +70,8 @@ function AccordionItem({
   );
 }
 
-export function Faq({ site, home }: FaqProps) {
-  const { chip, heading, note, items, moreLabel, ctaLabel } = home.faq;
+export function Faq({ site, content, bg = "white" }: FaqProps) {
+  const { chip, heading, note, items, moreLabel, ctaLabel } = content;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -78,7 +81,7 @@ export function Faq({ site, home }: FaqProps) {
       number={chip.number}
       label={chip.label}
       heading={heading}
-      bg="white"
+      bg={bg}
       rail={<FounderNote name={site.founder.name} role={site.founder.role} message={note} />}
     >
       <div>

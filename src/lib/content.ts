@@ -9,6 +9,32 @@ export interface NavLink {
   href: string;
 }
 
+export interface Chip {
+  number: string;
+  label: string;
+}
+
+/**
+ * Process and FAQ are rendered by the same components on the home page and
+ * on every service page, so their content blocks are typed on their own
+ * rather than only as members of HomeContent.
+ */
+export interface ProcessBlock {
+  chip: Chip;
+  heading: string;
+  note: string[];
+  steps: ProcessStep[];
+}
+
+export interface FaqBlock {
+  chip: Chip;
+  heading: string;
+  note: string[];
+  items: FaqItem[];
+  moreLabel: string[];
+  ctaLabel: string;
+}
+
 export interface SiteContent {
   nav: {
     wordmark: string;
@@ -64,12 +90,7 @@ export interface HomeContent {
     ctaLabel: string;
     ctaHref: string;
   };
-  process: {
-    chip: { number: string; label: string };
-    heading: string;
-    note: string[];
-    steps: ProcessStep[];
-  };
+  process: ProcessBlock;
   results: {
     chip: { number: string; label: string };
     heading: string;
@@ -96,14 +117,7 @@ export interface HomeContent {
     ratingNote: string[];
     items: Testimonial[];
   };
-  faq: {
-    chip: { number: string; label: string };
-    heading: string;
-    note: string[];
-    items: FaqItem[];
-    moreLabel: string[];
-    ctaLabel: string;
-  };
+  faq: FaqBlock;
   contacts: {
     chip: { number: string; label: string };
     heading: string;

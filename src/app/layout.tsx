@@ -5,8 +5,6 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { OrangeSpine } from "@/components/layout/OrangeSpine";
 import { getHomeContent, getSiteContent } from "@/lib/content";
-import { getCaseStudyIndex } from "@/lib/case-studies";
-import type { SectionRef } from "@/components/layout/Nav";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,22 +21,11 @@ const site = getSiteContent();
 const home = getHomeContent();
 
 /**
- * Page order, for the header scroll-spy chip. Numbers and labels stay in
- * content/ (CLAUDE.md §4); only the DOM ids live here. 05 comes from the
- * case-study index rather than home.json.
+ * The header chip tracks the section holding the viewport midpoint, read
+ * off the DOM so each route supplies its own sequence (see Nav). This is
+ * only what renders on the server, before that resolves.
  */
-const sections: SectionRef[] = [
-  { id: "intro", ...home.hero.chip },
-  { id: "services", ...home.services.chip },
-  { id: "process", ...home.process.chip },
-  { id: "results", ...home.results.chip },
-  { id: "work", ...getCaseStudyIndex().chip },
-  { id: "industries", ...home.industries.chip },
-  { id: "value", ...home.value.chip },
-  { id: "testimonials", ...home.testimonials.chip },
-  { id: "faq", ...home.faq.chip },
-  { id: "contacts", ...home.contacts.chip },
-];
+const defaultChip = { id: "intro", ...home.hero.chip };
 
 export const metadata: Metadata = {
   title: site.seo.title,
@@ -51,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <OrangeSpine />
         <SmoothScroll>
-          <Nav site={site} sections={sections} />
+          <Nav site={site} defaultChip={defaultChip} />
           <main className="flex-1">{children}</main>
           <Footer site={site} home={home} />
         </SmoothScroll>
