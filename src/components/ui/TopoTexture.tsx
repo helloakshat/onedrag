@@ -59,6 +59,11 @@ function buildRidge(r: Ridge) {
  * Dot-matrix mountain range: overlapping ridge silhouettes filled with a dot
  * halftone and masked by a vertical fade, so dots read dense along each
  * crest and thin out toward the base. Generated SVG, no raster images.
+ *
+ * Desktop only. preserveAspectRatio="none" is what keeps the ridges spanning
+ * the full width, but it scales x and y independently — below md the band is
+ * far wider than it is tall, which stretches the halftone circles into
+ * obvious ellipses. Cheaper to drop the decor than to fake round dots.
  */
 export function TopoTexture({ className, density = 1 }: TopoTextureProps) {
   const spacing = 7 / density;
@@ -68,7 +73,7 @@ export function TopoTexture({ className, density = 1 }: TopoTextureProps) {
     <svg
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
       preserveAspectRatio="none"
-      className={cn("pointer-events-none h-full w-full", className)}
+      className={cn("pointer-events-none hidden h-full w-full md:block", className)}
       aria-hidden="true"
     >
       <defs>

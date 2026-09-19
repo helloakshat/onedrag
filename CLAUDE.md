@@ -238,15 +238,17 @@ then update here. Never fork them into a component.
   --paper-alt:      #DBDBD3;   /* results, testimonials bands */
   --dark:           #202020;   /* work band, secondary buttons */
   --bg-raised:      #FFFFFF;   /* cards */
-  --bg-overlay:     #EDECE9;   /* hover states, inputs */
+  --bg-overlay:     #EDEDEA;   /* hover states, inputs */
   --border-subtle:  rgba(207, 206, 204, 0.5);
   --border-strong:  #CFCECC;
 
   /* Text */
-  --text-primary:   #101010;   /* near-black */
+  --text-primary:   #202020;   /* near-black */
   --text-secondary: #5A5856;
   --text-muted:     #8A8886;
-  --text-on-dark:   #F4F3F1;   /* text on --dark / --accent */
+  --text-on-dark:   #F2F0EE;   /* text on --dark / --accent */
+  --copy:           #616060;   /* body copy inside sections */
+  --faint:          #9E9E9E;   /* captions, tile labels, meta */
   --text-on-fill:   #FFFFFF;   /* text on a filled button */
 
   /* Accent */
@@ -262,7 +264,6 @@ then update here. Never fork them into a component.
 
   /* Decor */
   --tile-fill:      #E5E3E1;   /* numbered tile cluster */
-  --tile-label:     #9E9E9E;
   --topo:           #D2CECA;   /* topographic dot matrix */
 
   /* Radius — always zero. Do not add radius tokens above 0. */
@@ -295,7 +296,7 @@ by mistake.
 | Token | Use | Range |
 |---|---|---|
 | `--fs-display` | hero H1 | `clamp(44px, 3.8vw, 76px)`, line-height 1.0 |
-| `--fs-h2` | section heading | 32px → 60px |
+| `--fs-h2` | section heading | 32px → 48px |
 | `--fs-h3` | card heading | 20px → 28px |
 | `--fs-body-lg` | lead paragraph | 17px → 20px |
 | `--fs-body` | body | 15px → 17px |
