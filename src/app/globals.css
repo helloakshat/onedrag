@@ -6,13 +6,23 @@
 }
 
 html {
-  background: var(--bg-base);
+  background: var(--paper);
 }
 
 body {
-  background: var(--bg-base);
+  background: var(--paper);
   color: var(--text-primary);
   font-family: var(--font-inter), var(--font-sans), sans-serif;
+}
+
+/* Seamless marquee: the track renders its items twice, so -50% loops cleanly. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 ::selection {

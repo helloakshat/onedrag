@@ -1,28 +1,19 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { DashedLine } from "@/components/layout/DashedLine";
 
 interface GridProps {
   children: ReactNode;
   className?: string;
-  /** Draw dashed vertical lines on the 5 internal column boundaries. Default true. */
-  lines?: boolean;
 }
 
-/** The 6-column construction grid. Columns are equal width; 245px is the module at max container width. */
-export function Grid({ children, className, lines = true }: GridProps) {
-  return (
-    <div className={cn("relative grid grid-cols-6", className)}>
-      {lines && (
-        <div className="pointer-events-none absolute inset-0 grid grid-cols-6" aria-hidden="true">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} style={{ gridColumnStart: i + 2 }}>
-              <DashedLine variant="vertical-full" className="-translate-x-px" />
-            </div>
-          ))}
-        </div>
-      )}
-      {children}
-    </div>
-  );
+/**
+ * The construction grid: 6 equal columns, zero gap, spanning the full
+ * container width. Every element is placed by column span — never by
+ * arbitrary padding or margin (CLAUDE.md §5).
+ *
+ * Column boundaries map to Tailwind col-start values:
+ * C0=1, C1=2, C2=3, C3=4, C4=5, C5=6, C6=end.
+ */
+export function Grid({ children, className }: GridProps) {
+  return <div className={cn("grid grid-cols-6 gap-0", className)}>{children}</div>;
 }

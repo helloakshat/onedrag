@@ -5,24 +5,39 @@
  */
 
 :root {
-  /* Surface */
-  --bg-base: #f4f3f1;
+  /* Surface — page/band backgrounds */
+  --paper: #f2f0ee;
+  --paper-alt: #dbdbd3;
+  --dark: #202020;
   --bg-raised: #ffffff;
   --bg-overlay: #ededea;
-  --surface-dark: #202020;
   --border-subtle: rgba(207, 206, 204, 0.5);
   --border-strong: #cfcecc;
 
   /* Text */
-  --text-primary: #101010;
+  --text-primary: #202020;
   --text-secondary: #5a5856;
   --text-muted: #8a8886;
-  --text-on-dark: #f4f3f1;
+  --text-on-dark: #f2f0ee;
 
   /* Accent */
   --accent: #e9762b;
   --accent-hover: #f58b44;
   --accent-muted: rgba(233, 118, 43, 0.12);
+  --spine: #ed4f00;
+  --spine-hatch: #f4813c;
+
+  /* Construction grid lines */
+  --grid-line: rgba(210, 206, 202, 0.65);
+  --grid-line-solid: rgba(210, 206, 202, 0.4);
+
+  /* Supporting text */
+  --copy: #616060; /* body copy inside sections */
+  --faint: #9e9e9e; /* captions, tile labels, meta */
+
+  /* Decor */
+  --tile-fill: #e5e3e1;
+  --topo: #d2ceca;
 
   /* Radius — always zero. Do not add radius tokens above 0. */
   --r-sm: 0px;
@@ -30,11 +45,11 @@
   --r-lg: 0px;
   --r-full: 0px;
 
-  /* Grid */
+  /* Grid — 6 equal columns across the container, no inner gutter at
+     desktop. At a 1920px viewport the container edges land on x=200 and
+     x=1720, making each column 253.33px. */
   --grid-max-width: 1520px;
-  --grid-gutter: 32px;
-  --grid-col: 245px;
-  --rail-width: 490px;
+  --grid-gutter: 20px;
   --rail-heading-max: 370px;
 
   /* Motion */
@@ -44,21 +59,23 @@
   --dur-base: 500ms;
   --dur-slow: 900ms;
 
-  /* Type scale — fluid, clamp() based */
-  --fs-display: clamp(44px, 7vw, 96px);
-  --fs-h2: clamp(32px, 4.5vw, 60px);
+  /* Type scale */
+  --fs-display: clamp(44px, 3.8vw, 76px);
+  --fs-h2: clamp(32px, 3.4vw, 48px);
   --fs-h3: clamp(20px, 2vw, 28px);
   --fs-body-lg: clamp(17px, 1.2vw, 20px);
   --fs-body: clamp(15px, 1vw, 17px);
-  --fs-label: clamp(12px, 1vw, 15px);
+  --fs-label: 15px;
+  --fs-tile: 11px;
 }
 
 @theme inline {
   /* Surface */
-  --color-bg-base: var(--bg-base);
+  --color-paper: var(--paper);
+  --color-paper-alt: var(--paper-alt);
+  --color-dark: var(--dark);
   --color-bg-raised: var(--bg-raised);
   --color-bg-overlay: var(--bg-overlay);
-  --color-surface-dark: var(--surface-dark);
   --color-border-subtle: var(--border-subtle);
   --color-border-strong: var(--border-strong);
 
@@ -72,6 +89,20 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-muted: var(--accent-muted);
+  --color-spine: var(--spine);
+  --color-spine-hatch: var(--spine-hatch);
+
+  /* Construction grid lines */
+  --color-grid-line: var(--grid-line);
+  --color-grid-line-solid: var(--grid-line-solid);
+
+  /* Supporting text */
+  --color-copy: var(--copy);
+  --color-faint: var(--faint);
+
+  /* Decor */
+  --color-tile-fill: var(--tile-fill);
+  --color-topo: var(--topo);
 
   /* Radius — force every Tailwind radius scale step to 0 so no rounded-*
      utility (including rounded-full) can produce a visible radius. */
@@ -89,19 +120,15 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 
-  /* Fluid type scale */
+  /* Motion — keyframes live in globals.css */
+  --animate-marquee: marquee 34s linear infinite;
+
+  /* Type scale */
   --text-display: var(--fs-display);
   --text-h2: var(--fs-h2);
   --text-h3: var(--fs-h3);
   --text-body-lg: var(--fs-body-lg);
   --text-body: var(--fs-body);
   --text-label: var(--fs-label);
+  --text-tile: var(--fs-tile);
 }
-
-/*
- * Grid sizes (--grid-max-width, --grid-gutter, --grid-col, --rail-width,
- * --rail-heading-max) are consumed directly via var() in arbitrary Tailwind
- * values (e.g. max-w-[var(--rail-width)]) rather than mapped into a Tailwind
- * theme namespace, since Tailwind v4's spacing/container namespaces are
- * tuned for the numeric scale, not one-off layout constants.
- */

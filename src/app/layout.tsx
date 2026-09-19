@@ -3,7 +3,8 @@ import { Inter, Geist_Mono } from "next/font/google";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { getSiteContent } from "@/lib/content";
+import { OrangeSpine } from "@/components/layout/OrangeSpine";
+import { getHomeContent, getSiteContent } from "@/lib/content";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,10 +28,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <OrangeSpine />
         <SmoothScroll>
-          <Nav site={site} />
+          <Nav site={site} chip={getHomeContent().hero.chip} />
           <main className="flex-1">{children}</main>
-          <Footer site={site} />
+          <Footer site={site} home={getHomeContent()} />
         </SmoothScroll>
       </body>
     </html>

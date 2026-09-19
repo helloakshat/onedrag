@@ -20,6 +20,10 @@
     "bookCall": "#",
     "getInTouch": "#"
   },
+  "founder": {
+    "name": "Akshat Gupta",
+    "role": "Founder"
+  },
   "seo": {
     "title": "Onedrag — Automation, e-commerce, web & product design",
     "description": "Onedrag is a digital studio building automation, e-commerce, web, and product design systems for ambitious teams."

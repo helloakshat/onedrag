@@ -39,16 +39,17 @@ lockup.** Layout patterns and mood are fine; assets are generated in-project.
   headings and body copy. Geist Mono, uppercase, for section chips, nav,
   buttons, labels, and stat lines — anything that reads as a "system" label
   rather than prose.
-- **Section chips** mark every section: a two-block badge, e.g. `01 / INTRO`.
-  Number block is a solid `--accent` square. Label block sits on
-  `rgba(207,206,204,0.5)`. No gap between the two blocks — they read as one
-  object.
+- **Section chips** mark every section: a two-block badge, e.g. `01 INTRO`.
+  The number block is a solid `--spine` 33×33 square; the label block sits on
+  `--border-subtle` with `0 12px 0 10px` padding. No separator, no gap
+  between the two blocks — they read as one object.
 - **Orange is a mark, not a fill.** Use `--accent` for chip numbers, the 1px
   left strip on primary buttons, corner ticks, and small emphasis marks.
   Avoid large orange fills.
-- **Dark blocks as punctuation.** `#202020` (`--surface-dark`) is used for
-  secondary buttons and occasional dark panels against the light page —
-  used sparingly, as contrast punctuation, not as a base surface.
+- **Dark blocks as punctuation.** `#202020` (`--dark`) is used for secondary
+  buttons and the occasional full dark section band (see §5 Band
+  backgrounds) — used deliberately, as contrast punctuation, not as a base
+  surface.
 - **Motion stays calm.** See §7 — the grid may be visible and technical, but
   motion is still restrained, never showy.
 
@@ -91,8 +92,9 @@ src/
   app/                    routes only — no business logic
   components/
     sections/             page-level sections (Hero, Process, Pricing…)
-    ui/                   primitives (Button, SectionChip, Reveal, Tick…)
-    layout/               Nav, Footer, SmoothScroll, Grid, Rail, DashedLine
+    ui/                   primitives (Button, SectionChip, Reveal, HeadingReveal, Tick…)
+    layout/               Nav, Footer, SmoothScroll, Grid, Rail, DashedLine,
+                          SectionShell, OrangeSpine
   lib/                    content loaders, utils
   styles/
     tokens.css            ← ALL colour/type/spacing/grid values live here
@@ -113,25 +115,106 @@ public/
 The construction grid is a first-class part of the design, not an invisible
 layout aid — its dashed lines are meant to be seen.
 
-- **Container:** max-width `1520px`, side gutters `32px`.
-- **Columns:** 6 columns × `245px`, gutters between columns implied by the
-  245px module (no separate gap token — column width is the rhythm unit).
-- **Rail:** a `490px` left column (spans two grid columns) that holds the
-  section chip and heading for a section. Heading text inside a rail is
-  constrained to ~`370px` so it wraps deliberately, not to the rail's full
-  width.
-- **Dashed lines:** four variants, rendered as absolutely-positioned
-  `::after` pseudo-elements sitting on column boundaries:
-  1. **Full-bleed vertical** — runs the full section height on a column line.
-  2. **Inset vertical** — starts/ends with a fixed inset from section edges.
-  3. **Horizontal rule** — dashed, spans one or more columns, marks a
-     sub-section break.
-  4. **Corner-stop** — a short dashed segment that terminates at a `Tick`
-     (see §6), marking a deliberate grid intersection.
-- Grid lines use `--border-subtle` (dashed, low opacity) so they read as
-  structure, not as UI chrome.
-- On mobile, the column grid collapses to a single column; keep at least the
-  full-bleed vertical lines at the container edges for continuity.
+- **Container:** max-width `1520px`, centered, **no inner gutter** once the
+  viewport clears the container. At a `1920px` viewport the container edges
+  land on `x=200` and `x=1720`. Below `1560px` a `--grid-gutter` (20px) side
+  padding kicks in so content never touches the screen edge.
+- **Columns:** 6 **equal** columns (`1fr` each), zero gap. At `1920px` that
+  is `253.33px` per column. Columns are fluid — there is no fixed column
+  width token.
+- **Boundaries:** referred to as `C0`–`C6`, mapping to Tailwind
+  `col-start-1`…`col-start-7`:
+
+  | Boundary | col-start | x @ 1920 |
+  |---|---|---|
+  | C0 | 1 | 200 |
+  | C1 | 2 | 453.3 |
+  | C2 | 3 | 706.7 |
+  | C3 | 4 | 960 |
+  | C4 | 5 | 1213.3 |
+  | C5 | 6 | 1466.7 |
+  | C6 | (end) | 1720 |
+
+- **Rail:** `C0→C2` (two columns). **All content in the content field begins
+  at `C2`.** Rail headings are constrained to `--rail-heading-max` (~370px).
+- **Place everything by column span.** Never position with arbitrary padding
+  or margins horizontally — vertical rhythm still uses margins.
+- On mobile the grid collapses to a single column (`col-span-6`); the column
+  placements are `md:`-prefixed.
+
+**Orange spine.** A `1px` **dashed** `--spine` (`#ED4F00`) vertical line at
+exactly `C2` — the rail boundary and the left edge of the content field.
+Dash pattern ~3px on / 4px off (a `repeating-linear-gradient`, since CSS
+border dashes aren't tunable), `opacity: 0.55`. It runs the full page height,
+unbroken across every section including dark bands, and sits above section
+backgrounds. Implemented as a single `position: fixed` element in the root
+layout (`OrangeSpine`) that renders through the *same* Container + Grid as
+the content, so it stays locked to `C2` at any viewport width — do not
+reposition it with a `calc()` offset.
+
+**Construction grid lines** (`GridLines`), on the column boundaries:
+
+| Boundary | Treatment |
+|---|---|
+| C3, C5 | `3px` dashed `--grid-line` |
+| C4 | `1px` solid `--grid-line-solid` |
+
+C1 carries no line. **The spine at C2 is the only orange vertical on the
+page** — don't add a second one.
+
+Plus a full-viewport-width horizontal rule partway down the hero. Lines run
+the section height and may continue past its lower edge.
+
+**Layer scale.** Sections must NOT create a stacking context (no `isolate`,
+no z-index on the section) or this scale stops resolving:
+
+| Layer | z-index |
+|---|---|
+| Section background | auto |
+| Decor (`TopoTexture`) | `2` |
+| Construction lines | `3` |
+| Orange spine | `4` |
+| Content (`Container`) | `10` |
+| Header | `50` |
+
+This is what keeps the spine visible over band backgrounds while never
+cutting across text.
+
+**Section variants.** Every section renders through a `SectionShell`
+component that takes a `variant` prop:
+
+- `variant="rail"` — chip + H2 sit in the `490px` left rail (§5 Rail);
+  content fills the field to its right.
+- `variant="field"` — the left rail is empty; chip + H2 + content all begin
+  in the content field (no reserved rail column).
+
+Assignment (in build order):
+
+| # | Section | Variant |
+|---|---|---|
+| 01 | intro | field |
+| 02 | services | rail |
+| 03 | process | field |
+| 04 | results | rail |
+| 05 | work | field |
+| 06 | industries | rail |
+| 07 | value | rail |
+| 08 | testimonials | field |
+| 09 | faq | field |
+| 10 | contacts | rail |
+
+**Band backgrounds.** Section background alternates by section, not by
+variant:
+
+| Section | Background |
+|---|---|
+| results | `--paper-alt` (`#DBDBD3`) |
+| testimonials | `--paper-alt` (`#DBDBD3`) |
+| work | `--dark` (`#202020`) |
+| all others | `--paper` (`#F2F0EE`) |
+
+A section on `--dark` sets its base text colour to `--text-on-dark`; nothing
+inside it should hardcode `--text-primary`.
 
 ---
 
@@ -143,11 +226,12 @@ then update here. Never fork them into a component.
 
 ```css
 :root {
-  /* Surface */
-  --bg-base:        #F4F3F1;   /* page background, warm off-white */
+  /* Surface — page/band backgrounds */
+  --paper:          #F2F0EE;   /* default section background */
+  --paper-alt:      #DBDBD3;   /* results, testimonials bands */
+  --dark:           #202020;   /* work band, secondary buttons */
   --bg-raised:      #FFFFFF;   /* cards */
   --bg-overlay:     #EDECE9;   /* hover states, inputs */
-  --surface-dark:   #202020;   /* secondary buttons, dark punctuation panels */
   --border-subtle:  rgba(207, 206, 204, 0.5);
   --border-strong:  #CFCECC;
 
@@ -155,12 +239,23 @@ then update here. Never fork them into a component.
   --text-primary:   #101010;   /* near-black */
   --text-secondary: #5A5856;
   --text-muted:     #8A8886;
-  --text-on-dark:   #F4F3F1;   /* text on --surface-dark / --accent */
+  --text-on-dark:   #F4F3F1;   /* text on --dark / --accent */
 
   /* Accent */
   --accent:         #E9762B;   /* warm orange — marks, not fills */
   --accent-hover:   #F58B44;
   --accent-muted:   rgba(233, 118, 43, 0.12);
+  --spine:          #ED4F00;   /* spine, chip block, ticks, button strip */
+  --spine-hatch:    #F4813C;   /* diagonal hatch on the system diagram */
+
+  /* Construction grid lines — see §5 */
+  --grid-line:        rgba(210, 206, 202, 0.65);
+  --grid-line-solid:  rgba(210, 206, 202, 0.4);
+
+  /* Decor */
+  --tile-fill:      #E5E3E1;   /* numbered tile cluster */
+  --tile-label:     #9E9E9E;
+  --topo:           #D2CECA;   /* topographic dot matrix */
 
   /* Radius — always zero. Do not add radius tokens above 0. */
   --r-sm: 0px;
@@ -168,11 +263,9 @@ then update here. Never fork them into a component.
   --r-lg: 0px;
   --r-full: 0px;
 
-  /* Grid */
+  /* Grid — columns are fluid (1fr each), so there is no column-width token */
   --grid-max-width:   1520px;
-  --grid-gutter:      32px;
-  --grid-col:         245px;
-  --rail-width:       490px;
+  --grid-gutter:      20px;    /* side padding below 1560px only */
   --rail-heading-max: 370px;
 
   /* Motion */
@@ -192,12 +285,13 @@ by mistake.
 
 | Token | Use | Range |
 |---|---|---|
-| `--fs-display` | hero H1 | 44px → 96px |
+| `--fs-display` | hero H1 | `clamp(44px, 3.8vw, 76px)`, line-height 1.0 |
 | `--fs-h2` | section heading | 32px → 60px |
 | `--fs-h3` | card heading | 20px → 28px |
 | `--fs-body-lg` | lead paragraph | 17px → 20px |
 | `--fs-body` | body | 15px → 17px |
-| `--fs-label` | section chips, nav, buttons, stat lines | 12px → 15px, uppercase, +0.04em tracking |
+| `--fs-label` | section chips, nav, buttons, stat lines | 15px, uppercase |
+| `--fs-tile` | numbered tile cluster labels | 11px |
 
 **Fonts:**
 - **Inter**, weight 500, for the display H1 and section headings.
@@ -216,8 +310,12 @@ Container is the grid container from §5 (max-width `1520px`, gutter `32px`).
 ## 7. Motion rules
 
 - Global smooth scroll via Lenis, `lerp: 0.1`.
-- Section reveal: opacity 0→1, y 20px→0, `--dur-base`, `--ease-out`,
-  triggered once at 20% viewport entry.
+- **Heading reveal (H1/H2 only):** left-to-right mask wipe — animate
+  `clip-path: inset(0 100% 0 0)` → `inset(0 0% 0 0)` over `--dur-slow` with
+  `--ease-out`, triggered once on viewport entry. No opacity fade, no
+  y-translate on headings.
+- **Body/mono reveal (everything else):** opacity 0→1, y 20px→0,
+  `--dur-base`, `--ease-out`, triggered once at 20% viewport entry.
 - Stagger children by 60ms.
 - Counters animate on first view only.
 - Marquee (if used): CSS `translateX` keyframes, pauses on hover.

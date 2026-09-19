@@ -3,23 +3,27 @@ import { cn } from "@/lib/utils";
 interface SectionChipProps {
   number: string;
   label: string;
+  /** On dark bands the label block goes translucent white instead of grey. */
+  onDark?: boolean;
   className?: string;
 }
 
-/** Two-block section marker, e.g. "01 / INTRO". No gap between blocks — they read as one object. */
-export function SectionChip({ number, label, className }: SectionChipProps) {
+/** Two blocks touching, zero gap: a 33×33 accent square, then the label block. */
+export function SectionChip({ number, label, onDark = false, className }: SectionChipProps) {
   return (
     <div
-      className={cn(
-        "inline-flex h-[31px] items-stretch font-mono text-label uppercase tracking-[0.04em]",
-        className,
-      )}
+      className={cn("inline-flex h-[33px] items-stretch font-mono text-label uppercase", className)}
     >
-      <span className="flex w-[31px] shrink-0 items-center justify-center bg-accent text-text-on-dark">
+      <span className="flex w-[33px] shrink-0 items-center justify-center bg-spine text-text-on-dark">
         {number}
       </span>
-      <span className="flex items-center bg-border-subtle pt-0 pr-3 pb-0 pl-[10px] text-text-primary">
-        / {label}
+      <span
+        className={cn(
+          "flex items-center pt-0 pr-3 pb-0 pl-[10px]",
+          onDark ? "bg-white/12 text-text-on-dark" : "bg-border-subtle text-text-primary",
+        )}
+      >
+        {label}
       </span>
     </div>
   );

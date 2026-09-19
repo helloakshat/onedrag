@@ -1,11 +1,13 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary";
+type ButtonVariant = "primary" | "secondary" | "accent";
+type ButtonSize = "md" | "lg";
 
 interface SharedProps {
   children: ReactNode;
   variant?: ButtonVariant;
+  size?: ButtonSize;
   className?: string;
 }
 
@@ -23,16 +25,28 @@ type ButtonAsLink = SharedProps &
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const baseClasses =
-  "relative inline-flex h-[57px] items-center justify-center whitespace-nowrap px-8 font-mono text-label uppercase tracking-[0.04em] transition-colors duration-[var(--dur-fast)] ease-[var(--ease-out)]";
+  "relative inline-flex items-center justify-center whitespace-nowrap px-8 font-mono text-label uppercase transition-colors duration-[var(--dur-fast)] ease-[var(--ease-out)]";
+
+const sizeClasses: Record<ButtonSize, string> = {
+  md: "h-12",
+  lg: "h-[57px]",
+};
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-bg-raised text-text-primary before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-accent hover:bg-bg-overlay",
-  secondary: "bg-surface-dark text-text-on-dark hover:opacity-90",
+    "bg-bg-raised text-text-primary before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-spine hover:bg-bg-overlay",
+  secondary: "bg-dark text-text-on-dark hover:opacity-90",
+  accent: "bg-spine text-bg-raised hover:opacity-90",
 };
 
-export function Button({ children, variant = "primary", className, ...rest }: ButtonProps) {
-  const classes = cn(baseClasses, variantClasses[variant], className);
+export function Button({
+  children,
+  variant = "primary",
+  size = "lg",
+  className,
+  ...rest
+}: ButtonProps) {
+  const classes = cn(baseClasses, sizeClasses[size], variantClasses[variant], className);
 
   if ("href" in rest && rest.href) {
     const { href, external, ...anchorRest } = rest as ButtonAsLink;

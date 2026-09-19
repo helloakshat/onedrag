@@ -1,14 +1,246 @@
 {
   "hero": {
     "chip": { "number": "01", "label": "Intro" },
-    "heading": "We build the systems behind ambitious teams",
+    "heading": "Automation systems for modern teams",
     "subheading": "Automation, e-commerce, web, and product design for teams who move fast.",
     "primaryCtaLabel": "Schedule an assessment",
     "secondaryCtaLabel": "How it works",
     "stats": [
-      { "label": "Projects shipped", "value": "40+" },
+      { "label": "Projects shipped", "value": "40+ delivered" },
       { "label": "Avg. time to launch", "value": "6 weeks" },
-      { "label": "Client retention", "value": "92%" }
+      { "label": "Client retention", "value": "92 percent" }
     ]
+  },
+  "trustedBy": {
+    "label": "Trusted by:",
+    "logos": ["Northwind", "Meridian", "Lumen Co", "Arcadia", "Halcyon"]
+  },
+  "services": {
+    "chip": { "number": "02", "label": "Areas" },
+    "heading": "What we can automate",
+    "note": ["We build automation", "around your workflow"],
+    "items": [
+      {
+        "icon": "workflow",
+        "title": ["n8n automation", "& workflows"],
+        "description": "Connect your tools so work moves without manual steps."
+      },
+      {
+        "icon": "storefront",
+        "title": ["Shopify stores", "& CRO"],
+        "description": "Storefronts built to convert, not just to look good."
+      },
+      {
+        "icon": "browser",
+        "title": ["Framer websites", "& landing pages"],
+        "description": "Fast, animated sites you can edit yourself."
+      },
+      {
+        "icon": "canvas",
+        "title": ["Product design", "& UX systems"],
+        "description": "Interfaces designed around how people actually work."
+      }
+    ],
+    "moreLabel": "Much more",
+    "ctaLabel": "Explore all services",
+    "ctaHref": "#services"
+  },
+  "process": {
+    "chip": { "number": "03", "label": "Process" },
+    "heading": "How it works",
+    "note": ["We turn complex", "workflows into simple,", "automated systems."],
+    "steps": [
+      {
+        "number": "01",
+        "icon": "audit",
+        "title": ["Audit your", "workflow"],
+        "connector": "Data in",
+        "description": "We map how work actually moves through your team today, including the steps nobody documented. That map is what everything else is built on."
+      },
+      {
+        "number": "02",
+        "icon": "blueprint",
+        "title": ["Design the", "system"],
+        "connector": "Decision",
+        "description": "We decide what should be automated, what should stay manual, and where the handoffs belong. You approve the shape before anything gets built."
+      },
+      {
+        "number": "03",
+        "icon": "build",
+        "title": ["Build &", "integrate"],
+        "connector": "Execution",
+        "description": "We build the workflows against your real tools and data, not a sandbox. Everything is connected to the systems your team already uses."
+      },
+      {
+        "number": "04",
+        "icon": "launch",
+        "title": ["Launch, test", "& optimize"],
+        "connector": "Result",
+        "description": "We run it alongside your current process until it holds, then tune it. You get documentation and a system your team can actually operate."
+      }
+    ]
+  },
+  "results": {
+    "chip": { "number": "04", "label": "Results" },
+    "heading": "Results of our work",
+    "items": [
+      {
+        "value": 40,
+        "suffix": "+",
+        "label": ["Projects", "shipped"],
+        "description": "Automation, storefronts, and product work delivered end to end."
+      },
+      {
+        "value": 60,
+        "suffix": "%",
+        "label": ["Less manual", "admin"],
+        "description": "Repetitive workflows and reporting handled without a person in the loop."
+      },
+      {
+        "value": 6,
+        "suffix": "",
+        "label": ["Weeks to", "launch"],
+        "description": "From first audit to a live, working system."
+      }
+    ]
+  },
+  "industries": {
+    "chip": { "number": "06", "label": "Solutions" },
+    "heading": "Solutions by industry",
+    "note": ["We offer all options", "for industry-specific work"],
+    "items": [
+      {
+        "icon": "commerce",
+        "name": ["D2C &", "e-commerce"],
+        "capabilities": ["Product workflows", "Order automation", "Inventory sync", "CRO"]
+      },
+      {
+        "icon": "saas",
+        "name": ["SaaS"],
+        "capabilities": ["Onboarding flows", "Usage reporting", "Support routing"]
+      },
+      {
+        "icon": "agency",
+        "name": ["Agencies"],
+        "capabilities": ["Client reporting", "Lead qualification", "Project workflows"]
+      },
+      {
+        "icon": "property",
+        "name": ["Real estate"],
+        "capabilities": ["Lead capture", "Property follow-ups", "Internal reporting"]
+      },
+      {
+        "icon": "health",
+        "name": ["Healthcare"],
+        "capabilities": ["Appointment booking", "Patient intake", "Internal coordination"]
+      },
+      {
+        "icon": "services",
+        "name": ["Professional", "services"],
+        "capabilities": ["Client onboarding", "Document handling", "Billing workflows"]
+      }
+    ]
+  },
+  "value": {
+    "chip": { "number": "07", "label": "Value" },
+    "heading": "Why choose us",
+    "note": ["We focus only on", "measurable results"],
+    "moreLabel": "Much more",
+    "points": [
+      { "number": "01", "title": ["Strategy before", "automation"] },
+      { "number": "02", "title": ["Built around", "your workflow"] },
+      { "number": "03", "title": ["Fast", "implementation"] },
+      { "number": "04", "title": ["Ongoing", "optimization"] }
+    ]
+  },
+  "testimonials": {
+    "chip": { "number": "08", "label": "Testimonials" },
+    "heading": "What clients say",
+    "rating": "4.9",
+    "ratingOutOf": "/5",
+    "ratingNote": ["Based on 40+", "client projects"],
+    "items": [
+      {
+        "name": "Priya Raman",
+        "role": "Head of Operations",
+        "company": "Ledgerline",
+        "quote": "The reporting chain used to eat a full day every week. Now it runs before anyone logs in, and we only look at it when something is off."
+      },
+      {
+        "name": "Daniel Okafor",
+        "role": "Founder",
+        "company": "Northwind Supply",
+        "quote": "They rebuilt our checkout against what sessions actually showed, not what we assumed. The difference showed up in the numbers within a month."
+      },
+      {
+        "name": "Sara Lindqvist",
+        "role": "Managing Director",
+        "company": "Meridian Group",
+        "quote": "Client intake used to be a chain of reminders. It is now one flow that runs itself, and nobody chases paperwork anymore."
+      },
+      {
+        "name": "Marcus Hale",
+        "role": "COO",
+        "company": "Arcadia Labs",
+        "quote": "What stood out was the audit. They found steps in our process that we had stopped noticing years ago."
+      },
+      {
+        "name": "Aisha Bello",
+        "role": "Product Lead",
+        "company": "Halcyon",
+        "quote": "The system was handed over documented and running. My team operates it without needing to come back to anyone."
+      }
+    ]
+  },
+  "faq": {
+    "chip": { "number": "09", "label": "Help" },
+    "heading": "FAQ",
+    "note": ["Everything you need", "to know"],
+    "items": [
+      {
+        "question": "What kinds of businesses do you work with?",
+        "answer": "Mostly small and mid-sized teams who have outgrown manual processes but do not have an internal automation function. We work across e-commerce, SaaS, agencies, and professional services."
+      },
+      {
+        "question": "How long does a typical project take?",
+        "answer": "Most engagements run four to six weeks from first audit to a live system. Larger builds get split into phases so something useful ships early."
+      },
+      {
+        "question": "Which tools and platforms do you integrate with?",
+        "answer": "Anything with an API, plus most of the usual stack: Shopify, Notion, Slack, HubSpot, Airtable, Google Workspace, and Stripe. n8n sits at the centre of most builds."
+      },
+      {
+        "question": "Can you work with our existing systems?",
+        "answer": "Yes, and that is usually the point. We build around the tools your team already knows rather than asking you to migrate."
+      },
+      {
+        "question": "How do we get started?",
+        "answer": "Book an assessment. We walk through your current workflow, identify what is worth automating, and give you a scoped plan before any commitment."
+      }
+    ],
+    "moreLabel": ["Got some other", "questions?"],
+    "ctaLabel": "Send message"
+  },
+  "contacts": {
+    "chip": { "number": "10", "label": "Contacts" },
+    "heading": "Let's build the systems behind your business",
+    "email": "hello@onedrag.in",
+    "phone": "+91 98765 43210",
+    "socials": [
+      { "label": "IN", "href": "#" },
+      { "label": "LI", "href": "#" },
+      { "label": "X", "href": "#" }
+    ],
+    "navColumns": [
+      ["Home", "Services", "Case studies"],
+      ["Privacy policy", "Terms of service"]
+    ],
+    "form": {
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "email@address.com",
+      "submitLabel": "Let's talk"
+    },
+    "copyright": "© 2026 Onedrag. All rights reserved.",
+    "location": "Built in Gurugram"
   }
 }
