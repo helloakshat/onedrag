@@ -23,11 +23,18 @@ function AccordionItem({
 }) {
   return (
     <div className="border-b border-dashed border-grid-line">
+      {/*
+        Mobile: min-height 72px, not fixed — the question wraps to as many
+        lines as it needs. items-start (not items-center) plus matching
+        top padding on both children keeps the "+" centred against the
+        FIRST line specifically, not the vertical centre of a wrapped
+        multi-line question. Desktop keeps the original fixed h-22 row.
+      */}
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex h-22 w-full items-center justify-between gap-8 text-left"
+        className="flex min-h-[72px] w-full items-start justify-between gap-8 py-6 text-left md:h-22 md:min-h-0 md:items-center md:py-0"
       >
         <span className="font-mono text-label leading-[1.45] text-text-primary uppercase">
           {item.question}
@@ -35,7 +42,7 @@ function AccordionItem({
         <span
           aria-hidden="true"
           className={cn(
-            "shrink-0 font-mono text-[22px] text-text-primary transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)]",
+            "flex h-[22px] w-[22px] shrink-0 items-center justify-center font-mono text-[22px] leading-none text-text-primary transition-transform duration-[var(--dur-base)] ease-[var(--ease-out)]",
             isOpen && "rotate-45",
           )}
         >

@@ -223,6 +223,35 @@ variant:
 A section on `--dark` sets its base text colour to `--text-on-dark`; nothing
 inside it should hardcode `--text-primary`.
 
+**Mobile (below 768px).** The construction grid is a desktop device — below
+md the 6-column grid, the orange spine, `GridLines` and `GridCrosshairs` are
+all hidden (`hidden md:block`), `Container` drops to a 20px gutter (a media
+query on `--grid-gutter` itself, so no component needs a mobile variant),
+and `SectionShell`'s rail already collapses above the content field at full
+width. That scaffolding is reflow — most sections need more than that.
+
+Several sections use a spatial device that only reads with the whole
+layout visible at once (a stagger, a horizontal connector, a side-by-side
+split). Reflowing those into one column doesn't produce a smaller version
+of the desktop design, it produces unexplained gaps and orphaned labels.
+Those sections ship a **second, purpose-built mobile layout** gated with
+`md:hidden` / `hidden md:...` alongside the desktop one, not a reflowed
+variant of it:
+
+| Section | Desktop device dropped on mobile | Mobile replacement |
+|---|---|---|
+| hero | tile cluster, system diagram (already `hidden md:block`) | static chip above H1 — the header's own chip only tracks scroll at md+ |
+| services | 1×4 row, descriptions | 2×2, icon + mono title only |
+| process | horizontal icon connectors, "DATA IN >" labels | vertical list, dotted line down the left connecting the number blocks |
+| results | — | numeral / label / description stacked, 48px between stats |
+| work | — | cover 4:3 (16:10 at md+), arrows right-aligned below the image |
+| industries | always-visible capability list | 2×3, tap a cell to expand its list (chevron indicates state) |
+| value | the 120px column stagger | plain 2×2 — a stagger only reads as deliberate side by side; serialised it's just empty space |
+| testimonials | 4-thumbnail picker | swipe the portrait (`touchstart`/`touchend`, ~40px threshold); arrows stay as the discoverable control |
+
+Two buttons stack full width with 0 gap and a shared 1px divider on mobile
+(Hero's two CTAs) rather than each carrying its own border.
+
 ---
 
 ## 6. Design tokens
@@ -274,7 +303,7 @@ then update here. Never fork them into a component.
 
   /* Grid — columns are fluid (1fr each), so there is no column-width token */
   --grid-max-width:   1520px;
-  --grid-gutter:      32px;    /* side padding below 1560px only */
+  --grid-gutter:      32px;    /* side padding below 1560px only, 20px below 768px */
   --rail-heading-max: 370px;
 
   /* Motion */
@@ -295,8 +324,8 @@ by mistake.
 
 | Token | Use | Range |
 |---|---|---|
-| `--fs-display` | hero H1 | `clamp(44px, 3.8vw, 76px)`, line-height 1.0 |
-| `--fs-h2` | section heading | 32px → 48px |
+| `--fs-display` | hero H1 | `clamp(36px, 3.8vw, 76px)`, line-height 1.0 |
+| `--fs-h2` | section heading | 28px → 48px |
 | `--fs-h3` | card heading | 20px → 28px |
 | `--fs-body-lg` | lead paragraph | 17px → 20px |
 | `--fs-body` | body | 15px → 17px |
@@ -333,6 +362,9 @@ Container is the grid container from §5 (max-width `1520px`, gutter `32px`).
 - **Header chip** tracks the section holding the viewport midpoint, via
   `IntersectionObserver` with `rootMargin: "-50% 0px -50% 0px"`. Gaps
   between observed sections hold the last value rather than clearing.
+- **Testimonials swipe (mobile only):** `touchstart`/`touchend` on the
+  portrait, ~40px horizontal threshold, ignored if the drag is more
+  vertical than horizontal so page scroll still works.
 - Counters animate on first view only.
 - Marquee (if used): CSS `translateX` keyframes, pauses on hover.
 - **Always respect `prefers-reduced-motion`.** Wrap every animation.

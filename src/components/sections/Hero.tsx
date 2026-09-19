@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Tick } from "@/components/ui/Tick";
 import { TopoTexture } from "@/components/ui/TopoTexture";
 import { TileCluster } from "@/components/ui/TileCluster";
+import { SectionChip } from "@/components/ui/SectionChip";
 import { SystemDiagram } from "@/components/ui/SystemDiagram";
 import { Reveal } from "@/components/ui/Reveal";
 import { HeadingReveal } from "@/components/ui/HeadingReveal";
@@ -20,7 +21,7 @@ interface HeroProps {
 const STAT_COLUMNS = ["md:col-start-1", "md:col-start-3", "md:col-start-5"];
 
 export function Hero({ site, home }: HeroProps) {
-  const { heading, subheading, primaryCtaLabel, secondaryCtaLabel, stats } = home.hero;
+  const { chip, heading, subheading, primaryCtaLabel, secondaryCtaLabel, stats } = home.hero;
 
   return (
     <section id="intro" className="relative border-b border-border-subtle bg-paper">
@@ -40,7 +41,20 @@ export function Hero({ site, home }: HeroProps) {
       />
 
       <Container className="pt-[clamp(56px,6vw,104px)] pb-[clamp(56px,5vw,88px)]">
-        <Grid className="relative">
+        {/*
+          Mobile-only: the header's chip is hidden below md (it tracks scroll
+          there), so Hero renders its own static chip instead — the same
+          inline pattern every SectionShell-based section already uses.
+        */}
+        <Grid className="md:hidden">
+          <div className="col-span-6">
+            <Reveal>
+              <SectionChip number={chip.number} label={chip.label} />
+            </Reveal>
+          </div>
+        </Grid>
+
+        <Grid className="relative mt-8 md:mt-0">
           <div className="col-span-6 hidden self-center md:col-span-1 md:col-start-2 md:block">
             <TileCluster />
           </div>
@@ -83,7 +97,16 @@ export function Hero({ site, home }: HeroProps) {
           </div>
           <div className="col-span-6 md:col-span-2 md:col-start-5">
             <Reveal delay={0.22}>
-              <Button href="#how-it-works" variant="secondary" className="w-full">
+              {/*
+                Below md the two CTAs stack with 0 gap (Grid's own gap-0) and
+                share this divider instead of each carrying its own border —
+                at md+ they sit side by side, contiguous, no divider needed.
+              */}
+              <Button
+                href="#how-it-works"
+                variant="secondary"
+                className="w-full border-t border-border-strong md:border-t-0"
+              >
                 {secondaryCtaLabel}
               </Button>
             </Reveal>

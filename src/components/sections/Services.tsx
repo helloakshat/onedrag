@@ -11,30 +11,35 @@ interface ServicesProps {
   home: HomeContent;
 }
 
+/**
+ * 2x2 at every breakpoint — mobile keeps the same two-column grid as
+ * desktop rather than dropping to a single column, so the divider scheme
+ * below holds for both.
+ */
 function ServiceCell({ item, index }: { item: ServiceItem; index: number }) {
   return (
     <div
       className={cn(
-        "relative flex min-h-[240px] flex-col justify-between py-10",
+        "relative flex min-h-[160px] flex-col justify-between py-8 md:min-h-[240px] md:py-10",
         // internal boundaries only — no outer frame
-        index % 2 === 1 && "md:border-l md:border-dashed md:border-grid-line",
+        index % 2 === 1 && "border-l border-dashed border-grid-line",
         index < 2 && "border-b border-dashed border-grid-line",
       )}
     >
       {/* half divider as an overlay so it spans the cell while the rows below stay baseline-aligned */}
       <span
         aria-hidden="true"
-        className="absolute inset-y-0 left-1/2 border-l border-dashed border-grid-line"
+        className="absolute inset-y-0 left-1/2 hidden border-l border-dashed border-grid-line md:block"
       />
 
       <div className="grid grid-cols-2">
-        <div className="pr-6 md:pl-8">
+        <div className="pr-6 pl-6 md:pl-8">
           <ServiceIcon name={item.icon} />
         </div>
       </div>
 
       <div className="grid grid-cols-2 items-baseline">
-        <h3 className="pr-6 font-mono text-label leading-[1.45] text-text-primary uppercase md:pl-8">
+        <h3 className="pr-6 pl-6 font-mono text-label leading-[1.45] text-text-primary uppercase md:pl-8">
           {item.title.map((line) => (
             <span key={line} className="block">
               {line}
@@ -42,7 +47,8 @@ function ServiceCell({ item, index }: { item: ServiceItem; index: number }) {
           ))}
         </h3>
 
-        <p className="max-w-[240px] pr-6 pl-8 font-sans text-[16px] leading-[1.5] text-copy">
+        {/* descriptions are desktop-only — four paragraphs makes the mobile section far too tall; the titles carry it */}
+        <p className="hidden max-w-[240px] pr-6 pl-8 font-sans text-[16px] leading-[1.5] text-copy md:block">
           {item.description}
         </p>
       </div>
@@ -67,7 +73,7 @@ export function Services({ site, home }: ServicesProps) {
         </Reveal>
       }
     >
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-2">
         {items.map((item, i) => (
           <ServiceCell key={item.description} item={item} index={i} />
         ))}

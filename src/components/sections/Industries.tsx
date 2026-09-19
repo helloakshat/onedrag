@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { FounderNote } from "@/components/ui/FounderNote";
 import { IndustryIcon } from "@/components/ui/IndustryIcon";
@@ -11,26 +15,69 @@ interface IndustriesProps {
 }
 
 function IndustryCell({ item, index }: { item: IndustryItem; index: number }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div
       className={cn(
-        "grid min-h-[190px] grid-cols-2",
-        index % 2 === 1 && "md:border-l md:border-dashed md:border-grid-line",
+        "min-h-[120px] md:grid md:min-h-[190px] md:grid-cols-2",
+        index % 2 === 1 && "border-l border-dashed border-grid-line",
         index < 4 && "border-b border-dashed border-grid-line",
       )}
     >
-      <div className="flex flex-col justify-between py-9 pr-6 md:pl-8">
+      {/*
+        Mobile: icon + name only, tap to expand the capability list inline.
+        Desktop: unchanged two-column cell, list always visible.
+      */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full flex-col justify-between gap-6 py-9 pr-6 pl-6 text-left md:cursor-default md:justify-between md:pl-8"
+      >
         <IndustryIcon name={item.icon} />
-        <h3 className="mt-8 font-mono text-label leading-[1.45] text-text-primary uppercase">
-          {item.name.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
-        </h3>
+        <span className="flex items-end justify-between gap-3">
+          <h3 className="font-mono text-label leading-[1.45] text-text-primary uppercase">
+            {item.name.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </h3>
+          <ChevronDown
+            size={16}
+            strokeWidth={1.5}
+            aria-hidden="true"
+            className={cn(
+              "shrink-0 text-text-primary transition-transform duration-[var(--dur-fast)] ease-[var(--ease-out)] md:hidden",
+              open && "rotate-180",
+            )}
+          />
+        </span>
+      </button>
+
+      {/* grid-rows 0fr -> 1fr animates height without a fixed max-height */}
+      <div
+        className={cn(
+          "grid transition-[grid-template-rows] duration-[var(--dur-base)] ease-[var(--ease-out)] md:hidden",
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+        )}
+      >
+        <div className="overflow-hidden">
+          <ul className="flex flex-col gap-2 px-6 pb-6">
+            {item.capabilities.map((capability) => (
+              <li key={capability} className="flex gap-2 font-sans text-[15px] leading-[1.5] text-copy">
+                <span aria-hidden="true" className="text-spine">
+                  ›
+                </span>
+                {capability}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <ul className="flex flex-col justify-end gap-2 border-l border-dashed border-grid-line py-9 pr-6 pl-8">
+      <ul className="hidden flex-col justify-end gap-2 border-l border-dashed border-grid-line py-9 pr-6 pl-8 md:flex">
         {item.capabilities.map((capability) => (
           <li key={capability} className="flex gap-2 font-sans text-[15px] leading-[1.5] text-copy">
             <span aria-hidden="true" className="text-spine">
@@ -61,7 +108,7 @@ export function Industries({ site, home }: IndustriesProps) {
         </Reveal>
       }
     >
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-2">
         {items.map((item, i) => (
           <IndustryCell key={item.name.join(" ")} item={item} index={i} />
         ))}

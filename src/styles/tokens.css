@@ -53,6 +53,13 @@
   --grid-gutter: 32px;
   --rail-heading-max: 370px;
 
+  /* Mobile gutter override — the 6-column grid itself is desktop-only (it
+     collapses to a single stacked column below md), but Container's side
+     padding still needs to shrink below 768px. */
+  @media (max-width: 767px) {
+    --grid-gutter: 20px;
+  }
+
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
@@ -62,8 +69,8 @@
   --dur-slow: 900ms;
 
   /* Type scale */
-  --fs-display: clamp(44px, 3.8vw, 76px);
-  --fs-h2: clamp(32px, 3.4vw, 48px);
+  --fs-display: clamp(36px, 3.8vw, 76px);
+  --fs-h2: clamp(28px, 3.4vw, 48px);
   --fs-h3: clamp(20px, 2vw, 28px);
   --fs-body-lg: clamp(17px, 1.2vw, 20px);
   --fs-body: clamp(15px, 1vw, 17px);

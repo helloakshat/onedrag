@@ -42,14 +42,14 @@ export function Work({ studies, index }: WorkProps) {
         <div className="md:col-span-3">
           <Reveal>
             {/* TODO: replace — halftone stand-in for the real cover image. */}
-            <div className="aspect-[16/10] w-full">
+            <div className="aspect-[4/3] w-full md:aspect-[16/10]">
               {/* width ≈ the cover's real rendered width, so pixels land at ~3px */}
               <Halftone seed={study.slug} subject="scene" width={760} ratio={10 / 16} pixel={3} />
             </div>
           </Reveal>
         </div>
 
-        <div className="mt-6 md:col-start-4 md:mt-0 md:pl-8">
+        <div className="mt-6 flex justify-end md:col-start-4 md:mt-0 md:block md:pl-8">
           <NavArrows onPrev={() => step(-1)} onNext={() => step(1)} label="case study" />
         </div>
       </div>

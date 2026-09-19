@@ -51,7 +51,10 @@ function buildRidge(r: Ridge) {
 
   return {
     path: `M0,${HEIGHT} L${points.join(" L")} L${WIDTH},${HEIGHT} Z`,
-    minY,
+    // Rounded like the path points above — an un-rounded float can print a
+    // different last digit between server and client V8 builds, which
+    // shows up as a hydration mismatch on this gradient's y1.
+    minY: Number(minY.toFixed(1)),
   };
 }
 
