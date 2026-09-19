@@ -9,7 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { HeadingReveal } from "@/components/ui/HeadingReveal";
 
 type SectionVariant = "rail" | "field";
-type SectionBackground = "paper" | "paper-alt" | "dark";
+type SectionBackground = "paper" | "paper-alt" | "white" | "dark";
 
 interface SectionShellProps {
   variant: SectionVariant;
@@ -33,6 +33,7 @@ interface SectionShellProps {
 const bgClasses: Record<SectionBackground, string> = {
   paper: "bg-paper text-text-primary",
   "paper-alt": "bg-paper-alt text-text-primary",
+  white: "bg-bg-raised text-text-primary",
   dark: "bg-dark text-text-on-dark",
 };
 

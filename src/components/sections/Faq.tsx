@@ -71,7 +71,7 @@ export function Faq({ site, home }: FaqProps) {
       number={chip.number}
       label={chip.label}
       heading={heading}
-      bg="paper"
+      bg="white"
       rail={<FounderNote name={site.founder.name} role={site.founder.role} message={note} />}
     >
       <div>

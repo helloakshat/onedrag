@@ -40,12 +40,15 @@ lockup.** Layout patterns and mood are fine; assets are generated in-project.
   buttons, labels, and stat lines — anything that reads as a "system" label
   rather than prose.
 - **Section chips** mark every section: a two-block badge, e.g. `01 INTRO`.
-  The number block is a solid `--spine` 33×33 square; the label block sits on
+  The number block is a solid `--spine` 31×31 square; the label block sits on
   `--border-subtle` with `0 12px 0 10px` padding. No separator, no gap
   between the two blocks — they read as one object.
-- **Orange is a mark, not a fill.** Use `--accent` for chip numbers, the 1px
-  left strip on primary buttons, corner ticks, and small emphasis marks.
-  Avoid large orange fills.
+- **Orange is a mark, not a fill — at rest.** Use `--accent` for chip
+  numbers, the 1px left strip on primary buttons, corner ticks, and small
+  emphasis marks. Avoid large orange fills in the resting state. The one
+  sanctioned fill is the button hover: primary and secondary both fill
+  `--spine` with `--text-on-fill` text, and an arrow slides in from the left
+  ahead of the label (see §7).
 - **Dark blocks as punctuation.** `#202020` (`--dark`) is used for secondary
   buttons and the occasional full dark section band (see §5 Band
   backgrounds) — used deliberately, as contrast punctuation, not as a base
@@ -208,10 +211,14 @@ variant:
 
 | Section | Background |
 |---|---|
+| trusted by | `--bg-raised` (`#FFFFFF`) |
 | results | `--paper-alt` (`#DBDBD3`) |
-| testimonials | `--paper-alt` (`#DBDBD3`) |
 | work | `--dark` (`#202020`) |
+| testimonials | `--paper-alt` (`#DBDBD3`) |
+| faq | `--bg-raised` (`#FFFFFF`) |
 | all others | `--paper` (`#F2F0EE`) |
+
+`body` and `html` also sit on `--paper` so overscroll matches the page.
 
 A section on `--dark` sets its base text colour to `--text-on-dark`; nothing
 inside it should hardcode `--text-primary`.
@@ -240,6 +247,7 @@ then update here. Never fork them into a component.
   --text-secondary: #5A5856;
   --text-muted:     #8A8886;
   --text-on-dark:   #F4F3F1;   /* text on --dark / --accent */
+  --text-on-fill:   #FFFFFF;   /* text on a filled button */
 
   /* Accent */
   --accent:         #E9762B;   /* warm orange — marks, not fills */
@@ -265,13 +273,14 @@ then update here. Never fork them into a component.
 
   /* Grid — columns are fluid (1fr each), so there is no column-width token */
   --grid-max-width:   1520px;
-  --grid-gutter:      20px;    /* side padding below 1560px only */
+  --grid-gutter:      32px;    /* side padding below 1560px only */
   --rail-heading-max: 370px;
 
   /* Motion */
   --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
   --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-fast:   200ms;
+  --dur-hover:  250ms;  /* button hover fill */
   --dur-base:   500ms;
   --dur-slow:   900ms;
 }
@@ -317,6 +326,12 @@ Container is the grid container from §5 (max-width `1520px`, gutter `32px`).
 - **Body/mono reveal (everything else):** opacity 0→1, y 20px→0,
   `--dur-base`, `--ease-out`, triggered once at 20% viewport entry.
 - Stagger children by 60ms.
+- **Button hover:** fill to `--spine` over `--dur-hover` with `--ease-out`;
+  the `→` slides in from `opacity 0 / translateX(-12px)` over `--dur-fast`,
+  pushing the label 20px right. Primary and secondary behave identically.
+- **Header chip** tracks the section holding the viewport midpoint, via
+  `IntersectionObserver` with `rootMargin: "-50% 0px -50% 0px"`. Gaps
+  between observed sections hold the last value rather than clearing.
 - Counters animate on first view only.
 - Marquee (if used): CSS `translateX` keyframes, pauses on hover.
 - **Always respect `prefers-reduced-motion`.** Wrap every animation.

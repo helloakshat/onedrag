@@ -18,14 +18,15 @@ interface Ridge {
 }
 
 /**
- * Frequencies are deliberately non-harmonic and phases spread, so crests
- * land across the whole 1920 band instead of bunching at one end.
+ * Frequencies are non-harmonic and phases solved so each ridge's dominant
+ * crest owns its own zone of the 1920 band (x ≈ 304 / 496 / 1264 / 1696)
+ * instead of bunching at one end.
  */
 const RIDGES: Ridge[] = [
-  { base: 150, amp: 52, freq: 0.0072, phase: 0.4 },
-  { base: 182, amp: 42, freq: 0.0098, phase: 2.1 },
-  { base: 210, amp: 32, freq: 0.0131, phase: 3.9 },
-  { base: 234, amp: 24, freq: 0.0169, phase: 5.4 },
+  { base: 150, amp: 52, freq: 0.0072, phase: 5.36 },
+  { base: 182, amp: 42, freq: 0.00877, phase: 2.82 },
+  { base: 210, amp: 32, freq: 0.0131, phase: 4.01 },
+  { base: 234, amp: 24, freq: 0.01572, phase: 5.79 },
 ];
 
 /** Layered sines stand in for a ridge line — deterministic, no randomness. */
@@ -66,7 +67,7 @@ export function TopoTexture({ className, density = 1 }: TopoTextureProps) {
   return (
     <svg
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="none"
       className={cn("pointer-events-none h-full w-full", className)}
       aria-hidden="true"
     >
