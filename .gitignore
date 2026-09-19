@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -39,3 +39,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# tooling caches
+.turbo/
+.cache/
+
+# logs
+*.log
+
+# OS
+Thumbs.db
+._*
+
+# claude code — local overrides only; .claude/settings.json stays committed
+.claude/settings.local.json
