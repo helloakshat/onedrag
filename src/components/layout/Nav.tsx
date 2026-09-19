@@ -123,14 +123,14 @@ export function Nav({ site, defaultChip }: NavProps) {
           <Container>
             <nav className="flex flex-col gap-1 py-6">
               {site.nav.links.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className="py-3 font-mono text-label text-text-secondary uppercase transition-colors duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:text-text-primary"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </Container>

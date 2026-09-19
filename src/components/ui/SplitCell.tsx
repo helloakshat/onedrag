@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface SplitCellProps {
@@ -9,6 +10,8 @@ interface SplitCellProps {
   /** Position in a two-column grid — drives the internal dashed boundaries. */
   index: number;
   total: number;
+  /** When set the whole cell is the link to that service page. */
+  href?: string;
 }
 
 /**
@@ -20,16 +23,32 @@ interface SplitCellProps {
  * desktop rather than dropping to a single column, so the divider scheme
  * holds for both.
  */
-export function SplitCell({ icon, title, description, index, total }: SplitCellProps) {
-  return (
-    <div
-      className={cn(
-        "relative flex min-h-[160px] flex-col justify-between py-8 md:min-h-[240px] md:py-10",
-        // internal boundaries only — no outer frame
-        index % 2 === 1 && "border-l border-dashed border-grid-line",
-        index < total - 2 && "border-b border-dashed border-grid-line",
-      )}
-    >
+export function SplitCell({ icon, title, description, index, total, href }: SplitCellProps) {
+  const className = cn(
+    "group relative flex min-h-[160px] flex-col justify-between py-8 md:min-h-[240px] md:py-10",
+    // internal boundaries only — no outer frame
+    index % 2 === 1 && "border-l border-dashed border-grid-line",
+    index < total - 2 && "border-b border-dashed border-grid-line",
+  );
+
+  const body = (
+    <>
+      {/*
+        The only affordance that a cell goes somewhere. Absolute so it costs
+        no layout — a linked cell has to stay the same height as an unlinked
+        one beside it. It sits in the empty top-right quadrant, above the
+        bottom-aligned description. Always on below md, where there is no
+        hover to reveal it.
+      */}
+      {href ? (
+        <span
+          aria-hidden="true"
+          className="absolute top-8 right-6 text-spine transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] md:top-10 md:right-8 md:opacity-0 md:group-hover:opacity-100"
+        >
+          &rarr;
+        </span>
+      ) : null}
+
       {/* half divider as an overlay so it spans the cell while the rows below stay baseline-aligned */}
       <span
         aria-hidden="true"
@@ -54,6 +73,15 @@ export function SplitCell({ icon, title, description, index, total }: SplitCellP
           {description}
         </p>
       </div>
-    </div>
+    </>
+  );
+
+  // A linked cell is the anchor itself, so the whole cell is the hit area.
+  return href ? (
+    <Link href={href} className={className}>
+      {body}
+    </Link>
+  ) : (
+    <div className={className}>{body}</div>
   );
 }

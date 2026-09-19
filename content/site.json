@@ -2,9 +2,18 @@
   "nav": {
     "wordmark": "ONEDRAG",
     "links": [
-      { "label": "Work", "href": "#work" },
-      { "label": "Services", "href": "#services" },
-      { "label": "About", "href": "#about" }
+      {
+        "label": "Work",
+        "href": "/#work"
+      },
+      {
+        "label": "Services",
+        "href": "/#services"
+      },
+      {
+        "label": "About",
+        "href": "/#about"
+      }
     ]
   },
   "footer": {
@@ -12,9 +21,18 @@
     "copyright": "Onedrag. All rights reserved."
   },
   "socials": [
-    { "label": "Instagram", "href": "#" },
-    { "label": "LinkedIn", "href": "#" },
-    { "label": "X", "href": "#" }
+    {
+      "label": "Instagram",
+      "href": "#"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "#"
+    },
+    {
+      "label": "X",
+      "href": "#"
+    }
   ],
   "links": {
     "bookCall": "#",

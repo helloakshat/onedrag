@@ -124,7 +124,7 @@ export interface HomeContent {
     email: string;
     phone: string;
     socials: NavLink[];
-    navColumns: string[][];
+    navColumns: NavLink[][];
     form: {
       namePlaceholder: string;
       emailPlaceholder: string;
@@ -139,6 +139,8 @@ export interface ServiceItem {
   icon: ServiceIconName;
   title: string[];
   description: string;
+  /** Set once that service has a page under content/services/. */
+  href?: string;
 }
 
 export interface ProcessStep {

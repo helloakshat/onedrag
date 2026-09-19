@@ -37,6 +37,7 @@ export function Services({ site, home }: ServicesProps) {
             description={item.description}
             index={i}
             total={items.length}
+            href={item.href}
           />
         ))}
       </div>
