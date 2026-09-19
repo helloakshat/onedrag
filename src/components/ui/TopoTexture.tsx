@@ -18,14 +18,15 @@ interface Ridge {
 }
 
 /**
- * Frequencies are deliberately non-harmonic and phases spread, so crests
- * land across the whole 1920 band instead of bunching at one end.
+ * Frequencies are non-harmonic and phases solved so each ridge's dominant
+ * crest owns its own zone of the 1920 band (x ≈ 304 / 496 / 1264 / 1696)
+ * instead of bunching at one end.
  */
 const RIDGES: Ridge[] = [
-  { base: 150, amp: 52, freq: 0.0072, phase: 0.4 },
-  { base: 182, amp: 42, freq: 0.0098, phase: 2.1 },
-  { base: 210, amp: 32, freq: 0.0131, phase: 3.9 },
-  { base: 234, amp: 24, freq: 0.0169, phase: 5.4 },
+  { base: 150, amp: 52, freq: 0.0072, phase: 5.36 },
+  { base: 182, amp: 42, freq: 0.00877, phase: 2.82 },
+  { base: 210, amp: 32, freq: 0.0131, phase: 4.01 },
+  { base: 234, amp: 24, freq: 0.01572, phase: 5.79 },
 ];
 
 /** Layered sines stand in for a ridge line — deterministic, no randomness. */
@@ -50,7 +51,10 @@ function buildRidge(r: Ridge) {
 
   return {
     path: `M0,${HEIGHT} L${points.join(" L")} L${WIDTH},${HEIGHT} Z`,
-    minY,
+    // Rounded like the path points above — an un-rounded float can print a
+    // different last digit between server and client V8 builds, which
+    // shows up as a hydration mismatch on this gradient's y1.
+    minY: Number(minY.toFixed(1)),
   };
 }
 
@@ -58,6 +62,11 @@ function buildRidge(r: Ridge) {
  * Dot-matrix mountain range: overlapping ridge silhouettes filled with a dot
  * halftone and masked by a vertical fade, so dots read dense along each
  * crest and thin out toward the base. Generated SVG, no raster images.
+ *
+ * Desktop only. preserveAspectRatio="none" is what keeps the ridges spanning
+ * the full width, but it scales x and y independently — below md the band is
+ * far wider than it is tall, which stretches the halftone circles into
+ * obvious ellipses. Cheaper to drop the decor than to fake round dots.
  */
 export function TopoTexture({ className, density = 1 }: TopoTextureProps) {
   const spacing = 7 / density;
@@ -66,8 +75,8 @@ export function TopoTexture({ className, density = 1 }: TopoTextureProps) {
   return (
     <svg
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-      preserveAspectRatio="xMidYMid slice"
-      className={cn("pointer-events-none h-full w-full", className)}
+      preserveAspectRatio="none"
+      className={cn("pointer-events-none hidden h-full w-full md:block", className)}
       aria-hidden="true"
     >
       <defs>

@@ -8,13 +8,13 @@ interface SectionChipProps {
   className?: string;
 }
 
-/** Two blocks touching, zero gap: a 33×33 accent square, then the label block. */
+/** Two blocks touching, zero gap: a 31×31 accent square, then the label block. */
 export function SectionChip({ number, label, onDark = false, className }: SectionChipProps) {
   return (
     <div
-      className={cn("inline-flex h-[33px] items-stretch font-mono text-label uppercase", className)}
+      className={cn("inline-flex h-[31px] items-stretch font-mono text-label uppercase", className)}
     >
-      <span className="flex w-[33px] shrink-0 items-center justify-center bg-spine text-text-on-dark">
+      <span className="flex w-[31px] shrink-0 items-center justify-center bg-spine text-text-on-dark">
         {number}
       </span>
       <span

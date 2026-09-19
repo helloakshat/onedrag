@@ -38,7 +38,7 @@ export function TrustedBy({ home }: TrustedByProps) {
   ));
 
   return (
-    <section className="relative border-b border-grid-line-solid bg-paper">
+    <section className="relative border-b border-grid-line-solid bg-bg-raised">
       <GridLines />
 
       <Container>

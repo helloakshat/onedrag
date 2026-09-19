@@ -27,7 +27,7 @@ export function Results({ home }: ResultsProps) {
         {items.map((item, i) => (
           <Reveal key={item.description} delay={i * 0.06}>
             {/* items-baseline puts the numeral, label and description on one baseline */}
-            <div className="grid min-h-[120px] grid-cols-1 items-baseline gap-4 border-b border-dashed border-grid-line py-10 md:grid-cols-4 md:gap-0">
+            <div className="grid min-h-[120px] grid-cols-1 items-baseline gap-4 border-b border-dashed border-grid-line py-6 md:grid-cols-4 md:gap-0 md:py-10">
               <p className="font-sans text-[48px] leading-none font-medium text-text-primary">
                 <CountUp value={item.value} suffix={item.suffix} />
               </p>

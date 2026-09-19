@@ -73,7 +73,7 @@ export function Footer({ site, home }: FooterProps) {
               {heading}
             </h2>
 
-            <div className="mt-14 flex gap-16">
+            <div className="mt-14 flex flex-col gap-8 md:flex-row md:gap-16">
               {navColumns.map((column) => (
                 <ul key={column[0]} className="flex flex-col gap-3">
                   {column.map((entry) => (
@@ -117,14 +117,17 @@ export function Footer({ site, home }: FooterProps) {
 
       <div className="relative bg-paper">
         <Container>
-          <Grid className="h-22 items-center">
-            <div className="col-start-1">
+          {/* stacked wordmark / copyright / location on mobile; the desktop row is untouched */}
+          <Grid className="items-center py-8 md:h-22 md:py-0">
+            <div className="col-span-6 md:col-span-1 md:col-start-1">
               <Logo />
             </div>
-            <p className="col-span-2 font-mono text-[13px] text-faint uppercase md:col-start-3">
+            <p className="col-span-6 mt-4 font-mono text-[13px] text-faint uppercase md:col-span-2 md:col-start-3 md:mt-0">
               {copyright}
             </p>
-            <p className="font-mono text-[13px] text-faint uppercase md:col-start-6">{location}</p>
+            <p className="col-span-6 mt-4 font-mono text-[13px] text-faint uppercase md:col-start-6 md:mt-0">
+              {location}
+            </p>
           </Grid>
         </Container>
       </div>
