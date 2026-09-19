@@ -59,7 +59,7 @@ export function Footer({ site, home }: FooterProps) {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-fast)] hover:opacity-60"
+                className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"
               >
                 {social.label}
               </a>
@@ -80,7 +80,7 @@ export function Footer({ site, home }: FooterProps) {
                     <li key={entry}>
                       <a
                         href="#"
-                        className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-fast)] hover:opacity-60"
+                        className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"
                       >
                         {entry}
                       </a>

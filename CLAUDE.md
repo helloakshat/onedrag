@@ -310,7 +310,7 @@ then update here. Never fork them into a component.
   --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
   --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-fast:   200ms;
-  --dur-hover:  250ms;  /* button hover fill */
+  --dur-hover:  400ms;  /* every hover-triggered transition, --ease-inout */
   --dur-base:   500ms;
   --dur-slow:   900ms;
 }
@@ -356,9 +356,12 @@ Container is the grid container from §5 (max-width `1520px`, gutter `32px`).
 - **Body/mono reveal (everything else):** opacity 0→1, y 20px→0,
   `--dur-base`, `--ease-out`, triggered once at 20% viewport entry.
 - Stagger children by 60ms.
-- **Button hover:** fill to `--spine` over `--dur-hover` with `--ease-out`;
-  the `→` slides in from `opacity 0 / translateX(-12px)` over `--dur-fast`,
-  pushing the label 20px right. Primary and secondary behave identically.
+- **Hover transitions:** every hover-triggered transition — button fills,
+  the button arrow/label slide, nav arrows, link opacity, testimonial
+  thumbnails — runs on `--dur-hover` (400ms) with `--ease-inout`, never
+  `--ease-out`. `--ease-out` is for scroll-triggered reveals only. Button's
+  `→` slides in from `opacity 0 / translateX(-12px)`, pushing the label
+  20px right; primary and secondary behave identically.
 - **Header chip** tracks the section holding the viewport midpoint, via
   `IntersectionObserver` with `rootMargin: "-50% 0px -50% 0px"`. Gaps
   between observed sections hold the last value rather than clearing.

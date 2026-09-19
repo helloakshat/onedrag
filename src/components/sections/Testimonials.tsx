@@ -106,7 +106,7 @@ export function Testimonials({ home }: TestimonialsProps) {
                 onClick={() => setActive(index)}
                 aria-label={`Show testimonial from ${item.name}`}
                 className={cn(
-                  "aspect-square w-full transition-opacity duration-[var(--dur-fast)]",
+                  "aspect-square w-full transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)]",
                   "opacity-70 hover:opacity-100",
                 )}
               >

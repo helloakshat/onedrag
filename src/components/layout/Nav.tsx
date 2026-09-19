@@ -120,7 +120,7 @@ export function Nav({ site, sections }: NavProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="py-3 font-mono text-label text-text-secondary uppercase transition-colors duration-[var(--dur-fast)] hover:text-text-primary"
+                  className="py-3 font-mono text-label text-text-secondary uppercase transition-colors duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:text-text-primary"
                 >
                   {link.label}
                 </a>

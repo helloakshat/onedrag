@@ -42,14 +42,14 @@ export function TrustedBy({ home }: TrustedByProps) {
       <GridLines />
 
       <Container>
-        <Grid className="h-22 items-center">
+        <Grid className="items-center gap-y-4 py-6 md:h-22 md:gap-y-0 md:py-0">
           <span className="col-span-6 font-mono text-label whitespace-nowrap text-text-primary uppercase md:col-span-1 md:col-start-3">
             {label}
           </span>
 
-          {/* edge fade so logos leave the track instead of hard-clipping */}
+          {/* edge fade so logos leave the track instead of hard-clipping — visible at every breakpoint, mobile just gets the full row instead of sharing one with the label */}
           <div
-            className="col-span-6 hidden md:col-span-3 md:col-start-4 md:block"
+            className="col-span-6 md:col-span-3 md:col-start-4"
             style={{
               maskImage:
                 "linear-gradient(to right, transparent, black 56px, black calc(100% - 56px), transparent)",

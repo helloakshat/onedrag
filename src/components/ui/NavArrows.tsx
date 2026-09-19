@@ -13,7 +13,7 @@ interface NavArrowsProps {
 /** Two 45×45 square arrows. Border and glyphs inherit the section's text colour. */
 export function NavArrows({ onPrev, onNext, label, className }: NavArrowsProps) {
   const button =
-    "flex h-[45px] w-[45px] items-center justify-center border border-current text-current transition-opacity duration-[var(--dur-fast)] hover:opacity-60";
+    "flex h-[45px] w-[45px] items-center justify-center border border-current text-current transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60";
 
   return (
     <div className={cn("flex", className)}>

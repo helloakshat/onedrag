@@ -26,7 +26,7 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 // overflow-hidden keeps the arrow clipped to the button while it slides in.
 const baseClasses =
-  "group relative inline-flex items-center justify-center overflow-hidden whitespace-nowrap px-8 font-mono text-label uppercase transition-colors duration-[var(--dur-hover)] ease-[var(--ease-out)]";
+  "group relative inline-flex items-center justify-center overflow-hidden whitespace-nowrap px-8 font-mono text-label uppercase transition-colors duration-[var(--dur-hover)] ease-[var(--ease-inout)]";
 
 const sizeClasses: Record<ButtonSize, string> = {
   md: "h-12",
@@ -53,11 +53,11 @@ function ButtonLabel({ children }: { children: ReactNode }) {
     <span className="relative inline-flex items-center">
       <span
         aria-hidden="true"
-        className="absolute left-0 -translate-x-3 opacity-0 transition-[opacity,transform] duration-[var(--dur-fast)] ease-[var(--ease-out)] group-hover:translate-x-0 group-hover:opacity-100"
+        className="absolute left-0 -translate-x-3 opacity-0 transition-[opacity,transform] duration-[var(--dur-hover)] ease-[var(--ease-inout)] group-hover:translate-x-0 group-hover:opacity-100"
       >
         &rarr;
       </span>
-      <span className="transition-transform duration-[var(--dur-fast)] ease-[var(--ease-out)] group-hover:translate-x-5">
+      <span className="transition-transform duration-[var(--dur-hover)] ease-[var(--ease-inout)] group-hover:translate-x-5">
         {children}
       </span>
     </span>
