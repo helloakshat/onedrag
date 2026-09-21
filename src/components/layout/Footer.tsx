@@ -1,6 +1,7 @@
 "use client";
 
 import type { FormEvent } from "react";
+import Link from "next/link";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { Container } from "@/components/ui/Container";
 import { Grid } from "@/components/layout/Grid";
@@ -75,15 +76,16 @@ export function Footer({ site, home }: FooterProps) {
 
             <div className="mt-14 flex flex-col gap-8 md:flex-row md:gap-16">
               {navColumns.map((column) => (
-                <ul key={column[0]} className="flex flex-col gap-3">
+                <ul key={column[0].label} className="flex flex-col gap-3">
                   {column.map((entry) => (
-                    <li key={entry}>
-                      <a
-                        href="#"
+                    <li key={entry.label}>
+                      {/* TODO: replace — privacy / terms still point at "#". */}
+                      <Link
+                        href={entry.href}
                         className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"
                       >
-                        {entry}
-                      </a>
+                        {entry.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>

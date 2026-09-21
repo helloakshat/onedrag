@@ -2,10 +2,11 @@ import { SectionShell } from "@/components/layout/SectionShell";
 import { NumberBadge } from "@/components/ui/NumberBadge";
 import { StepIcon } from "@/components/ui/StepIcon";
 import { Reveal } from "@/components/ui/Reveal";
-import type { HomeContent, ProcessStep } from "@/lib/content";
+import type { ProcessBlock, ProcessStep } from "@/lib/content";
 
 interface ProcessProps {
-  home: HomeContent;
+  /** Home and every service page render this same section from their own copy. */
+  content: ProcessBlock;
 }
 
 function Step({ step, isLast }: { step: ProcessStep; isLast: boolean }) {
@@ -79,8 +80,8 @@ function Step({ step, isLast }: { step: ProcessStep; isLast: boolean }) {
   );
 }
 
-export function Process({ home }: ProcessProps) {
-  const { chip, heading, note, steps } = home.process;
+export function Process({ content }: ProcessProps) {
+  const { chip, heading, note, steps } = content;
 
   return (
     <SectionShell

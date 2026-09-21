@@ -83,6 +83,11 @@ export function SectionShell({
   return (
     <Tag
       id={id}
+      // The header chip tracks whichever section holds the viewport midpoint;
+      // it reads the page's sections off these attributes (CLAUDE.md §7), so
+      // every page gets the right chip sequence without a hardcoded list.
+      data-chip-number={number}
+      data-chip-label={label}
       className={cn("relative border-b border-grid-line-solid", bgClasses[bg], className)}
     >
       {decor}

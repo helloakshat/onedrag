@@ -24,7 +24,13 @@ export function Hero({ site, home }: HeroProps) {
   const { chip, heading, subheading, primaryCtaLabel, secondaryCtaLabel, stats } = home.hero;
 
   return (
-    <section id="intro" className="relative border-b border-border-subtle bg-paper">
+    <section
+      id="intro"
+      // the header chip reads its sequence off these (see Nav / SectionShell)
+      data-chip-number={chip.number}
+      data-chip-label={chip.label}
+      className="relative border-b border-border-subtle bg-paper"
+    >
       {/* full-bleed decor, behind the container's content (z-10) */}
       <div className="pointer-events-none absolute inset-x-0 top-[55%] z-[2] h-[23%] opacity-60">
         <TopoTexture />

@@ -20,13 +20,13 @@ export default function Home() {
       <Hero site={site} home={home} />
       <TrustedBy home={home} />
       <Services site={site} home={home} />
-      <Process home={home} />
+      <Process content={home.process} />
       <Results home={home} />
       <Work studies={getCaseStudies()} index={getCaseStudyIndex()} />
       <Industries site={site} home={home} />
       <Value site={site} home={home} />
       <Testimonials home={home} />
-      <Faq site={site} home={home} />
+      <Faq site={site} content={home.faq} />
     </>
   );
 }
