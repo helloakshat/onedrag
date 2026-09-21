@@ -1,18 +1,16 @@
 {
   "nav": {
     "wordmark": "ONEDRAG",
-    "links": [
+    "leadingLinks": [
       {
-        "label": "Work",
+        "label": "Home",
+        "href": "/"
+      }
+    ],
+    "trailingLinks": [
+      {
+        "label": "Case studies",
         "href": "/#work"
-      },
-      {
-        "label": "Services",
-        "href": "/#services"
-      },
-      {
-        "label": "About",
-        "href": "/#about"
       }
     ]
   },

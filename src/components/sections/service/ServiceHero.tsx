@@ -15,7 +15,7 @@ interface ServiceHeroProps {
 }
 
 /**
- * Page hero for /services/[slug]. Full viewport width with TopoTexture
+ * Page hero for a service page (/[slug]). Full viewport width with TopoTexture
  * behind, closing on a full-width horizontal rule (the section's own bottom
  * border, which runs edge to edge rather than container width).
  *

@@ -14,7 +14,7 @@ export function generateStaticParams() {
   return getServiceSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceContent(slug);
   if (!service) return {};
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
   return { title: service.seo.title, description: service.seo.description };
 }
 
-export default async function ServicePage({ params }: PageProps<"/services/[slug]">) {
+export default async function ServicePage({ params }: PageProps<"/[slug]">) {
   const { slug } = await params;
   const service = getServiceContent(slug);
   if (!service) notFound();

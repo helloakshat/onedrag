@@ -83,11 +83,11 @@ No CMS. No database. No auth. No analytics package beyond Vercel Analytics.
 content/                  ← the ONLY folder the owner edits for copy
   site.json               nav, footer, socials, external links, default SEO
   home.json
-  services/
-    n8n-automation.json
-    shopify-website.json
-    framer-website.json
-    product-design.json
+  services/              one file per service; the filename IS the URL slug
+    automations.json       → /automations
+    shopify-dev.json       → /shopify-dev        (not built yet)
+    framer-dev.json        → /framer-dev         (not built yet)
+    ui-ux.json             → /ui-ux              (not built yet)
   case-studies/
     _index.json           listing page copy
     <slug>.mdx            one file per case study
@@ -110,6 +110,24 @@ public/
 - Never put copy strings in a component. Read from `content/`.
 - Every section component takes its data as a typed prop.
 - One section = one file. No file over ~200 lines.
+
+**Service pages are flat.** A service renders at `/<slug>` from
+`src/app/[slug]/page.tsx` — there is no `/services` path segment and no
+services index page. The slug is the JSON filename, so the filename has to
+read the way the URL should.
+
+**The header menu is composed, not authored.** `lib/navigation.ts` builds it
+as `site.json`'s `nav.leadingLinks` + every file in `content/services/` +
+`nav.trailingLinks`. Adding a service page is therefore one file: drop
+`<slug>.json` into `content/services/` and it appears in the menu. Each
+service carries `navLabel` (the menu label, plural — `name` is singular) and
+`navOrder` (menu position, since the directory is read alphabetically and the
+menu is not alphabetical). Target menu, as the pages ship:
+
+    Home · Automations · Shopify dev · Framer dev · UI/UX · Case studies
+
+`Case studies` is a `trailingLink` pointing at `/#work` until a real
+`/case-studies` route exists.
 
 ---
 

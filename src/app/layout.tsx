@@ -5,6 +5,7 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { OrangeSpine } from "@/components/layout/OrangeSpine";
 import { getHomeContent, getSiteContent } from "@/lib/content";
+import { getNavLinks } from "@/lib/navigation";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,6 +20,7 @@ const geistMono = Geist_Mono({
 
 const site = getSiteContent();
 const home = getHomeContent();
+const navLinks = getNavLinks();
 
 /**
  * The header chip tracks the section holding the viewport midpoint, read
@@ -38,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <OrangeSpine />
         <SmoothScroll>
-          <Nav site={site} defaultChip={defaultChip} />
+          <Nav site={site} links={navLinks} defaultChip={defaultChip} />
           <main className="flex-1">{children}</main>
           <Footer site={site} home={home} />
         </SmoothScroll>

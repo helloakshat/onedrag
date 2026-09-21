@@ -51,7 +51,7 @@
           "& workflows"
         ],
         "description": "Connect your tools so work moves without manual steps.",
-        "href": "/services/n8n-automation"
+        "href": "/automations"
       },
       {
         "icon": "storefront",

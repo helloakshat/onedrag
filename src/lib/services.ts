@@ -21,6 +21,10 @@ export interface ScopeItem {
 export interface ServiceContent {
   slug: string;
   name: string;
+  /** Label in the header menu — plural, unlike `name`. */
+  navLabel: string;
+  /** Menu position; the content directory is alphabetical, the menu is not. */
+  navOrder: number;
   seo: { title: string; description: string };
   hero: {
     chip: Chip;
