@@ -10,7 +10,7 @@ import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { SectionChip } from "@/components/ui/SectionChip";
 import { Crosshair } from "@/components/ui/Crosshair";
-import type { SiteContent } from "@/lib/content";
+import type { NavLink, SiteContent } from "@/lib/content";
 
 export interface SectionRef {
   /** DOM id of the section element on the page. */
@@ -21,6 +21,8 @@ export interface SectionRef {
 
 interface NavProps {
   site: SiteContent;
+  /** Composed on the server from site.json + content/services — see lib/navigation. */
+  links: NavLink[];
   /** Rendered on the server, until the page's own sections resolve on mount. */
   defaultChip: SectionRef;
 }
@@ -75,7 +77,7 @@ function useSectionSpy(defaultChip: SectionRef) {
  * the CTA + hamburger closing flush on C6. The bottom rule is edge-to-edge,
  * not container width.
  */
-export function Nav({ site, defaultChip }: NavProps) {
+export function Nav({ site, links, defaultChip }: NavProps) {
   const [open, setOpen] = useState(false);
   const chip = useSectionSpy(defaultChip);
 
@@ -122,7 +124,7 @@ export function Nav({ site, defaultChip }: NavProps) {
         <div className="border-t border-border-subtle bg-paper">
           <Container>
             <nav className="flex flex-col gap-1 py-6">
-              {site.nav.links.map((link) => (
+              {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}

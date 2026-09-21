@@ -1,26 +1,46 @@
 {
-  "slug": "n8n-automation",
+  "slug": "automations",
   "name": "Automation",
+  "navLabel": "Automations",
+  "navOrder": 1,
   "seo": {
     "title": "Automation — Onedrag",
     "description": "We map the handoffs in your operation and rebuild them as n8n workflows that run on their own, against the tools you already use."
   },
   "hero": {
-    "chip": { "number": "01", "label": "Service" },
+    "chip": {
+      "number": "01",
+      "label": "Service"
+    },
     "heading": "We automate the work your team repeats.",
     "intro": "We map the handoffs in your operation, then rebuild them as n8n workflows that run on a schedule or a trigger. You keep the tools you already use.",
-    "counter": { "value": 40, "suffix": "+", "label": ["Automations", "shipped"] },
+    "counter": {
+      "value": 40,
+      "suffix": "+",
+      "label": [
+        "Automations",
+        "shipped"
+      ]
+    },
     "ctaLabel": "How it works",
     "ctaHref": "#process"
   },
   "capabilities": {
-    "chip": { "number": "01", "label": "Capabilities" },
+    "chip": {
+      "number": "01",
+      "label": "Capabilities"
+    },
     "heading": "What we can wire together",
-    "note": ["Self-hosted n8n or cloud.", "Your data stays in your stack."],
+    "note": [
+      "Self-hosted n8n or cloud.",
+      "Your data stays in your stack."
+    ],
     "items": [
       {
         "icon": "connect",
-        "title": ["Integrations"],
+        "title": [
+          "Integrations"
+        ],
         "points": [
           "REST and GraphQL APIs",
           "Webhooks in and out",
@@ -30,7 +50,10 @@
       },
       {
         "icon": "sync",
-        "title": ["Data", "sync"],
+        "title": [
+          "Data",
+          "sync"
+        ],
         "points": [
           "Two-way record sync",
           "Field mapping and transforms",
@@ -40,7 +63,10 @@
       },
       {
         "icon": "schedule",
-        "title": ["Scheduled", "jobs"],
+        "title": [
+          "Scheduled",
+          "jobs"
+        ],
         "points": [
           "Cron and interval triggers",
           "Queued batch runs",
@@ -49,7 +75,10 @@
       },
       {
         "icon": "intake",
-        "title": ["Intake", "and forms"],
+        "title": [
+          "Intake",
+          "and forms"
+        ],
         "points": [
           "Form and email triggers",
           "File parsing and uploads",
@@ -59,7 +88,10 @@
       },
       {
         "icon": "alert",
-        "title": ["Alerts and", "reporting"],
+        "title": [
+          "Alerts and",
+          "reporting"
+        ],
         "points": [
           "Slack and email notifications",
           "Scheduled report delivery",
@@ -68,7 +100,10 @@
       },
       {
         "icon": "guard",
-        "title": ["Error", "handling"],
+        "title": [
+          "Error",
+          "handling"
+        ],
         "points": [
           "Retry with backoff",
           "Dead-letter capture",
@@ -79,28 +114,46 @@
     ]
   },
   "scope": {
-    "chip": { "number": "02", "label": "Scope" },
+    "chip": {
+      "number": "02",
+      "label": "Scope"
+    },
     "heading": "What we automate",
-    "note": ["We start with one workflow.", "If it holds, we build the rest."],
+    "note": [
+      "We start with one workflow.",
+      "If it holds, we build the rest."
+    ],
     "items": [
       {
         "icon": "inbox",
-        "title": ["Client", "onboarding"],
+        "title": [
+          "Client",
+          "onboarding"
+        ],
         "description": "Intake form to signed agreement to project folder, without anyone chasing a step."
       },
       {
         "icon": "ledger",
-        "title": ["Finance and", "reporting"],
+        "title": [
+          "Finance and",
+          "reporting"
+        ],
         "description": "Pull numbers from your tools on a schedule and deliver one report to one place."
       },
       {
         "icon": "handoff",
-        "title": ["Sales", "handoffs"],
+        "title": [
+          "Sales",
+          "handoffs"
+        ],
         "description": "Move a lead from form to CRM to owner with the context already attached."
       },
       {
         "icon": "dashboard",
-        "title": ["Internal", "operations"],
+        "title": [
+          "Internal",
+          "operations"
+        ],
         "description": "Stock counts, ticket routing, status updates — the work that sits between systems."
       }
     ],
@@ -108,50 +161,78 @@
     "ctaLabel": "Talk through your stack"
   },
   "process": {
-    "chip": { "number": "03", "label": "Process" },
+    "chip": {
+      "number": "03",
+      "label": "Process"
+    },
     "heading": "How an automation gets built",
-    "note": ["Four steps, four to six", "weeks, one workflow", "live at a time."],
+    "note": [
+      "Four steps, four to six",
+      "weeks, one workflow",
+      "live at a time."
+    ],
     "steps": [
       {
         "number": "01",
         "icon": "audit",
-        "title": ["Map the", "current flow"],
+        "title": [
+          "Map the",
+          "current flow"
+        ],
         "connector": "Data in",
         "description": "We sit with the people doing the work and write down every handoff, tool, and exception. The exceptions are where most automations break."
       },
       {
         "number": "02",
         "icon": "blueprint",
-        "title": ["Spec the", "workflow"],
+        "title": [
+          "Spec the",
+          "workflow"
+        ],
         "connector": "Decision",
         "description": "We draw the node graph, name the triggers, and agree what happens when a step fails. You approve that before we open n8n."
       },
       {
         "number": "03",
         "icon": "build",
-        "title": ["Build and", "test"],
+        "title": [
+          "Build and",
+          "test"
+        ],
         "connector": "Execution",
         "description": "We build against your real accounts and real data, then run the workflow in parallel with the manual process and compare the output."
       },
       {
         "number": "04",
         "icon": "launch",
-        "title": ["Ship and", "monitor"],
+        "title": [
+          "Ship and",
+          "monitor"
+        ],
         "connector": "Result",
         "description": "We cut over, wire failure alerts into a channel your team watches, and hand you the run logs and the documentation."
       }
     ]
   },
   "work": {
-    "chip": { "number": "04", "label": "Projects" },
+    "chip": {
+      "number": "04",
+      "label": "Projects"
+    },
     "heading": "Related case studies",
     "ctaLabel": "See all case studies",
     "ctaHref": "/#work"
   },
   "faq": {
-    "chip": { "number": "05", "label": "FAQ" },
+    "chip": {
+      "number": "05",
+      "label": "FAQ"
+    },
     "heading": "Questions we get asked",
-    "note": ["Ask us anything else", "on the call."],
+    "note": [
+      "Ask us anything else",
+      "on the call."
+    ],
     "items": [
       {
         "question": "Why n8n and not Zapier or Make?",
@@ -174,7 +255,10 @@
         "answer": "Self-hosted n8n on a small VPS runs a few dollars a month and covers most workloads. The cost that matters is the API usage of the tools you connect, which we estimate during the spec step before anything gets built."
       }
     ],
-    "moreLabel": ["Still have a question", "about your workflow?"],
+    "moreLabel": [
+      "Still have a question",
+      "about your workflow?"
+    ],
     "ctaLabel": "Get in touch"
   }
 }

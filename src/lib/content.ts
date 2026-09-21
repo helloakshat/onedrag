@@ -38,7 +38,9 @@ export interface FaqBlock {
 export interface SiteContent {
   nav: {
     wordmark: string;
-    links: NavLink[];
+    /** The fixed entries either side of the service links — see lib/navigation. */
+    leadingLinks: NavLink[];
+    trailingLinks: NavLink[];
   };
   founder: {
     name: string;
