@@ -6,19 +6,21 @@ import type { CaseStudy } from "@/lib/case-studies";
 import type { ServiceContent } from "@/lib/services";
 
 interface RelatedWorkProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   service: ServiceContent;
   /** Already filtered to this service and capped at three by the route. */
   studies: CaseStudy[];
 }
 
-export function RelatedWork({ service, studies }: RelatedWorkProps) {
+export function RelatedWork({ service, studies, number }: RelatedWorkProps) {
   const { chip, heading, ctaLabel, ctaHref } = service.work;
 
   return (
     <SectionShell
       id="projects"
       variant="field"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="dark"

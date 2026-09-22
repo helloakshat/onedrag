@@ -209,7 +209,7 @@ component that takes a `variant` prop:
 - `variant="field"` — the left rail is empty; chip + H2 + content all begin
   in the content field (no reserved rail column).
 
-Assignment (in build order):
+Assignment, home page (in build order):
 
 | # | Section | Variant |
 |---|---|---|
@@ -223,6 +223,31 @@ Assignment (in build order):
 | 08 | testimonials | field |
 | 09 | faq | field |
 | 10 | contacts | rail |
+
+Service page (`/<slug>`):
+
+| # | Section | Variant |
+|---|---|---|
+| 01 | hero | field |
+| 02 | capabilities | rail |
+| 03 | scope | rail |
+| 04 | process | field |
+| 05 | related work | field |
+| 06 | faq | field |
+| 07 | contacts | rail |
+
+**Chip numbers are page order, never content.** The same `Process` section is
+03 on home and 04 on a service page, so the number cannot sit in the JSON
+beside the label — the chip in `content/` carries `label` only. Each page
+opens a counter (`lib/sections.ts`) and spends one number per numbered
+section, in render order; every section takes the result as a required
+`number` prop. Unnumbered strips (trusted by) never call it, and a section
+that can be dropped — related work, when no case study matches — must not
+call it when it isn't rendered, or the sequence gains a hole.
+
+Because contacts closes the sequence and its number therefore differs per
+route, the contacts band is rendered **by each page**, not by the root
+layout. Each page owns its own `<main>` and its `<Footer>`.
 
 **Band backgrounds.** Section background alternates by section, not by
 variant:

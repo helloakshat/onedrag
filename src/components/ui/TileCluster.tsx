@@ -9,9 +9,19 @@ const COLUMN_B = ["05", "06", "07"];
 
 function Tile({ label }: { label: string }) {
   return (
-    <span className="flex h-[33px] w-[33px] items-center justify-center bg-tile-fill font-mono text-tile text-faint">
-      {label}
-    </span>
+    <>
+      <span className="flex h-[33px] w-[33px] items-center justify-center bg-tile-fill font-mono text-tile text-faint">
+        {label}
+      </span>
+      {/*
+        Separates the labels in the text layer — without it the column reads
+        "050607" to anything scraping text. A white-space-only node between
+        flex children is not rendered as a flex item, so the layout is
+        untouched. The cluster stays aria-hidden either way; this is for
+        copy/paste and crawlers, which ignore aria.
+      */}
+      {" "}
+    </>
   );
 }
 

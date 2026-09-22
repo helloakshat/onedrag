@@ -10,7 +10,7 @@ export interface NavLink {
 }
 
 export interface Chip {
-  number: string;
+  /** The number is page order, supplied by the page — see lib/sections. */
   label: string;
 }
 
@@ -35,6 +35,11 @@ export interface FaqBlock {
   ctaLabel: string;
 }
 
+/** Full name for assistive tech, short code for the footer's row. */
+export interface SocialLink extends NavLink {
+  short: string;
+}
+
 export interface SiteContent {
   nav: {
     wordmark: string;
@@ -50,7 +55,7 @@ export interface SiteContent {
     text: string;
     copyright: string;
   };
-  socials: NavLink[];
+  socials: SocialLink[];
   links: {
     bookCall: string;
     getInTouch: string;
@@ -124,8 +129,6 @@ export interface HomeContent {
     chip: { number: string; label: string };
     heading: string;
     email: string;
-    phone: string;
-    socials: NavLink[];
     navColumns: NavLink[][];
     form: {
       namePlaceholder: string;

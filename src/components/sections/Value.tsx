@@ -1,11 +1,14 @@
 import { SectionShell } from "@/components/layout/SectionShell";
 import { FounderNote } from "@/components/ui/FounderNote";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { NumberBadge } from "@/components/ui/NumberBadge";
 import { TopoTexture } from "@/components/ui/TopoTexture";
 import { Reveal } from "@/components/ui/Reveal";
 import type { HomeContent, SiteContent, ValuePoint } from "@/lib/content";
 
 interface ValueProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   site: SiteContent;
   home: HomeContent;
 }
@@ -15,11 +18,7 @@ function Point({ point }: { point: ValuePoint }) {
     <div className="flex flex-col">
       <NumberBadge value={point.number} />
       <h3 className="mt-[90px] font-mono text-label leading-[1.45] text-text-primary uppercase">
-        {point.title.map((line) => (
-          <span key={line} className="block">
-            {line}
-          </span>
-        ))}
+        <SplitLines lines={point.title} />
       </h3>
     </div>
   );
@@ -31,17 +30,13 @@ function MobilePoint({ point }: { point: ValuePoint }) {
     <div className="flex min-h-[140px] flex-col justify-between">
       <NumberBadge value={point.number} />
       <h3 className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-        {point.title.map((line) => (
-          <span key={line} className="block">
-            {line}
-          </span>
-        ))}
+        <SplitLines lines={point.title} />
       </h3>
     </div>
   );
 }
 
-export function Value({ site, home }: ValueProps) {
+export function Value({ site, home, number }: ValueProps) {
   const { chip, heading, note, moreLabel, points } = home.value;
   const founder = (
     <FounderNote name={site.founder.name} role={site.founder.role} message={note} />
@@ -51,7 +46,7 @@ export function Value({ site, home }: ValueProps) {
     <SectionShell
       id="value"
       variant="rail"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="paper"

@@ -8,25 +8,32 @@ import { Industries } from "@/components/sections/Industries";
 import { Value } from "@/components/sections/Value";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
+import { Footer } from "@/components/layout/Footer";
 import { getHomeContent, getSiteContent } from "@/lib/content";
 import { getCaseStudies, getCaseStudyIndex } from "@/lib/case-studies";
+import { sectionNumbering } from "@/lib/sections";
 
 export default function Home() {
   const site = getSiteContent();
   const home = getHomeContent();
+  // 01…10 in render order. TrustedBy is an unnumbered strip, so it is skipped.
+  const n = sectionNumbering();
 
   return (
     <>
-      <Hero site={site} home={home} />
-      <TrustedBy home={home} />
-      <Services site={site} home={home} />
-      <Process content={home.process} />
-      <Results home={home} />
-      <Work studies={getCaseStudies()} index={getCaseStudyIndex()} />
-      <Industries site={site} home={home} />
-      <Value site={site} home={home} />
-      <Testimonials home={home} />
-      <Faq site={site} content={home.faq} />
+      <main className="flex-1">
+        <Hero site={site} home={home} number={n()} />
+        <TrustedBy home={home} />
+        <Services site={site} home={home} number={n()} />
+        <Process content={home.process} number={n()} />
+        <Results home={home} number={n()} />
+        <Work studies={getCaseStudies()} index={getCaseStudyIndex()} number={n()} />
+        <Industries site={site} home={home} number={n()} />
+        <Value site={site} home={home} number={n()} />
+        <Testimonials home={home} number={n()} />
+        <Faq site={site} content={home.faq} number={n()} />
+      </main>
+      <Footer site={site} home={home} number={n()} />
     </>
   );
 }

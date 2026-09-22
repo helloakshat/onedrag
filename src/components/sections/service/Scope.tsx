@@ -8,19 +8,21 @@ import type { SiteContent } from "@/lib/content";
 import type { ServiceContent } from "@/lib/services";
 
 interface ScopeProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   site: SiteContent;
   service: ServiceContent;
 }
 
 /** 2x2 on the same split-cell pattern as the home services section. */
-export function Scope({ site, service }: ScopeProps) {
+export function Scope({ site, service, number }: ScopeProps) {
   const { chip, heading, note, items, moreLabel, ctaLabel } = service.scope;
 
   return (
     <SectionShell
       id="scope"
       variant="rail"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="white"

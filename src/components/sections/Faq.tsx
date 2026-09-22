@@ -3,11 +3,14 @@
 import { useState } from "react";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { Button } from "@/components/ui/Button";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { FounderNote } from "@/components/ui/FounderNote";
 import { cn } from "@/lib/utils";
 import type { FaqBlock, FaqItem, SiteContent } from "@/lib/content";
 
 interface FaqProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   site: SiteContent;
   /** Home and every service page render this same accordion from their own copy. */
   content: FaqBlock;
@@ -70,7 +73,7 @@ function AccordionItem({
   );
 }
 
-export function Faq({ site, content, bg = "white" }: FaqProps) {
+export function Faq({ site, content, number, bg = "white" }: FaqProps) {
   const { chip, heading, note, items, moreLabel, ctaLabel } = content;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -78,7 +81,7 @@ export function Faq({ site, content, bg = "white" }: FaqProps) {
     <SectionShell
       id="faq"
       variant="field"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg={bg}
@@ -97,11 +100,7 @@ export function Faq({ site, content, bg = "white" }: FaqProps) {
 
       <div className="mt-12 grid grid-cols-1 items-center gap-6 md:grid-cols-4 md:gap-0">
         <p className="font-mono text-label leading-[1.45] text-text-primary uppercase md:col-span-2">
-          {moreLabel.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+          <SplitLines lines={moreLabel} />
         </p>
 
         <div className="md:col-span-2 md:col-start-3">

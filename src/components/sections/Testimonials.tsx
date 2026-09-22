@@ -4,18 +4,21 @@ import { useRef, useState } from "react";
 import type { TouchEvent } from "react";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { DitherImage } from "@/components/ui/DitherImage";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { NavArrows } from "@/components/ui/NavArrows";
 import { cn } from "@/lib/utils";
 import type { HomeContent } from "@/lib/content";
 
 interface TestimonialsProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   home: HomeContent;
 }
 
 // Below this many horizontal pixels of travel, a touch reads as a tap, not a swipe.
 const SWIPE_THRESHOLD = 40;
 
-export function Testimonials({ home }: TestimonialsProps) {
+export function Testimonials({ home, number }: TestimonialsProps) {
   const { chip, heading, rating, ratingOutOf, ratingNote, items } = home.testimonials;
   const [active, setActive] = useState(0);
   const current = items[active];
@@ -50,7 +53,7 @@ export function Testimonials({ home }: TestimonialsProps) {
     <SectionShell
       id="testimonials"
       variant="field"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="paper-alt"
@@ -125,11 +128,7 @@ export function Testimonials({ home }: TestimonialsProps) {
         </p>
 
         <p className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-          {ratingNote.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+          <SplitLines lines={ratingNote} />
         </p>
       </div>
     </SectionShell>

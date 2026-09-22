@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { DitherAvatar } from "@/components/ui/DitherAvatar";
+import { SplitLines } from "@/components/ui/SplitLines";
 
 interface FounderNoteProps {
   name: string;
@@ -20,11 +21,7 @@ export function FounderNote({ name, role, message, className }: FounderNoteProps
       </p>
 
       <p className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-        {message.map((line) => (
-          <span key={line} className="block">
-            {line}
-          </span>
-        ))}
+        <SplitLines lines={message} />
       </p>
     </div>
   );

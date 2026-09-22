@@ -21,14 +21,17 @@
   "socials": [
     {
       "label": "Instagram",
+      "short": "IN",
       "href": "#"
     },
     {
       "label": "LinkedIn",
+      "short": "LI",
       "href": "#"
     },
     {
       "label": "X",
+      "short": "X",
       "href": "#"
     }
   ],
