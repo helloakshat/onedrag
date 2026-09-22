@@ -11,6 +11,7 @@ import { getHomeContent, getSiteContent } from "@/lib/content";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getServiceContent, getServiceSlugs } from "@/lib/services";
 import { sectionNumbering } from "@/lib/sections";
+import { getNavLinks } from "@/lib/navigation";
 
 export function generateStaticParams() {
   return getServiceSlugs().map((slug) => ({ slug }));
@@ -54,7 +55,7 @@ export default async function ServicePage({ params }: PageProps<"/[slug]">) {
         ) : null}
         <Faq site={site} content={service.faq} bg="paper" number={n()} />
       </main>
-      <Footer site={site} home={home} number={n()} />
+      <Footer site={site} home={home} navLinks={getNavLinks()} number={n()} />
     </>
   );
 }

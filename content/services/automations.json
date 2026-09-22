@@ -1,8 +1,6 @@
 {
   "slug": "automations",
   "name": "Automation",
-  "navLabel": "Automations",
-  "navOrder": 1,
   "seo": {
     "title": "Automation — Onedrag",
     "description": "We map the handoffs in your operation and rebuild them as n8n workflows that run on their own, against the tools you already use."

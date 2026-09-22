@@ -8,20 +8,22 @@ import { Grid } from "@/components/layout/Grid";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { TopoTexture } from "@/components/ui/TopoTexture";
-import type { HomeContent, SiteContent } from "@/lib/content";
+import type { HomeContent, NavLink, SiteContent } from "@/lib/content";
 
 interface FooterProps {
   /** Chip number — contacts closes each page's sequence, so it differs per route. */
   number: string;
   site: SiteContent;
   home: HomeContent;
+  /** The same composed menu the header renders, in the same order. */
+  navLinks: NavLink[];
 }
 
 const inputClasses =
   "w-full border-0 border-b border-grid-line bg-transparent pb-4 font-mono text-label text-text-primary uppercase placeholder:text-faint focus:border-text-primary focus:outline-none";
 
-export function Footer({ site, home, number }: FooterProps) {
-  const { chip, heading, email, navColumns, form, copyright, location } = home.contacts;
+export function Footer({ site, home, number, navLinks }: FooterProps) {
+  const { chip, heading, email, legalLinks, form, copyright, location } = home.contacts;
 
   // No form backend — submitting hands off to the Typeform in site.json.
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -74,10 +76,12 @@ export function Footer({ site, home, number }: FooterProps) {
             </h2>
 
             <div className="mt-14 flex flex-col gap-8 md:flex-row md:gap-16">
-              {navColumns.map((column) => (
-                <ul key={column[0].label} className="flex flex-col gap-3">
+              {/* first column is the menu itself, same array and same order
+                  as the header (CLAUDE.md §4); second is legal-only copy */}
+              {[navLinks, legalLinks].map((column, i) => (
+                <ul key={i} className="flex flex-col gap-3">
                   {column.map((entry) => (
-                    <li key={entry.label}>
+                    <li key={entry.href}>
                       <Link
                         href={entry.href}
                         className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"

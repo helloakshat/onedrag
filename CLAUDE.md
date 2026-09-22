@@ -85,9 +85,9 @@ content/                  ← the ONLY folder the owner edits for copy
   home.json
   services/              one file per service; the filename IS the URL slug
     automations.json       → /automations
+    ui-ux-design.json      → /ui-ux-design
     shopify-dev.json       → /shopify-dev        (not built yet)
     framer-dev.json        → /framer-dev         (not built yet)
-    ui-ux.json             → /ui-ux              (not built yet)
   case-studies/
     _index.json           listing page copy
     <slug>.mdx            one file per case study
@@ -111,23 +111,39 @@ public/
 - Every section component takes its data as a typed prop.
 - One section = one file. No file over ~200 lines.
 
-**Service pages are flat.** A service renders at `/<slug>` from
-`src/app/[slug]/page.tsx` — there is no `/services` path segment and no
-services index page. The slug is the JSON filename, so the filename has to
-read the way the URL should.
+### Site structure
 
-**The header menu is composed, not authored.** `lib/navigation.ts` builds it
-as `site.json`'s `nav.leadingLinks` + every file in `content/services/` +
-`nav.trailingLinks`. Adding a service page is therefore one file: drop
-`<slug>.json` into `content/services/` and it appears in the menu. Each
-service carries `navLabel` (the menu label, plural — `name` is singular) and
-`navOrder` (menu position, since the directory is read alphabetically and the
-menu is not alphabetical). Target menu, as the pages ship:
+Standing rules. These do not change without the owner saying so.
 
-    Home · Automations · Shopify dev · Framer dev · UI/UX · Case studies
+1. **Service pages are flat top-level routes.** `/<slug>`, rendered by
+   `src/app/[slug]/page.tsx`. There is **no `/services` prefix** and **no
+   "Services" menu item, ever** — not in the header, not in the footer.
+2. **One array drives the menu:** `nav.links` in `content/site.json`, in
+   order:
 
-`Case studies` is a `trailingLink` pointing at `/#work` until a real
-`/case-studies` route exists.
+   | Label | Route |
+   |---|---|
+   | Home | `/` |
+   | Automations | `/automations` |
+   | Shopify dev | `/shopify-dev` |
+   | Framer dev | `/framer-dev` |
+   | UI/UX | `/ui-ux-design` |
+   | Case studies | `/case-studies` |
+
+3. **A menu item renders only if its page exists.** `lib/navigation.ts`
+   filters the array: a service page exists when
+   `content/services/<slug>.json` does, anything else when
+   `src/app/<segment>/page.tsx` does. Shopify dev, Framer dev and Case
+   studies are in the array and stay hidden until built.
+4. **Adding a page is one array entry** plus its content file. Nothing else
+   is edited — the link appears in the header and the footer at the position
+   it already held.
+5. **The footer's nav column is the same array, same order**, rendered from
+   the same `getNavLinks()`. The footer's second column is legal only
+   (`contacts.legalLinks`).
+
+A service's JSON carries no menu fields — label and order live in the array,
+so there is one source of truth for both.
 
 ---
 

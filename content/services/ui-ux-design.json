@@ -1,0 +1,259 @@
+{
+  "slug": "ui-ux-design",
+  "name": "UI/UX design",
+  "_todo": [
+    "TODO: replace — hero.counter is a placeholder (25+ products designed), not a verified number"
+  ],
+  "seo": {
+    "title": "UI/UX & product design — Onedrag",
+    "description": "We design SaaS and web app interfaces in Figma — information architecture, dashboards, workflows and design systems — and hand off specs your developers build from."
+  },
+  "hero": {
+    "chip": {
+      "label": "Service"
+    },
+    "heading": "We design the software people use all day.",
+    "intro": "We design SaaS and web app interfaces in Figma, build the design system behind them, and hand off specifications your developers work from. We do not build the product.",
+    "counter": {
+      "value": 25,
+      "suffix": "+",
+      "label": [
+        "Products",
+        "designed"
+      ]
+    },
+    "ctaLabel": "How it works",
+    "ctaHref": "#process"
+  },
+  "capabilities": {
+    "chip": {
+      "label": "Capabilities"
+    },
+    "heading": "What we design",
+    "note": [
+      "Figma end to end.",
+      "Your developers build it."
+    ],
+    "items": [
+      {
+        "icon": "connect",
+        "title": [
+          "Information",
+          "architecture"
+        ],
+        "points": [
+          "Navigation and page hierarchy",
+          "Naming and labelling",
+          "Permissions and roles in the UI",
+          "Empty, loading and error states"
+        ]
+      },
+      {
+        "icon": "dashboard",
+        "title": [
+          "Dashboards and",
+          "data display"
+        ],
+        "points": [
+          "Tables, filters and bulk actions",
+          "Charts and their axis rules",
+          "Density and responsive behaviour",
+          "What the first screen shows"
+        ]
+      },
+      {
+        "icon": "intake",
+        "title": [
+          "Workflows",
+          "and forms"
+        ],
+        "points": [
+          "Multi-step flows and their exits",
+          "Validation and error copy",
+          "Save, draft and undo behaviour",
+          "Keyboard paths through a form"
+        ]
+      },
+      {
+        "icon": "ledger",
+        "title": [
+          "Design",
+          "systems"
+        ],
+        "points": [
+          "Tokens for colour, type and spacing",
+          "Components with every state",
+          "Figma variables and variants",
+          "Usage rules written down"
+        ]
+      },
+      {
+        "icon": "sync",
+        "title": [
+          "Prototyping"
+        ],
+        "points": [
+          "Clickable flows for the real path",
+          "Interaction and motion specs",
+          "Prototypes you can test on users"
+        ]
+      },
+      {
+        "icon": "handoff",
+        "title": [
+          "Developer",
+          "handoff"
+        ],
+        "points": [
+          "Redlines, spacing and breakpoints",
+          "Component documentation",
+          "Questions answered during the build"
+        ]
+      }
+    ]
+  },
+  "scope": {
+    "chip": {
+      "label": "Scope"
+    },
+    "heading": "How we come in",
+    "note": [
+      "We design for the people",
+      "who use it daily."
+    ],
+    "items": [
+      {
+        "icon": "connect",
+        "title": [
+          "New product",
+          "or MVP"
+        ],
+        "description": "You have a product to build and nothing drawn yet. We take it from flows to a design your developers can start on."
+      },
+      {
+        "icon": "sync",
+        "title": [
+          "Redesign of an",
+          "existing product"
+        ],
+        "description": "The product works but has grown in every direction. We rework the structure and the screens without losing what your users already know."
+      },
+      {
+        "icon": "ledger",
+        "title": [
+          "Design system",
+          "build or cleanup"
+        ],
+        "description": "One set of components, tokens and rules, so screens stop drifting apart and a new one takes a day instead of a week."
+      },
+      {
+        "icon": "handoff",
+        "title": [
+          "Feature design for",
+          "an in-house team"
+        ],
+        "description": "You have designers and developers already. We take a feature or an area off their plate and work to the system you have."
+      }
+    ],
+    "moreLabel": "Much more",
+    "ctaLabel": "Talk through your product"
+  },
+  "process": {
+    "chip": {
+      "label": "Process"
+    },
+    "heading": "How a design gets made",
+    "note": [
+      "Four steps, and your",
+      "developers are in the",
+      "last one with us."
+    ],
+    "steps": [
+      {
+        "number": "01",
+        "icon": "audit",
+        "title": [
+          "Understand the",
+          "product and users"
+        ],
+        "connector": "Input",
+        "description": "We learn what the product does, who opens it every day, and what they are actually trying to finish. We read your support tickets and sit with the people who use it."
+      },
+      {
+        "number": "02",
+        "icon": "blueprint",
+        "title": [
+          "Map the flows",
+          "and structure"
+        ],
+        "connector": "Structure",
+        "description": "We lay out the paths through the product and the shape of its navigation before any screen is drawn. Getting this wrong is expensive to fix later."
+      },
+      {
+        "number": "03",
+        "icon": "build",
+        "title": [
+          "Design and",
+          "prototype in Figma"
+        ],
+        "connector": "Design",
+        "description": "Screens, states and components, assembled into a prototype you can click through. We design the edge cases too, not only the path where nothing goes wrong."
+      },
+      {
+        "number": "04",
+        "icon": "launch",
+        "title": [
+          "Hand off and",
+          "support the build"
+        ],
+        "connector": "Handoff",
+        "description": "Your developers get specs, component documentation and a system to work from. We stay reachable while they build and review what ships against the design."
+      }
+    ]
+  },
+  "work": {
+    "chip": {
+      "label": "Projects"
+    },
+    "heading": "Related case studies",
+    "ctaLabel": "See all case studies",
+    "ctaHref": "/#work"
+  },
+  "faq": {
+    "chip": {
+      "label": "FAQ"
+    },
+    "heading": "Questions we get asked",
+    "note": [
+      "Ask us anything else",
+      "on the call."
+    ],
+    "items": [
+      {
+        "question": "Do you build it as well?",
+        "answer": "No. We design in Figma and hand off to your developers — specs, component documentation, and answers while they build. We do build marketing sites in Framer, but that is a separate service; product front-ends we leave to your team."
+      },
+      {
+        "question": "What do we get at the end?",
+        "answer": "A Figma file you own, with the screens, their states, and a component library behind them. Alongside it: a clickable prototype of the main flows, redlines and breakpoints, and written usage rules for the components."
+      },
+      {
+        "question": "Can you work inside our existing design system?",
+        "answer": "Yes, and we prefer it when one exists. We design with your components and tokens, and tell you where a new one is genuinely needed rather than quietly adding variants. If the system has drifted, cleaning it up can be the engagement itself."
+      },
+      {
+        "question": "How do you price a project?",
+        "answer": "On a call, once we know the scope. What it costs depends on where the product is — a new product, one that is growing, or a mature one that needs consistency across what is already built. There are no packages."
+      },
+      {
+        "question": "How do you work with our developers?",
+        "answer": "They are in the process from the handoff step, and often earlier. We review what gets built against the design, answer questions in whatever channel your team already uses, and adjust the design when something turns out to be expensive to build."
+      }
+    ],
+    "moreLabel": [
+      "Still have a question",
+      "about your product?"
+    ],
+    "ctaLabel": "Get in touch"
+  }
+}

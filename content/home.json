@@ -377,31 +377,15 @@
     },
     "heading": "Let's build the systems behind your business",
     "email": "hello@onedrag.in",
-    "navColumns": [
-      [
-        {
-          "label": "Home",
-          "href": "/"
-        },
-        {
-          "label": "Services",
-          "href": "/#services"
-        },
-        {
-          "label": "Case studies",
-          "href": "/#work"
-        }
-      ],
-      [
-        {
-          "label": "Privacy policy",
-          "href": "/privacy-policy"
-        },
-        {
-          "label": "Terms of service",
-          "href": "/terms"
-        }
-      ]
+    "legalLinks": [
+      {
+        "label": "Privacy policy",
+        "href": "/privacy-policy"
+      },
+      {
+        "label": "Terms of service",
+        "href": "/terms"
+      }
     ],
     "form": {
       "namePlaceholder": "Your name",

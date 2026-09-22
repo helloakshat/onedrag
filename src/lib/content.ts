@@ -43,9 +43,8 @@ export interface SocialLink extends NavLink {
 export interface SiteContent {
   nav: {
     wordmark: string;
-    /** The fixed entries either side of the service links — see lib/navigation. */
-    leadingLinks: NavLink[];
-    trailingLinks: NavLink[];
+    /** The whole menu, in order, including pages not built yet — see lib/navigation. */
+    links: NavLink[];
   };
   founder: {
     name: string;
@@ -129,7 +128,8 @@ export interface HomeContent {
     chip: { number: string; label: string };
     heading: string;
     email: string;
-    navColumns: NavLink[][];
+    /** Footer's second column; the first is the nav array. */
+    legalLinks: NavLink[];
     form: {
       namePlaceholder: string;
       emailPlaceholder: string;

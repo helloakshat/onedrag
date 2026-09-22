@@ -12,6 +12,7 @@ import { Footer } from "@/components/layout/Footer";
 import { getHomeContent, getSiteContent } from "@/lib/content";
 import { getCaseStudies, getCaseStudyIndex } from "@/lib/case-studies";
 import { sectionNumbering } from "@/lib/sections";
+import { getNavLinks } from "@/lib/navigation";
 
 export default function Home() {
   const site = getSiteContent();
@@ -33,7 +34,7 @@ export default function Home() {
         <Testimonials home={home} number={n()} />
         <Faq site={site} content={home.faq} number={n()} />
       </main>
-      <Footer site={site} home={home} number={n()} />
+      <Footer site={site} home={home} navLinks={getNavLinks()} number={n()} />
     </>
   );
 }

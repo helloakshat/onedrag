@@ -1,16 +1,30 @@
 {
   "nav": {
     "wordmark": "ONEDRAG",
-    "leadingLinks": [
+    "links": [
       {
         "label": "Home",
         "href": "/"
-      }
-    ],
-    "trailingLinks": [
+      },
+      {
+        "label": "Automations",
+        "href": "/automations"
+      },
+      {
+        "label": "Shopify dev",
+        "href": "/shopify-dev"
+      },
+      {
+        "label": "Framer dev",
+        "href": "/framer-dev"
+      },
+      {
+        "label": "UI/UX",
+        "href": "/ui-ux-design"
+      },
       {
         "label": "Case studies",
-        "href": "/#work"
+        "href": "/case-studies"
       }
     ]
   },
