@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SplitLines } from "@/components/ui/SplitLines";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -61,11 +62,7 @@ export function SplitCell({ icon, title, description, index, total, href }: Spli
 
       <div className="grid grid-cols-2 items-baseline">
         <h3 className="pr-6 pl-6 font-mono text-label leading-[1.45] text-text-primary uppercase md:pl-8">
-          {title.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+          <SplitLines lines={title} />
         </h3>
 
         {/* descriptions are desktop-only — four paragraphs makes the mobile section far too tall; the titles carry it */}

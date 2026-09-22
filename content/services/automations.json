@@ -9,7 +9,6 @@
   },
   "hero": {
     "chip": {
-      "number": "01",
       "label": "Service"
     },
     "heading": "We automate the work your team repeats.",
@@ -27,7 +26,6 @@
   },
   "capabilities": {
     "chip": {
-      "number": "01",
       "label": "Capabilities"
     },
     "heading": "What we can wire together",
@@ -115,7 +113,6 @@
   },
   "scope": {
     "chip": {
-      "number": "02",
       "label": "Scope"
     },
     "heading": "What we automate",
@@ -162,7 +159,6 @@
   },
   "process": {
     "chip": {
-      "number": "03",
       "label": "Process"
     },
     "heading": "How an automation gets built",
@@ -216,7 +212,6 @@
   },
   "work": {
     "chip": {
-      "number": "04",
       "label": "Projects"
     },
     "heading": "Related case studies",
@@ -225,7 +220,6 @@
   },
   "faq": {
     "chip": {
-      "number": "05",
       "label": "FAQ"
     },
     "heading": "Questions we get asked",

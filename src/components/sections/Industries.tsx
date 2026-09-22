@@ -4,12 +4,15 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { FounderNote } from "@/components/ui/FounderNote";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { IndustryIcon } from "@/components/ui/IndustryIcon";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 import type { HomeContent, IndustryItem, SiteContent } from "@/lib/content";
 
 interface IndustriesProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   site: SiteContent;
   home: HomeContent;
 }
@@ -38,11 +41,7 @@ function IndustryCell({ item, index }: { item: IndustryItem; index: number }) {
         <IndustryIcon name={item.icon} />
         <span className="flex items-end justify-between gap-3">
           <h3 className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-            {item.name.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+            <SplitLines lines={item.name} />
           </h3>
           <ChevronDown
             size={16}
@@ -91,14 +90,14 @@ function IndustryCell({ item, index }: { item: IndustryItem; index: number }) {
   );
 }
 
-export function Industries({ site, home }: IndustriesProps) {
+export function Industries({ site, home, number }: IndustriesProps) {
   const { chip, heading, note, items } = home.industries;
 
   return (
     <SectionShell
       id="industries"
       variant="rail"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="paper"

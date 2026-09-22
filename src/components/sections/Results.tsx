@@ -1,20 +1,23 @@
 import { SectionShell } from "@/components/layout/SectionShell";
 import { CountUp } from "@/components/ui/CountUp";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { Reveal } from "@/components/ui/Reveal";
 import type { HomeContent } from "@/lib/content";
 
 interface ResultsProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   home: HomeContent;
 }
 
-export function Results({ home }: ResultsProps) {
+export function Results({ home, number }: ResultsProps) {
   const { chip, heading, items } = home.results;
 
   return (
     <SectionShell
       id="results"
       variant="rail"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="paper-alt"
@@ -33,11 +36,7 @@ export function Results({ home }: ResultsProps) {
               </p>
 
               <h3 className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-                {item.label.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
+                <SplitLines lines={item.label} />
               </h3>
 
               <p className="font-sans text-[16px] leading-[1.5] text-copy md:col-span-2">

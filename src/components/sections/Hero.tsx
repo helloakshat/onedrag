@@ -13,6 +13,8 @@ import { HeadingReveal } from "@/components/ui/HeadingReveal";
 import type { HomeContent, SiteContent } from "@/lib/content";
 
 interface HeroProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   site: SiteContent;
   home: HomeContent;
 }
@@ -20,14 +22,14 @@ interface HeroProps {
 /** Stats sit at C0, C2 and C4 — the first one deliberately lands in the rail. */
 const STAT_COLUMNS = ["md:col-start-1", "md:col-start-3", "md:col-start-5"];
 
-export function Hero({ site, home }: HeroProps) {
+export function Hero({ site, home, number }: HeroProps) {
   const { chip, heading, subheading, primaryCtaLabel, secondaryCtaLabel, stats } = home.hero;
 
   return (
     <section
       id="intro"
       // the header chip reads its sequence off these (see Nav / SectionShell)
-      data-chip-number={chip.number}
+      data-chip-number={number}
       data-chip-label={chip.label}
       className="relative border-b border-border-subtle bg-paper"
     >
@@ -55,7 +57,7 @@ export function Hero({ site, home }: HeroProps) {
         <Grid className="md:hidden">
           <div className="col-span-6">
             <Reveal>
-              <SectionChip number={chip.number} label={chip.label} />
+              <SectionChip number={number} label={chip.label} />
             </Reveal>
           </div>
         </Grid>
@@ -109,7 +111,7 @@ export function Hero({ site, home }: HeroProps) {
                 at md+ they sit side by side, contiguous, no divider needed.
               */}
               <Button
-                href="#how-it-works"
+                href="#process"
                 variant="secondary"
                 className="w-full border-t border-border-strong md:border-t-0"
               >
@@ -125,7 +127,8 @@ export function Hero({ site, home }: HeroProps) {
               <Reveal delay={0.26 + i * 0.06}>
                 <Tick />
                 <p className="mt-3 font-mono text-label leading-[1.45] text-text-primary uppercase">
-                  {stat.label}
+                  {/* trailing space so the text layer reads "…shipped 40+", not "…shipped40+" */}
+                  {`${stat.label} `}
                   <br />
                   {stat.value}
                 </p>

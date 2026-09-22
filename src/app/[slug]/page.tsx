@@ -6,9 +6,11 @@ import { Scope } from "@/components/sections/service/Scope";
 import { RelatedWork } from "@/components/sections/service/RelatedWork";
 import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
-import { getSiteContent } from "@/lib/content";
+import { Footer } from "@/components/layout/Footer";
+import { getHomeContent, getSiteContent } from "@/lib/content";
 import { getCaseStudies } from "@/lib/case-studies";
 import { getServiceContent, getServiceSlugs } from "@/lib/services";
+import { sectionNumbering } from "@/lib/sections";
 
 export function generateStaticParams() {
   return getServiceSlugs().map((slug) => ({ slug }));
@@ -28,20 +30,31 @@ export default async function ServicePage({ params }: PageProps<"/[slug]">) {
   if (!service) notFound();
 
   const site = getSiteContent();
+  // The contacts band is the page's own copy, shared with home.
+  const home = getHomeContent();
   // Up to three case studies that list this service in their frontmatter.
   const related = getCaseStudies()
     .filter((study) => study.services.includes(slug))
     .slice(0, 3);
 
+  // 01…07 in render order — one short when Related work is dropped below.
+  const n = sectionNumbering();
+
   return (
     <>
-      <ServiceHero service={service} />
-      <Capabilities service={service} />
-      <Scope site={site} service={service} />
-      <Process content={service.process} />
-      {/* the whole band is dropped when nothing matches this service */}
-      {related.length > 0 ? <RelatedWork service={service} studies={related} /> : null}
-      <Faq site={site} content={service.faq} bg="paper" />
+      <main className="flex-1">
+        <ServiceHero service={service} number={n()} />
+        <Capabilities service={service} number={n()} />
+        <Scope site={site} service={service} number={n()} />
+        <Process content={service.process} number={n()} />
+        {/* the whole band is dropped when nothing matches this service, and
+            with it its number — the sequence stays contiguous either way */}
+        {related.length > 0 ? (
+          <RelatedWork service={service} studies={related} number={n()} />
+        ) : null}
+        <Faq site={site} content={service.faq} bg="paper" number={n()} />
+      </main>
+      <Footer site={site} home={home} number={n()} />
     </>
   );
 }

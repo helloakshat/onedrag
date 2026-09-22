@@ -1,7 +1,6 @@
 {
   "hero": {
     "chip": {
-      "number": "01",
       "label": "Intro"
     },
     "heading": "Automation systems for modern teams",
@@ -35,7 +34,6 @@
   },
   "services": {
     "chip": {
-      "number": "02",
       "label": "Areas"
     },
     "heading": "What we can automate",
@@ -84,7 +82,6 @@
   },
   "process": {
     "chip": {
-      "number": "03",
       "label": "Process"
     },
     "heading": "How it works",
@@ -138,7 +135,6 @@
   },
   "results": {
     "chip": {
-      "number": "04",
       "label": "Results"
     },
     "heading": "Results of our work",
@@ -174,7 +170,6 @@
   },
   "industries": {
     "chip": {
-      "number": "06",
       "label": "Solutions"
     },
     "heading": "Solutions by industry",
@@ -256,7 +251,6 @@
   },
   "value": {
     "chip": {
-      "number": "07",
       "label": "Value"
     },
     "heading": "Why choose us",
@@ -298,7 +292,6 @@
   },
   "testimonials": {
     "chip": {
-      "number": "08",
       "label": "Testimonials"
     },
     "heading": "What clients say",
@@ -343,7 +336,6 @@
   },
   "faq": {
     "chip": {
-      "number": "09",
       "label": "Help"
     },
     "heading": "FAQ",
@@ -381,26 +373,10 @@
   },
   "contacts": {
     "chip": {
-      "number": "10",
       "label": "Contacts"
     },
     "heading": "Let's build the systems behind your business",
     "email": "hello@onedrag.in",
-    "phone": "+91 98765 43210",
-    "socials": [
-      {
-        "label": "IN",
-        "href": "#"
-      },
-      {
-        "label": "LI",
-        "href": "#"
-      },
-      {
-        "label": "X",
-        "href": "#"
-      }
-    ],
     "navColumns": [
       [
         {
@@ -419,11 +395,11 @@
       [
         {
           "label": "Privacy policy",
-          "href": "#"
+          "href": "/privacy-policy"
         },
         {
           "label": "Terms of service",
-          "href": "#"
+          "href": "/terms"
         }
       ]
     ],

@@ -1,11 +1,14 @@
 import { ChevronRight } from "lucide-react";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { CapabilityIcon } from "@/components/ui/CapabilityIcon";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 import type { CapabilityItem, ServiceContent } from "@/lib/services";
 
 interface CapabilitiesProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   service: ServiceContent;
 }
 
@@ -35,11 +38,7 @@ function CapabilityCard({ item, index, total }: { item: CapabilityItem; index: n
         <CapabilityIcon name={item.icon} />
 
         <h3 className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-          {item.title.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+          <SplitLines lines={item.title} />
         </h3>
       </div>
 
@@ -60,25 +59,21 @@ function CapabilityCard({ item, index, total }: { item: CapabilityItem; index: n
   );
 }
 
-export function Capabilities({ service }: CapabilitiesProps) {
+export function Capabilities({ service, number }: CapabilitiesProps) {
   const { chip, heading, note, items } = service.capabilities;
 
   return (
     <SectionShell
       id="capabilities"
       variant="rail"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="paper"
       rail={
         <Reveal>
           <p className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-            {note.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+            <SplitLines lines={note} />
           </p>
         </Reveal>
       }

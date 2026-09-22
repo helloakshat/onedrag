@@ -9,11 +9,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import type { CaseStudy, CaseStudyIndex } from "@/lib/case-studies";
 
 interface WorkProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   studies: CaseStudy[];
   index: CaseStudyIndex;
 }
 
-export function Work({ studies, index }: WorkProps) {
+export function Work({ studies, index, number }: WorkProps) {
   const [active, setActive] = useState(0);
   const study = studies[active];
   const headline = study.metrics[0];
@@ -25,7 +27,7 @@ export function Work({ studies, index }: WorkProps) {
     <SectionShell
       id="work"
       variant="field"
-      number={index.chip.number}
+      number={number}
       label={index.chip.label}
       heading={index.heading}
       bg="dark"

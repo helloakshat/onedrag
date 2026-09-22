@@ -109,15 +109,23 @@ export function SectionShell({
             </>
           ) : (
             <>
-              {rail ? (
-                <div className="col-span-6 md:col-span-2 md:col-start-1 md:row-span-2 md:self-center">
-                  {rail}
-                </div>
-              ) : null}
+              {/*
+                Chip first in the DOM: the rail holds supporting copy (a
+                section note, the testimonial's name and role) that reads as
+                belonging to the section the chip names. Explicit row/column
+                placement means the visual order is unchanged at md+, where
+                the rail sits to the left; below md it now follows the
+                heading instead of preceding the chip.
+              */}
               <div className="col-span-6 md:col-span-2 md:col-start-3 md:row-start-1">
                 {chipNode}
                 {headingNode ? <div className="mt-8">{headingNode}</div> : null}
               </div>
+              {rail ? (
+                <div className="col-span-6 mt-12 md:col-span-2 md:col-start-1 md:row-span-2 md:row-start-1 md:mt-0 md:self-center">
+                  {rail}
+                </div>
+              ) : null}
               <div className="col-span-6 mt-12 md:col-span-4 md:col-start-3 md:row-start-2 md:mt-16">
                 {children}
               </div>

@@ -1,10 +1,13 @@
 import { SectionShell } from "@/components/layout/SectionShell";
 import { NumberBadge } from "@/components/ui/NumberBadge";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { StepIcon } from "@/components/ui/StepIcon";
 import { Reveal } from "@/components/ui/Reveal";
 import type { ProcessBlock, ProcessStep } from "@/lib/content";
 
 interface ProcessProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   /** Home and every service page render this same section from their own copy. */
   content: ProcessBlock;
 }
@@ -32,11 +35,7 @@ function Step({ step, isLast }: { step: ProcessStep; isLast: boolean }) {
 
       <div className="flex-1">
         <h3 className="font-mono text-label leading-[1.45] text-text-primary uppercase md:mt-[100px]">
-          {step.title.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+          <SplitLines lines={step.title} />
         </h3>
 
         {/* connector label and step icon are desktop-only spatial devices */}
@@ -80,25 +79,21 @@ function Step({ step, isLast }: { step: ProcessStep; isLast: boolean }) {
   );
 }
 
-export function Process({ content }: ProcessProps) {
+export function Process({ content, number }: ProcessProps) {
   const { chip, heading, note, steps } = content;
 
   return (
     <SectionShell
       id="process"
       variant="field"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="paper"
       rail={
         <Reveal>
           <p className="font-mono text-label leading-[1.45] text-text-primary uppercase">
-            {note.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+            <SplitLines lines={note} />
           </p>
         </Reveal>
       }

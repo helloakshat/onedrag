@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { SplitLines } from "@/components/ui/SplitLines";
 import { Grid } from "@/components/layout/Grid";
 import { GridLines } from "@/components/layout/GridLines";
 import { GridCrosshairs } from "@/components/layout/GridCrosshairs";
@@ -11,6 +12,8 @@ import { HeadingReveal } from "@/components/ui/HeadingReveal";
 import type { ServiceContent } from "@/lib/services";
 
 interface ServiceHeroProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   service: ServiceContent;
 }
 
@@ -21,13 +24,13 @@ interface ServiceHeroProps {
  *
  * H1 sits C2->C4, the counter stat C4->C6 — both inside the content field.
  */
-export function ServiceHero({ service }: ServiceHeroProps) {
+export function ServiceHero({ service, number }: ServiceHeroProps) {
   const { chip, heading, intro, counter, ctaLabel, ctaHref } = service.hero;
 
   return (
     <section
       id="intro"
-      data-chip-number={chip.number}
+      data-chip-number={number}
       data-chip-label={chip.label}
       className="relative border-b border-border-subtle bg-paper"
     >
@@ -48,7 +51,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
         <Grid>
           <div className="col-span-6 md:col-span-2 md:col-start-3">
             <Reveal>
-              <SectionChip number={chip.number} label={chip.label} />
+              <SectionChip number={number} label={chip.label} />
             </Reveal>
           </div>
         </Grid>
@@ -76,11 +79,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               </p>
 
               <p className="mt-6 font-mono text-label leading-[1.45] text-text-primary uppercase">
-                {counter.label.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
+                <SplitLines lines={counter.label} />
               </p>
             </Reveal>
 

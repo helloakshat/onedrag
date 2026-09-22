@@ -7,18 +7,20 @@ import { Reveal } from "@/components/ui/Reveal";
 import type { HomeContent, SiteContent } from "@/lib/content";
 
 interface ServicesProps {
+  /** Chip number, spent by the page in render order — see lib/sections. */
+  number: string;
   site: SiteContent;
   home: HomeContent;
 }
 
-export function Services({ site, home }: ServicesProps) {
+export function Services({ site, home, number }: ServicesProps) {
   const { chip, heading, note, items, moreLabel, ctaLabel, ctaHref } = home.services;
 
   return (
     <SectionShell
       id="services"
       variant="rail"
-      number={chip.number}
+      number={number}
       label={chip.label}
       heading={heading}
       bg="paper"
