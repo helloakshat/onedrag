@@ -387,10 +387,12 @@
         "href": "/terms"
       }
     ],
-    "form": {
-      "namePlaceholder": "Your name",
-      "emailPlaceholder": "email@address.com",
-      "submitLabel": "Let's talk"
+    "booking": {
+      "note": [
+        "Pick a time that suits you.",
+        "Fifteen minutes, no deck."
+      ],
+      "ctaLabel": "Book a call"
     },
     "copyright": "© 2026 Onedrag. All rights reserved.",
     "location": "Built in Gurugram"

@@ -158,10 +158,7 @@
       }
     ],
     "moreLabel": "Much more",
-    "ctaLabel": "Book a call",
-    "cta": {
-      "target": "bookCall"
-    }
+    "ctaLabel": "Book a call"
   },
   "process": {
     "chip": {

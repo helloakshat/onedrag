@@ -55,9 +55,9 @@ export interface SiteContent {
     copyright: string;
   };
   socials: SocialLink[];
+  /** Every CTA on the site opens this one booking link — CLAUDE.md §9. */
   links: {
     bookCall: string;
-    getInTouch: string;
   };
   seo: {
     title: string;
@@ -130,10 +130,10 @@ export interface HomeContent {
     email: string;
     /** Footer's second column; the first is the nav array. */
     legalLinks: NavLink[];
-    form: {
-      namePlaceholder: string;
-      emailPlaceholder: string;
-      submitLabel: string;
+    booking: {
+      /** One entry per rendered line. */
+      note: string[];
+      ctaLabel: string;
     };
     copyright: string;
     location: string;

@@ -1,6 +1,5 @@
 "use client";
 
-import type { FormEvent } from "react";
 import Link from "next/link";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { Container } from "@/components/ui/Container";
@@ -8,6 +7,7 @@ import { Grid } from "@/components/layout/Grid";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { TopoTexture } from "@/components/ui/TopoTexture";
+import { SplitLines } from "@/components/ui/SplitLines";
 import type { HomeContent, NavLink, SiteContent } from "@/lib/content";
 
 interface FooterProps {
@@ -19,17 +19,8 @@ interface FooterProps {
   navLinks: NavLink[];
 }
 
-const inputClasses =
-  "w-full border-0 border-b border-grid-line bg-transparent pb-4 font-mono text-label text-text-primary uppercase placeholder:text-faint focus:border-text-primary focus:outline-none";
-
 export function Footer({ site, home, number, navLinks }: FooterProps) {
-  const { chip, heading, email, legalLinks, form, copyright, location } = home.contacts;
-
-  // No form backend — submitting hands off to the Typeform in site.json.
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    window.open(site.links.getInTouch, "_blank", "noopener,noreferrer");
-  };
+  const { chip, heading, email, legalLinks, booking, copyright, location } = home.contacts;
 
   return (
     <>
@@ -95,27 +86,19 @@ export function Footer({ site, home, number, navLinks }: FooterProps) {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-10 md:col-span-2">
-            <input
-              type="text"
-              name="name"
-              required
-              placeholder={form.namePlaceholder}
-              aria-label={form.namePlaceholder}
-              className={inputClasses}
-            />
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder={form.emailPlaceholder}
-              aria-label={form.emailPlaceholder}
-              className={inputClasses}
-            />
-            <Button variant="secondary" type="submit" className="w-full">
-              {form.submitLabel}
+          {/* There is no form and no form backend — booking is the only
+              path in, so the right half of the band is the booking slot. */}
+          <div className="flex flex-col justify-between gap-10 md:col-span-2">
+            <p className="font-mono text-label leading-[1.45] text-text-primary uppercase">
+              <SplitLines lines={booking.note} />
+            </p>
+
+            {/* TODO: replace — the cal.com embed goes here; until the booking
+                URL is supplied this falls back to the button. */}
+            <Button href={site.links.bookCall} external variant="secondary" className="w-full">
+              {booking.ctaLabel}
             </Button>
-          </form>
+          </div>
         </div>
       </SectionShell>
 

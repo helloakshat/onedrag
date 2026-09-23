@@ -482,13 +482,16 @@ change and no content field to set.
 
 ```json
 "links": {
-  "bookCall": "<cal.com URL — owner supplies>",
-  "getInTouch": "<Typeform URL — owner supplies>"
+  "bookCall": "<cal.com URL — owner supplies>"
 }
 ```
 
-Every CTA in the site reads from these two keys. There is **no contact page**.
-Both links open in a new tab with `rel="noopener noreferrer"`.
+Every CTA in the site reads from this one key. There is **no contact page**,
+**no contact form and no form backend** — booking a call is the only path
+in. The link opens in a new tab with `rel="noopener noreferrer"`.
+
+CTA labels stay page-specific (the FAQ's "Get in touch", a service Scope's
+"Talk through your stack") — one destination, not one label.
 
 Case study MDX frontmatter:
 

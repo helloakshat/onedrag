@@ -104,7 +104,7 @@ export function Faq({ site, content, number, bg = "white" }: FaqProps) {
         </p>
 
         <div className="md:col-span-2 md:col-start-3">
-          <Button href={site.links.getInTouch} external variant="secondary" className="w-full">
+          <Button href={site.links.bookCall} external variant="secondary" className="w-full">
             {ctaLabel}
           </Button>
         </div>
