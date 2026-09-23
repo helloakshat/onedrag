@@ -7,6 +7,12 @@ import type { IndustryIconName } from "@/components/ui/IndustryIcon";
 export interface NavLink {
   label: string;
   href: string;
+  /**
+   * Page is not built yet: the item still renders, muted and not clickable.
+   * Delete the flag when the page ships — that is the only edit needed, since
+   * lib/navigation then keeps it on the strength of the page existing.
+   */
+  comingSoon?: boolean;
 }
 
 export interface Chip {

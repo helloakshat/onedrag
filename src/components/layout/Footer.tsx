@@ -73,12 +73,19 @@ export function Footer({ site, home, number, navLinks }: FooterProps) {
                 <ul key={i} className="flex flex-col gap-3">
                   {column.map((entry) => (
                     <li key={entry.href}>
-                      <Link
-                        href={entry.href}
-                        className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"
-                      >
-                        {entry.label}
-                      </Link>
+                      {entry.comingSoon ? (
+                        // same rule as the menu: shown, muted, not a link
+                        <span className="font-mono text-label text-faint uppercase">
+                          {entry.label}
+                        </span>
+                      ) : (
+                        <Link
+                          href={entry.href}
+                          className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"
+                        >
+                          {entry.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

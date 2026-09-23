@@ -22,7 +22,16 @@ function pageExists(href: string): boolean {
   return fs.existsSync(path.join(process.cwd(), "src/app", segment, "page.tsx"));
 }
 
-/** The menu, in authored order, minus anything that would 404. */
+/**
+ * The menu, in authored order, minus anything that would 404.
+ *
+ * An entry flagged `comingSoon` is the exception: it stays in the list and is
+ * rendered muted and unclickable, so the menu shows what is coming without
+ * offering a dead link. Removing the flag is all it takes to turn it into a
+ * real item — by then its page exists, so the filter keeps it anyway.
+ */
 export function getNavLinks(): NavLink[] {
-  return getSiteContent().nav.links.filter((link) => pageExists(link.href));
+  return getSiteContent().nav.links.filter(
+    (link) => link.comingSoon || pageExists(link.href),
+  );
 }

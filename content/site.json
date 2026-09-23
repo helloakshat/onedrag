@@ -24,7 +24,8 @@
       },
       {
         "label": "Case studies",
-        "href": "/case-studies"
+        "href": "/case-studies",
+        "comingSoon": true
       }
     ]
   },
