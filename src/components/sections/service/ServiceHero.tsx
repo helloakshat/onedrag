@@ -56,10 +56,14 @@ export function ServiceHero({ service, number }: ServiceHeroProps) {
           </div>
         </Grid>
 
-        <Grid className="mt-10 gap-y-12 md:mt-12 md:gap-y-0">
+        {/* baseline, not top: the counter is set much larger than the H1, so
+            aligning the boxes leaves it floating — same approach as Results. */}
+        <Grid className="mt-10 gap-y-12 md:mt-12 md:items-baseline md:gap-y-0">
           <div className="col-span-6 md:col-span-2 md:col-start-3">
             <HeadingReveal>
-              <h1 className="font-sans text-display leading-none font-medium tracking-[-0.05em] text-text-primary">
+              {/* the counter begins exactly on C4, so the headline keeps a
+                  32px inset and can never run into it */}
+              <h1 className="font-sans text-display leading-none font-medium tracking-[-0.05em] text-text-primary md:pr-8">
                 {heading}
               </h1>
             </HeadingReveal>
@@ -74,7 +78,7 @@ export function ServiceHero({ service, number }: ServiceHeroProps) {
           <div className="col-span-6 md:col-span-2 md:col-start-5">
             <Reveal delay={0.06}>
               {/* counts up the first time it is in view — on this page, on load */}
-              <p className="font-sans leading-none font-medium tracking-[-0.05em] text-text-primary text-[clamp(64px,7vw,120px)]">
+              <p className="font-sans leading-none font-medium tracking-[-0.05em] text-text-primary text-[clamp(56px,5.5vw,96px)]">
                 <CountUp value={counter.value} suffix={counter.suffix} />
               </p>
 

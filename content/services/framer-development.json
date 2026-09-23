@@ -12,7 +12,7 @@
     "chip": {
       "label": "Service"
     },
-    "heading": "We ship marketing sites your team can edit.",
+    "heading": "We ship sites your team can edit.",
     "intro": "We build full marketing sites, campaign landing pages and migrations in Framer, and wire the CMS so your team can publish new pages without us.",
     "counter": {
       "value": 30,
@@ -83,7 +83,8 @@
         "points": [
           "Scroll and hover behaviour",
           "Page transitions and reveals",
-          "Reduced-motion handled properly"
+          "Reduced-motion handled properly",
+          "Motion that never blocks first paint"
         ]
       },
       {
