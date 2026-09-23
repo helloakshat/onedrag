@@ -38,7 +38,7 @@ export function MenuOverlay({ id, open, links, onNavigate, panelRef }: MenuOverl
             aria-label="Main menu"
             aria-hidden={!open}
             className={cn(
-              "pointer-events-auto w-max max-w-[calc(100vw_-_2_*_var(--grid-gutter))] bg-dark px-16 py-8",
+              "pointer-events-auto w-max max-w-[calc(100vw_-_2_*_var(--grid-gutter))] bg-dark py-8 pl-8 pr-24",
               "transition-[opacity,transform,visibility] duration-[var(--dur-fast)] ease-[var(--ease-out)] motion-reduce:transition-none",
               open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0",
             )}
