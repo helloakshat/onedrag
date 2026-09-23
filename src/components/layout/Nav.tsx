@@ -23,8 +23,6 @@ interface NavProps {
   site: SiteContent;
   /** Composed on the server from site.json + content/services — see lib/navigation. */
   links: NavLink[];
-  /** Rendered on the server, until the page's own sections resolve on mount. */
-  defaultChip: SectionRef;
 }
 
 /**
@@ -35,10 +33,16 @@ interface NavProps {
  * A zero-height root line at the viewport midpoint: a section "wins" the
  * chip the moment it crosses the middle of the screen. Because the observed
  * sections are contiguous, at most one is intersecting at a time.
+ *
+ * The chip starts empty and stays empty while the first section — the hero,
+ * which carries a chip of its own — holds the midpoint. Two identical chips
+ * stacked at the top of the page read as a rendering fault, so the header
+ * only picks the sequence up once the hero is scrolled past, and drops it
+ * again on the way back up.
  */
-function useSectionSpy(defaultChip: SectionRef) {
+function useSectionSpy() {
   const pathname = usePathname();
-  const [chip, setChip] = useState(defaultChip);
+  const [chip, setChip] = useState<SectionRef | null>(null);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
@@ -52,14 +56,15 @@ function useSectionSpy(defaultChip: SectionRef) {
       label: el.dataset.chipLabel ?? "",
     });
 
-    setChip(chipFor(els[0]));
+    const hero = els[0];
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           // Gaps between observed sections (e.g. the trusted-by strip) leave
           // nothing intersecting — hold the last value rather than clearing.
-          if (entry.isIntersecting) setChip(chipFor(entry.target as HTMLElement));
+          if (!entry.isIntersecting) continue;
+          setChip(entry.target === hero ? null : chipFor(entry.target as HTMLElement));
         }
       },
       { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
@@ -77,9 +82,9 @@ function useSectionSpy(defaultChip: SectionRef) {
  * the CTA + hamburger closing flush on C6. The bottom rule is edge-to-edge,
  * not container width.
  */
-export function Nav({ site, links, defaultChip }: NavProps) {
+export function Nav({ site, links }: NavProps) {
   const [open, setOpen] = useState(false);
-  const chip = useSectionSpy(defaultChip);
+  const chip = useSectionSpy();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-subtle bg-paper">
@@ -90,7 +95,8 @@ export function Nav({ site, links, defaultChip }: NavProps) {
           </Link>
 
           <div className="col-start-3 hidden self-center md:block">
-            <SectionChip number={chip.number} label={chip.label} />
+            {/* empty until the hero is scrolled past — see useSectionSpy */}
+            {chip ? <SectionChip number={chip.number} label={chip.label} /> : null}
           </div>
 
           <div className="col-start-5 col-span-2 flex items-center justify-end self-center">

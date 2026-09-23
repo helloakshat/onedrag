@@ -1,6 +1,6 @@
 import { SectionShell } from "@/components/layout/SectionShell";
 import { Button } from "@/components/ui/Button";
-import { Halftone } from "@/components/ui/Halftone";
+import { CaseStudyCover } from "@/components/ui/CaseStudyCover";
 import { Reveal } from "@/components/ui/Reveal";
 import type { CaseStudy } from "@/lib/case-studies";
 import type { ServiceContent } from "@/lib/services";
@@ -30,15 +30,8 @@ export function RelatedWork({ service, studies, number }: RelatedWorkProps) {
           <Reveal key={study.slug} delay={i * 0.06}>
             {/* TODO: replace — wrap in a Link once /case-studies/[slug] exists. */}
             <div>
-              {/* TODO: replace — dithered stand-in for the real cover image. */}
               <div className="aspect-[4/3] w-full overflow-hidden md:aspect-[16/10]">
-                <Halftone
-                  seed={study.slug}
-                  subject="scene"
-                  width={420}
-                  ratio={10 / 16}
-                  pixel={3}
-                />
+                <CaseStudyCover study={study} />
               </div>
 
               <p className="mt-6 font-sans text-[24px] leading-[1.15] font-medium text-text-on-dark">
