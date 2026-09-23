@@ -393,6 +393,7 @@ by mistake.
 | `--fs-body-lg` | lead paragraph | 17px → 20px |
 | `--fs-body` | body | 15px → 17px |
 | `--fs-label` | section chips, nav, buttons, stat lines | 15px, uppercase |
+| `--fs-menu` | overlay menu items | 14px, uppercase |
 | `--fs-tile` | numbered tile cluster labels | 11px |
 
 **Fonts:**

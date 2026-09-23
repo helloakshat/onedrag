@@ -38,17 +38,17 @@ export function MenuOverlay({ id, open, links, onNavigate, panelRef }: MenuOverl
             aria-label="Main menu"
             aria-hidden={!open}
             className={cn(
-              "pointer-events-auto w-max max-w-[calc(100vw_-_2_*_var(--grid-gutter))] bg-dark px-8 py-8",
+              "pointer-events-auto w-max max-w-[calc(100vw_-_2_*_var(--grid-gutter))] bg-dark px-16 py-8",
               "transition-[opacity,transform,visibility] duration-[var(--dur-fast)] ease-[var(--ease-out)] motion-reduce:transition-none",
               open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0",
             )}
           >
-            <ul className="flex flex-col gap-7">
+            <ul className="flex flex-col gap-5">
               {links.map((link) => (
                 <li key={link.href}>
                   {link.comingSoon ? (
                     // no href, not focusable — the page does not exist yet
-                    <span className="block font-mono text-label whitespace-nowrap text-faint uppercase">
+                    <span className="block font-mono text-menu whitespace-nowrap text-faint uppercase">
                       {link.label}
                     </span>
                   ) : (
@@ -56,7 +56,7 @@ export function MenuOverlay({ id, open, links, onNavigate, panelRef }: MenuOverl
                       href={link.href}
                       onClick={onNavigate}
                       tabIndex={open ? undefined : -1}
-                      className="block font-mono text-label whitespace-nowrap text-text-on-fill uppercase transition-colors duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:text-spine focus-visible:text-spine focus-visible:outline-none motion-reduce:transition-none"
+                      className="block font-mono text-menu whitespace-nowrap text-text-on-fill uppercase transition-colors duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:text-spine focus-visible:text-spine focus-visible:outline-none motion-reduce:transition-none"
                     >
                       {link.label}
                     </Link>

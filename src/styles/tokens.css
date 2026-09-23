@@ -75,6 +75,7 @@
   --fs-body-lg: clamp(17px, 1.2vw, 20px);
   --fs-body: clamp(15px, 1vw, 17px);
   --fs-label: 15px;
+  --fs-menu: 14px;   /* overlay menu items only — see §6 */
   --fs-tile: 11px;
 }
 
@@ -140,5 +141,6 @@
   --text-body-lg: var(--fs-body-lg);
   --text-body: var(--fs-body);
   --text-label: var(--fs-label);
+  --text-menu: var(--fs-menu);
   --text-tile: var(--fs-tile);
 }
