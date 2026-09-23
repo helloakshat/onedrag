@@ -87,7 +87,7 @@ content/                  ← the ONLY folder the owner edits for copy
     automations.json       → /automations
     ui-ux-design.json      → /ui-ux-design
     shopify-development.json → /shopify-development
-    framer-dev.json        → /framer-dev         (not built yet)
+    framer-development.json → /framer-development
   case-studies/
     _index.json           listing page copy
     <slug>.mdx            one file per case study
@@ -126,15 +126,15 @@ Standing rules. These do not change without the owner saying so.
    | Home | `/` |
    | Automations | `/automations` |
    | Shopify dev | `/shopify-development` |
-   | Framer dev | `/framer-dev` |
+   | Framer dev | `/framer-development` |
    | UI/UX | `/ui-ux-design` |
    | Case studies | `/case-studies` |
 
 3. **A menu item renders only if its page exists.** `lib/navigation.ts`
    filters the array: a service page exists when
    `content/services/<slug>.json` does, anything else when
-   `src/app/<segment>/page.tsx` does. Shopify dev, Framer dev and Case
-   studies are in the array and stay hidden until built.
+   `src/app/<segment>/page.tsx` does. All four service pages are built;
+   Case studies is in the array and stays hidden until it is.
 4. **Adding a page is one array entry** plus its content file. Nothing else
    is edited — the link appears in the header and the footer at the position
    it already held.

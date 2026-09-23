@@ -1,0 +1,261 @@
+{
+  "slug": "framer-development",
+  "name": "Framer development",
+  "_todo": [
+    "TODO: replace — hero.counter is a placeholder (30+ sites shipped), not a verified number"
+  ],
+  "seo": {
+    "title": "Framer development — Onedrag",
+    "description": "We build marketing sites in Framer — full sites, campaign landing pages and migrations — and wire the CMS so your team publishes new pages without us."
+  },
+  "hero": {
+    "chip": {
+      "label": "Service"
+    },
+    "heading": "We ship marketing sites your team can edit.",
+    "intro": "We build full marketing sites, campaign landing pages and migrations in Framer, and wire the CMS so your team can publish new pages without us.",
+    "counter": {
+      "value": 30,
+      "suffix": "+",
+      "label": [
+        "Sites",
+        "shipped"
+      ]
+    },
+    "ctaLabel": "How it works",
+    "ctaHref": "#process"
+  },
+  "capabilities": {
+    "chip": {
+      "label": "Capabilities"
+    },
+    "heading": "What we build",
+    "note": [
+      "Framer end to end.",
+      "Your team publishes."
+    ],
+    "items": [
+      {
+        "icon": "sitemap",
+        "title": [
+          "Site structure",
+          "and pages"
+        ],
+        "points": [
+          "Page map and navigation",
+          "Reusable sections per page type",
+          "Breakpoints down to mobile",
+          "Empty and error states"
+        ]
+      },
+      {
+        "icon": "canvas",
+        "title": [
+          "Design and build",
+          "in Framer"
+        ],
+        "points": [
+          "Components with every variant",
+          "Tokens for colour, type and spacing",
+          "Built from our design or your Figma",
+          "One system, not one-off pages"
+        ]
+      },
+      {
+        "icon": "records",
+        "title": [
+          "CMS and",
+          "collections"
+        ],
+        "points": [
+          "Collections for blog, work and roles",
+          "Fields your team can fill without help",
+          "Templates driven by the collection",
+          "Drafts and scheduled publishing"
+        ]
+      },
+      {
+        "icon": "motion",
+        "title": [
+          "Animation and",
+          "interaction"
+        ],
+        "points": [
+          "Scroll and hover behaviour",
+          "Page transitions and reveals",
+          "Reduced-motion handled properly"
+        ]
+      },
+      {
+        "icon": "vitals",
+        "title": [
+          "Performance and",
+          "Core Web Vitals"
+        ],
+        "points": [
+          "Image sizing and lazy loading",
+          "Font loading and layout shift",
+          "Largest paint on real mobile",
+          "Third-party scripts kept honest"
+        ]
+      },
+      {
+        "icon": "seo",
+        "title": [
+          "SEO",
+          "setup"
+        ],
+        "points": [
+          "Titles, descriptions and OG tags",
+          "Sitemap and robots.txt",
+          "Redirects from the old URLs",
+          "Structured data where it applies"
+        ]
+      }
+    ]
+  },
+  "scope": {
+    "chip": {
+      "label": "Scope"
+    },
+    "heading": "How we come in",
+    "note": [
+      "We hand it over",
+      "so you can run it."
+    ],
+    "items": [
+      {
+        "icon": "newsite",
+        "title": [
+          "New marketing",
+          "site"
+        ],
+        "description": "The whole site, from the page map to launch, built as components your team can rearrange afterwards."
+      },
+      {
+        "icon": "promo",
+        "title": [
+          "Campaign",
+          "landing pages"
+        ],
+        "description": "Pages built for one campaign and one audience, shipped in days rather than weeks."
+      },
+      {
+        "icon": "transfer",
+        "title": [
+          "Migration",
+          "to Framer"
+        ],
+        "description": "Your existing site rebuilt in Framer with the content carried over and the old URLs redirected."
+      },
+      {
+        "icon": "handover",
+        "title": [
+          "CMS setup and",
+          "team handover"
+        ],
+        "description": "Collections, templates and a session with the people who will use them, so publishing stops going through us."
+      }
+    ],
+    "moreLabel": "Much more",
+    "ctaLabel": "Talk through your site"
+  },
+  "process": {
+    "chip": {
+      "label": "Process"
+    },
+    "heading": "How a site gets built",
+    "note": [
+      "Four steps, and your",
+      "team leaves it able",
+      "to publish."
+    ],
+    "steps": [
+      {
+        "number": "01",
+        "icon": "audit",
+        "title": [
+          "Agree structure",
+          "and content"
+        ],
+        "connector": "Input",
+        "description": "We map the pages, agree what each one has to do, and work out what content exists and what has to be written. Nothing gets designed against a page whose job is still undecided."
+      },
+      {
+        "number": "02",
+        "icon": "blueprint",
+        "title": [
+          "Design it, or",
+          "take your design"
+        ],
+        "connector": "Design",
+        "description": "We design the site against that structure, or we take the Figma file you supply and tell you upfront where something is expensive to build in Framer."
+      },
+      {
+        "number": "03",
+        "icon": "build",
+        "title": [
+          "Build in Framer,",
+          "CMS wired"
+        ],
+        "connector": "Build",
+        "description": "We build the pages as reusable components and wire the collections behind them, so a new post or case study is a CMS entry rather than a new page."
+      },
+      {
+        "number": "04",
+        "icon": "launch",
+        "title": [
+          "Launch, train,",
+          "hand over"
+        ],
+        "connector": "Handover",
+        "description": "We publish, point the domain, check the redirects, and sit with your team while they add a page themselves. You leave owning the site."
+      }
+    ]
+  },
+  "work": {
+    "chip": {
+      "label": "Projects"
+    },
+    "heading": "Related case studies",
+    "ctaLabel": "See all case studies",
+    "ctaHref": "/#work"
+  },
+  "faq": {
+    "chip": {
+      "label": "FAQ"
+    },
+    "heading": "Questions we get asked",
+    "note": [
+      "Ask us anything else",
+      "on the call."
+    ],
+    "items": [
+      {
+        "question": "Can our team edit it after launch?",
+        "answer": "That is the point of building it this way. Pages are made of components and the content sits in CMS collections, so adding a post or a case study is filling in fields, not editing a layout. We train your team on the site itself before handover. If you would rather not touch it, we keep a retainer for edits and new pages — but it is an option, not a condition of the build."
+      },
+      {
+        "question": "Do we need to supply designs?",
+        "answer": "Either way works. We can design the site ourselves against the structure we agree, or build from a Figma file you supply. If you bring the designs, we will tell you before the build starts where something is expensive to do in Framer."
+      },
+      {
+        "question": "Can you build our online store in Framer?",
+        "answer": "No. Selling belongs on Shopify, and that is a separate service — see /shopify-development, where we do storefront conversion work and migrations onto Shopify. We will happily build the marketing site around a store and link the two."
+      },
+      {
+        "question": "What about our product's app interface?",
+        "answer": "That is product design, not a marketing site, and it is a different service — see /ui-ux-design. There we design SaaS and web app interfaces in Figma and hand off specs your developers build from. Framer is where the site that sells the product lives; it is not where the product lives."
+      },
+      {
+        "question": "How long does a site take?",
+        "answer": "A campaign landing page is days. A full marketing site is usually four to eight weeks, and the variable is almost never the build — it is how long the content takes to land. We agree the page map and the content owner in the first step precisely because that is what moves the date."
+      }
+    ],
+    "moreLabel": [
+      "Still have a question",
+      "about your site?"
+    ],
+    "ctaLabel": "Get in touch"
+  }
+}

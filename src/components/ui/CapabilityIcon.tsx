@@ -22,7 +22,18 @@ export type CapabilityIconName =
   | "funnel"
   | "campaign"
   | "platform"
-  | "testing";
+  | "testing"
+  // framer-development
+  | "sitemap"
+  | "canvas"
+  | "records"
+  | "motion"
+  | "vitals"
+  | "seo"
+  | "newsite"
+  | "promo"
+  | "transfer"
+  | "handover";
 
 interface CapabilityIconProps {
   name: CapabilityIconName;
@@ -233,6 +244,100 @@ const GLYPHS: Record<CapabilityIconName, ReactNode> = {
       <path d="M8 16H15M8 22H15" {...S} />
       <path d="M29 16H36M29 22H36" strokeDasharray="2 2" {...S} />
       <rect x="8" y="28" width="7" height="4" fill="var(--spine)" />
+    </>
+  ),
+  // one root branching into the pages beneath it
+  sitemap: (
+    <>
+      <rect x="17" y="4" width="10" height="7" {...S} />
+      <rect x="19" y="6" width="6" height="3" fill="var(--spine)" />
+      <path d="M22 11V17M7 17H37M7 17V23M22 17V23M37 17V23" {...S} />
+      <rect x="3" y="23" width="8" height="7" strokeDasharray="3 2" {...S} />
+      <rect x="18" y="23" width="8" height="7" {...S} />
+      <rect x="33" y="23" width="8" height="7" strokeDasharray="3 2" {...S} />
+    </>
+  ),
+  // an artboard being drawn on
+  canvas: (
+    <>
+      <rect x="5" y="5" width="30" height="26" strokeDasharray="3 2" {...S} />
+      <path d="M20 18V38L25 32L29 40L32 38L28 31L35 30L20 18Z" {...S} />
+      <rect x="3" y="3" width="5" height="5" fill="var(--spine)" />
+      <rect x="32" y="3" width="5" height="5" {...S} />
+    </>
+  ),
+  // one collection, many entries stacked under it
+  records: (
+    <>
+      <path d="M4 12L22 5L40 12L22 19L4 12Z" {...S} />
+      <path d="M4 22L22 29L40 22" {...S} />
+      <path d="M4 32L22 39L40 32" strokeDasharray="3 2" {...S} />
+      <rect x="19" y="9" width="6" height="4" fill="var(--spine)" />
+    </>
+  ),
+  // an element carried along its easing curve
+  motion: (
+    <>
+      <path d="M4 36C14 36 18 8 38 8" strokeDasharray="3 2" {...S} />
+      <rect x="3" y="31" width="9" height="9" {...S} />
+      <rect x="31" y="4" width="9" height="9" fill="var(--spine)" />
+      <path d="M16 31H22M20 25H26" {...S} />
+    </>
+  ),
+  // measured bars against a budget line
+  vitals: (
+    <>
+      <path d="M4 38H40" {...S} />
+      <path d="M4 14H40" strokeDasharray="2 2" {...S} />
+      <rect x="7" y="26" width="6" height="12" strokeDasharray="3 2" {...S} />
+      <rect x="17" y="18" width="6" height="20" {...S} />
+      <rect x="27" y="10" width="6" height="28" {...S} />
+      <rect x="27" y="10" width="6" height="4" fill="var(--spine)" />
+    </>
+  ),
+  // a document's metadata, and the redirect leaving it
+  seo: (
+    <>
+      <rect x="4" y="4" width="26" height="36" {...S} />
+      <path d="M9 12H25M9 18H25M9 24H19" {...S} />
+      <rect x="9" y="30" width="10" height="5" fill="var(--spine)" />
+      <path d="M31 22H41M41 22L37 18M41 22L37 26" {...S} />
+    </>
+  ),
+  // an empty browser frame, opened
+  newsite: (
+    <>
+      <rect x="4" y="6" width="36" height="32" {...S} />
+      <path d="M4 14H40" {...S} />
+      <rect x="8" y="9" width="4" height="3" fill="var(--spine)" />
+      <path d="M22 20V32M16 26H28" {...S} />
+    </>
+  ),
+  // one page broadcasting to one audience
+  promo: (
+    <>
+      <rect x="14" y="16" width="16" height="24" {...S} />
+      <path d="M22 4V11M12 8L16 13M32 8L28 13M5 16H10M34 16H39" {...S} />
+      <rect x="18" y="21" width="8" height="5" fill="var(--spine)" />
+      <path d="M18 31H26" strokeDasharray="2 2" {...S} />
+    </>
+  ),
+  // the old site carried through to the new one
+  transfer: (
+    <>
+      <rect x="3" y="12" width="12" height="20" strokeDasharray="3 2" {...S} />
+      <path d="M18 22H30M30 22L26 18M30 22L26 26" {...S} />
+      <path d="M34 8V36M34 8H41M34 36H41" {...S} />
+      <rect x="36" y="19" width="5" height="6" fill="var(--spine)" />
+    </>
+  ),
+  // the keys, handed to somebody else
+  handover: (
+    <>
+      <rect x="5" y="17" width="12" height="10" {...S} />
+      <rect x="8" y="20" width="5" height="4" fill="var(--spine)" />
+      <path d="M17 22H38" {...S} />
+      <path d="M30 22V29M36 22V27" {...S} />
     </>
   ),
 };
