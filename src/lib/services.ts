@@ -43,6 +43,8 @@ export interface ServiceContent {
     items: ScopeItem[];
     moreLabel: string;
     ctaLabel: string;
+    /** Which key in site.links the CTA opens; getInTouch when absent. */
+    cta?: { target: "bookCall" | "getInTouch" };
   };
   process: ProcessBlock;
   work: {

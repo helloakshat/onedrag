@@ -86,7 +86,7 @@ content/                  ← the ONLY folder the owner edits for copy
   services/              one file per service; the filename IS the URL slug
     automations.json       → /automations
     ui-ux-design.json      → /ui-ux-design
-    shopify-dev.json       → /shopify-dev        (not built yet)
+    shopify-development.json → /shopify-development
     framer-dev.json        → /framer-dev         (not built yet)
   case-studies/
     _index.json           listing page copy
@@ -125,7 +125,7 @@ Standing rules. These do not change without the owner saying so.
    |---|---|
    | Home | `/` |
    | Automations | `/automations` |
-   | Shopify dev | `/shopify-dev` |
+   | Shopify dev | `/shopify-development` |
    | Framer dev | `/framer-dev` |
    | UI/UX | `/ui-ux-design` |
    | Case studies | `/case-studies` |

@@ -1,0 +1,264 @@
+{
+  "slug": "shopify-development",
+  "name": "Shopify development",
+  "_todo": [
+    "TODO: replace — hero.counter is a placeholder (20+ stores improved), not a verified number"
+  ],
+  "seo": {
+    "title": "Shopify development — Onedrag",
+    "description": "We work at the theme layer on Shopify stores that already exist — conversion work on product, collection and landing pages, and migrations onto Shopify from another platform."
+  },
+  "hero": {
+    "chip": {
+      "label": "Service"
+    },
+    "heading": "We make Shopify stores convert better.",
+    "intro": "We work at the theme layer on stores that already run — conversion work on product, collection and landing pages, and migrations onto Shopify from another platform.",
+    "counter": {
+      "value": 20,
+      "suffix": "+",
+      "label": [
+        "Stores",
+        "improved"
+      ]
+    },
+    "ctaLabel": "How it works",
+    "ctaHref": "#process"
+  },
+  "capabilities": {
+    "chip": {
+      "label": "Capabilities"
+    },
+    "heading": "What we work on",
+    "note": [
+      "Liquid, sections, metafields.",
+      "Standard and Advanced plans."
+    ],
+    "items": [
+      {
+        "icon": "product",
+        "title": [
+          "Product page",
+          "optimisation"
+        ],
+        "points": [
+          "Gallery, variants and swatches",
+          "Buy box order and sticky add to cart",
+          "Metafield-driven detail sections",
+          "Reviews, badges and stock messaging"
+        ]
+      },
+      {
+        "icon": "collection",
+        "title": [
+          "Collection",
+          "and search"
+        ],
+        "points": [
+          "Filters, sorting and pagination",
+          "Card layout and what it shows",
+          "Search results and empty states",
+          "Merchandising rules per collection"
+        ]
+      },
+      {
+        "icon": "landing",
+        "title": [
+          "Landing",
+          "pages"
+        ],
+        "points": [
+          "Sections your team can rearrange",
+          "Campaign and paid traffic pages",
+          "Reusable blocks, not one-off templates"
+        ]
+      },
+      {
+        "icon": "cart",
+        "title": [
+          "Checkout-adjacent",
+          "flow"
+        ],
+        "points": [
+          "Cart drawer and cart page",
+          "Upsells and cross-sells before checkout",
+          "Shipping and returns messaging",
+          "Checkout itself is closed on non-Plus plans"
+        ]
+      },
+      {
+        "icon": "migrate",
+        "title": [
+          "Migration to",
+          "Shopify"
+        ],
+        "points": [
+          "Products, variants and collections",
+          "Customers, orders and historical data",
+          "URL mapping and redirects",
+          "Theme rebuilt to match the catalogue"
+        ]
+      },
+      {
+        "icon": "speed",
+        "title": [
+          "Speed and",
+          "Core Web Vitals"
+        ],
+        "points": [
+          "Image sizing and lazy loading",
+          "App and script audit",
+          "Layout shift and largest paint",
+          "Measured on real mobile sessions"
+        ]
+      }
+    ]
+  },
+  "scope": {
+    "chip": {
+      "label": "Scope"
+    },
+    "heading": "How we come in",
+    "note": [
+      "We change what the",
+      "numbers say to change."
+    ],
+    "items": [
+      {
+        "icon": "funnel",
+        "title": [
+          "Conversion audit",
+          "and fixes"
+        ],
+        "description": "We read the analytics and the session recordings, then fix the steps where the money is actually leaving."
+      },
+      {
+        "icon": "campaign",
+        "title": [
+          "Campaign",
+          "landing pages"
+        ],
+        "description": "Pages built for one campaign and one audience, in sections your team can rearrange without us."
+      },
+      {
+        "icon": "platform",
+        "title": [
+          "Platform",
+          "migration"
+        ],
+        "description": "WooCommerce, Magento or a custom cart moved onto Shopify with the catalogue, the history and the URLs intact."
+      },
+      {
+        "icon": "testing",
+        "title": [
+          "Ongoing CRO",
+          "and testing"
+        ],
+        "description": "A queue of changes shipped and measured one at a time, so you know which one moved the number."
+      }
+    ],
+    "moreLabel": "Much more",
+    "ctaLabel": "Book a call",
+    "cta": {
+      "target": "bookCall"
+    }
+  },
+  "process": {
+    "chip": {
+      "label": "Process"
+    },
+    "heading": "How a change gets shipped",
+    "note": [
+      "Four steps, one change",
+      "at a time, measured",
+      "before the next one."
+    ],
+    "steps": [
+      {
+        "number": "01",
+        "icon": "audit",
+        "title": [
+          "Read the data",
+          "and the store"
+        ],
+        "connector": "Data in",
+        "description": "We go through analytics, session recordings and the theme itself, and write down where people drop out. On a migration this is the catalogue, the URLs and what the old platform is doing that Shopify does not."
+      },
+      {
+        "number": "02",
+        "icon": "blueprint",
+        "title": [
+          "Prioritise by",
+          "expected impact"
+        ],
+        "connector": "Priority",
+        "description": "Every candidate change gets an estimate of what it is worth and what it costs to build, and the list is ordered by that. You approve the order before anything is built."
+      },
+      {
+        "number": "03",
+        "icon": "build",
+        "title": [
+          "Build and ship",
+          "the change"
+        ],
+        "connector": "Build",
+        "description": "We work in Liquid and theme sections on a development theme, review it with you on real data, and publish. A migration ships the same way, in stages rather than one switch."
+      },
+      {
+        "number": "04",
+        "icon": "launch",
+        "title": [
+          "Measure, then",
+          "decide the next"
+        ],
+        "connector": "Measure",
+        "description": "We leave the change running long enough to read it, compare it against what we expected, and let the result pick what gets built next. After a migration we watch traffic, rankings and checkout for the first weeks."
+      }
+    ]
+  },
+  "work": {
+    "chip": {
+      "label": "Projects"
+    },
+    "heading": "Related case studies",
+    "ctaLabel": "See all case studies",
+    "ctaHref": "/#work"
+  },
+  "faq": {
+    "chip": {
+      "label": "FAQ"
+    },
+    "heading": "Questions we get asked",
+    "note": [
+      "Ask us anything else",
+      "on the call."
+    ],
+    "items": [
+      {
+        "question": "Do you build a store from scratch?",
+        "answer": "No. We work on stores that already run and already have traffic, and on stores moving onto Shopify from another platform. We also do not customise premium themes as a service, do not build Shopify apps, and do not take headless or Shopify Plus work. If you need a store stood up from nothing, we are the wrong studio and will say so on the call."
+      },
+      {
+        "question": "Can you edit the checkout?",
+        "answer": "Not on Standard or Advanced plans — checkout.liquid is closed to everyone except Shopify Plus, and we do not work on Plus. What we can change is everything leading into it: the cart drawer and cart page, upsells and cross-sells, shipping and returns messaging, and the trust and payment signals on the product page. In practice that is where most of the drop-off is anyway."
+      },
+      {
+        "question": "Do we need to supply designs?",
+        "answer": "Either way works. We can design the pages ourselves against what the data says, or build from a Figma file you supply. If you bring the designs, we will tell you upfront where something is expensive to do at the theme layer, before it gets built."
+      },
+      {
+        "question": "What happens to SEO in a migration?",
+        "answer": "Every old URL gets mapped to a new one and a 301 redirect, because Shopify's URL structure is not the one you are coming from. We carry over titles, descriptions and structured data, keep the internal linking intact, and check the sitemap, robots.txt and canonical tags after the cutover. Then we watch crawl errors and rankings for the first weeks and fix what moves."
+      },
+      {
+        "question": "How do you decide what to test first?",
+        "answer": "By what the numbers say, not by what anyone in the room prefers. We look at where sessions fall out of the funnel, size what fixing that step is worth, weigh it against the build cost, and start at the top of that list. If the data is not there yet, the first piece of work is getting the measurement right."
+      }
+    ],
+    "moreLabel": [
+      "Still have a question",
+      "about your store?"
+    ],
+    "ctaLabel": "Get in touch"
+  }
+}

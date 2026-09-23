@@ -11,7 +11,18 @@ export type CapabilityIconName =
   | "inbox"
   | "ledger"
   | "handoff"
-  | "dashboard";
+  | "dashboard"
+  // shopify-development
+  | "product"
+  | "collection"
+  | "landing"
+  | "cart"
+  | "migrate"
+  | "speed"
+  | "funnel"
+  | "campaign"
+  | "platform"
+  | "testing";
 
 interface CapabilityIconProps {
   name: CapabilityIconName;
@@ -123,6 +134,105 @@ const GLYPHS: Record<CapabilityIconName, ReactNode> = {
       <rect x="8" y="19" width="12" height="14" fill="var(--spine)" />
       <rect x="25" y="19" width="11" height="6" strokeDasharray="2 2" {...S} />
       <path d="M25 30H36" {...S} />
+    </>
+  ),
+  // product page: media block, copy lines, and the buy button
+  product: (
+    <>
+      <rect x="4" y="4" width="36" height="36" {...S} />
+      <rect x="9" y="10" width="13" height="13" strokeDasharray="3 2" {...S} />
+      <path d="M27 12H36M27 18H36" {...S} />
+      <rect x="27" y="24" width="9" height="6" fill="var(--spine)" />
+      <path d="M9 29H22M9 34H33" strokeDasharray="2 2" {...S} />
+    </>
+  ),
+  // a filtered grid under a search field
+  collection: (
+    <>
+      <rect x="4" y="4" width="36" height="36" {...S} />
+      <path d="M4 15H40" {...S} />
+      <path d="M9 9.5H27" strokeDasharray="3 2" {...S} />
+      <rect x="31" y="7" width="5" height="5" fill="var(--spine)" />
+      <rect x="9" y="20" width="10" height="10" {...S} />
+      <rect x="25" y="20" width="10" height="10" strokeDasharray="3 2" {...S} />
+    </>
+  ),
+  // one long page: hero, copy, and a single call to action
+  landing: (
+    <>
+      <rect x="10" y="3" width="24" height="38" {...S} />
+      <rect x="14" y="8" width="16" height="9" strokeDasharray="3 2" {...S} />
+      <path d="M14 22H30M14 27H24" {...S} />
+      <rect x="14" y="32" width="12" height="5" fill="var(--spine)" />
+      <path d="M4 20H8M36 20H40" strokeDasharray="2 2" {...S} />
+    </>
+  ),
+  // cart with a line added to it
+  cart: (
+    <>
+      <path d="M3 7H9L13 27H35" {...S} />
+      <path d="M11 12H40L36 27" {...S} />
+      <path d="M22 16V22M19 19H25" {...S} />
+      <rect x="15" y="33" width="5" height="5" fill="var(--spine)" />
+      <rect x="28" y="33" width="5" height="5" strokeDasharray="2 2" {...S} />
+    </>
+  ),
+  // records moving off the old platform into the new one
+  migrate: (
+    <>
+      <rect x="3" y="8" width="13" height="8" strokeDasharray="3 2" {...S} />
+      <rect x="3" y="20" width="13" height="8" strokeDasharray="3 2" {...S} />
+      <rect x="3" y="32" width="13" height="8" strokeDasharray="3 2" {...S} />
+      <path d="M19 24H30M30 24L26 20M30 24L26 28" {...S} />
+      <rect x="33" y="14" width="8" height="20" {...S} />
+      <rect x="33" y="14" width="8" height="6" fill="var(--spine)" />
+    </>
+  ),
+  // a gauge reading into its good band
+  speed: (
+    <>
+      <path d="M5 33C5 23.6 12.6 16 22 16C31.4 16 39 23.6 39 33" {...S} />
+      <path d="M22 33L31 24" {...S} />
+      <path d="M9 25L11 27M35 25L33 27" {...S} />
+      <rect x="20" y="31" width="4" height="4" fill="var(--spine)" />
+      <path d="M5 38H39" strokeDasharray="2 2" {...S} />
+    </>
+  ),
+  // funnel narrowing to what actually converts
+  funnel: (
+    <>
+      <path d="M4 6H40L28 20H16L4 6Z" {...S} />
+      <path d="M16 20H28V30L16 36V20Z" strokeDasharray="3 2" {...S} />
+      <rect x="19" y="38" width="6" height="4" fill="var(--spine)" />
+    </>
+  ),
+  // a campaign flag on its own pole
+  campaign: (
+    <>
+      <path d="M10 4V41" {...S} />
+      <path d="M10 7H38L32 15L38 23H10" {...S} />
+      <rect x="14" y="10" width="8" height="6" fill="var(--spine)" />
+      <path d="M5 41H19" strokeDasharray="2 2" {...S} />
+    </>
+  ),
+  // a whole stack lifted onto the new platform
+  platform: (
+    <>
+      <rect x="6" y="8" width="22" height="7" strokeDasharray="3 2" {...S} />
+      <rect x="6" y="18" width="22" height="7" strokeDasharray="3 2" {...S} />
+      <rect x="6" y="28" width="22" height="7" {...S} />
+      <rect x="9" y="30" width="6" height="3" fill="var(--spine)" />
+      <path d="M36 37V12M36 12L32 16M36 12L40 16" {...S} />
+    </>
+  ),
+  // two variants, one of them measured as the winner
+  testing: (
+    <>
+      <rect x="3" y="8" width="17" height="28" {...S} />
+      <rect x="24" y="8" width="17" height="28" strokeDasharray="3 2" {...S} />
+      <path d="M8 16H15M8 22H15" {...S} />
+      <path d="M29 16H36M29 22H36" strokeDasharray="2 2" {...S} />
+      <rect x="8" y="28" width="7" height="4" fill="var(--spine)" />
     </>
   ),
 };

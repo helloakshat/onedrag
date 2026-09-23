@@ -16,7 +16,9 @@ interface ScopeProps {
 
 /** 2x2 on the same split-cell pattern as the home services section. */
 export function Scope({ site, service, number }: ScopeProps) {
-  const { chip, heading, note, items, moreLabel, ctaLabel } = service.scope;
+  const { chip, heading, note, items, moreLabel, ctaLabel, cta } = service.scope;
+  // getInTouch unless the content says otherwise — see lib/services.
+  const ctaHref = site.links[cta?.target ?? "getInTouch"];
 
   return (
     <SectionShell
@@ -52,7 +54,7 @@ export function Scope({ site, service, number }: ScopeProps) {
 
         {/* C4 -> C6: the right half of the content field */}
         <div className="md:col-span-2 md:col-start-3">
-          <Button href={site.links.getInTouch} external variant="secondary" className="w-full">
+          <Button href={ctaHref} external variant="secondary" className="w-full">
             {ctaLabel}
           </Button>
         </div>
