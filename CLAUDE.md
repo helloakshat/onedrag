@@ -138,6 +138,10 @@ Standing rules. These do not change without the owner saying so.
 4. **Adding a page is one array entry** plus its content file. Nothing else
    is edited — the link appears in the header and the footer at the position
    it already held.
+   An entry may carry `"comingSoon": true`, which keeps it past the filter
+   and renders it muted (`--faint`) and unclickable in both the menu and the
+   footer. Deleting the flag is the only edit needed when the page ships —
+   by then the page exists, so the filter keeps the entry on its own.
 5. **The footer's nav column is the same array, same order**, rendered from
    the same `getNavLinks()`. The footer's second column is legal only
    (`contacts.legalLinks`).

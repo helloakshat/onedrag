@@ -56,7 +56,7 @@ export function MenuOverlay({ id, open, links, onNavigate, panelRef }: MenuOverl
                       href={link.href}
                       onClick={onNavigate}
                       tabIndex={open ? undefined : -1}
-                      className="block font-mono text-label whitespace-nowrap text-text-on-fill uppercase transition-colors duration-[var(--dur-fast)] ease-[var(--ease-out)] hover:text-spine focus-visible:text-spine focus-visible:outline-none motion-reduce:transition-none"
+                      className="block font-mono text-label whitespace-nowrap text-text-on-fill uppercase transition-colors duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:text-spine focus-visible:text-spine focus-visible:outline-none motion-reduce:transition-none"
                     >
                       {link.label}
                     </Link>

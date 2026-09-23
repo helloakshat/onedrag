@@ -163,7 +163,7 @@ export function Nav({ site, links }: NavProps) {
               aria-controls={MENU_ID}
               aria-label={open ? "Close menu" : "Open menu"}
               className={cn(
-                "flex h-[45px] w-[45px] shrink-0 items-center justify-center transition-colors duration-[var(--dur-fast)] ease-[var(--ease-out)] motion-reduce:transition-none",
+                "flex h-[45px] w-[45px] shrink-0 items-center justify-center transition-colors duration-[var(--dur-hover)] ease-[var(--ease-inout)] motion-reduce:transition-none",
                 open ? "bg-spine text-text-on-fill" : "bg-dark text-text-on-dark",
               )}
             >
