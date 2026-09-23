@@ -23,7 +23,9 @@ function CapabilityCard({ item, index, total }: { item: CapabilityItem; index: n
   return (
     <div
       className={cn(
-        "flex h-full min-h-[200px] flex-col gap-8 py-8 md:flex-row md:gap-6 md:py-10",
+        // height is content-driven: a fixed floor here leaves a short last
+        // row padded out against the section's bottom rule
+        "flex h-full flex-col gap-8 py-8 md:flex-row md:gap-6 md:py-10",
         // internal boundaries only — no outer frame
         isRight ? "md:border-l md:border-dashed md:border-grid-line md:pl-8" : "md:pr-8",
         // mobile stacks, so every cell but the last carries a rule

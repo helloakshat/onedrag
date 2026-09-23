@@ -444,6 +444,36 @@ Container is the grid container from §5 (max-width `1520px`, gutter `32px`).
 - Avatars: placeholder until the owner supplies real ones. Mark every
   placeholder with a `TODO: replace` comment.
 
+**Dither.** Every 1-bit image on the site goes through the same treatment.
+There is no component called `Dither`. The shared matrix and constants live
+in **`lib/halftone.ts`**; `DitheredCover` is the path a real photograph
+takes, and `DitherImage` / `DitherAvatar` are the generated stand-ins for
+portraits. The old `Halftone` component — which faked a photograph from a
+procedural tonal field — was removed; do not reintroduce that approach.
+
+- **4×4 ordered (Bayer) matrix**, `BAYER4` in `lib/halftone.ts`. One matrix,
+  shared — do not fork a second one into a component.
+- **Pixel size 2–3px.** Resolution is derived from the rendered width so the
+  dithered pixels land at roughly that size. At 8–10px the subject collapses
+  into a checkerboard.
+- **Contrast normalisation is mandatory.** Stretch the source to its own
+  min/max range, then push tones away from mid grey by `DITHER_CONTRAST`
+  (1.35) before thresholding. Skipping this is what turns a flat image into
+  an even field of dots.
+- **The subject must be recognisable at 400px wide.** This is the acceptance
+  test. A dithered image that fails it is not a stylised image, it is a
+  broken one — use the construction block instead (see below).
+- **Never fake a photograph procedurally.** A generated tonal field dithers
+  into noise, not a subject. Where real imagery has not been supplied yet,
+  the stand-in is an honest construction block: flat `--dark`, the dashed
+  column grid, and the subject's name in the mono label face.
+
+**Case study covers.** `public/images/case-studies/<slug>/cover.jpg`.
+The file is optional and checked for at build time (`lib/case-studies`):
+absent, the card renders the construction block; present, it runs through
+`DitheredCover`. Adding a cover is dropping the file in — there is no code
+change and no content field to set.
+
 ---
 
 ## 9. Content schema

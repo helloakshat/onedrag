@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { Button } from "@/components/ui/Button";
-import { Halftone } from "@/components/ui/Halftone";
+import { CaseStudyCover } from "@/components/ui/CaseStudyCover";
 import { NavArrows } from "@/components/ui/NavArrows";
 import { Reveal } from "@/components/ui/Reveal";
 import type { CaseStudy, CaseStudyIndex } from "@/lib/case-studies";
@@ -43,10 +43,8 @@ export function Work({ studies, index, number }: WorkProps) {
       <div className="grid grid-cols-1 md:grid-cols-4">
         <div className="md:col-span-3">
           <Reveal>
-            {/* TODO: replace — halftone stand-in for the real cover image. */}
             <div className="aspect-[4/3] w-full md:aspect-[16/10]">
-              {/* width ≈ the cover's real rendered width, so pixels land at ~3px */}
-              <Halftone seed={study.slug} subject="scene" width={760} ratio={10 / 16} pixel={3} />
+              <CaseStudyCover study={study} />
             </div>
           </Reveal>
         </div>
