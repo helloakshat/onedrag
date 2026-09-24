@@ -67,32 +67,6 @@ export function Footer({ site, home, number, navLinks }: FooterProps) {
             <h2 className="font-sans text-h2 leading-[1.05] font-medium tracking-[-0.05em] text-text-primary">
               {heading}
             </h2>
-
-            <div className="mt-14 flex flex-col gap-8 md:flex-row md:gap-16">
-              {/* first column is the menu itself, same array and same order
-                  as the header (CLAUDE.md §4); second is legal-only copy */}
-              {[navLinks, legalLinks].map((column, i) => (
-                <ul key={i} className="flex flex-col gap-3">
-                  {column.map((entry) => (
-                    <li key={entry.href}>
-                      {entry.comingSoon ? (
-                        // same rule as the menu: shown, muted, not a link
-                        <span className="font-mono text-label text-faint uppercase">
-                          {entry.label}
-                        </span>
-                      ) : (
-                        <Link
-                          href={entry.href}
-                          className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"
-                        >
-                          {entry.label}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              ))}
-            </div>
           </div>
 
           {/* There is no form and no form backend — booking is the only
@@ -121,6 +95,34 @@ export function Footer({ site, home, number, navLinks }: FooterProps) {
             </Button>
           </noscript>
         </div>
+
+        {/* the menu closes the band, under the booker — same array and same
+            order as the header (CLAUDE.md §4); second column is legal only */}
+        <Grid className="mt-14">
+          <div className="col-span-6 flex flex-col gap-8 md:col-span-2 md:flex-row md:gap-16">
+            {[navLinks, legalLinks].map((column, i) => (
+              <ul key={i} className="flex flex-col gap-3">
+                {column.map((entry) => (
+                  <li key={entry.href}>
+                    {entry.comingSoon ? (
+                      // same rule as the menu: shown, muted, not a link
+                      <span className="font-mono text-label text-faint uppercase">
+                        {entry.label}
+                      </span>
+                    ) : (
+                      <Link
+                        href={entry.href}
+                        className="font-mono text-label text-text-primary uppercase transition-opacity duration-[var(--dur-hover)] ease-[var(--ease-inout)] hover:opacity-60"
+                      >
+                        {entry.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </Grid>
       </SectionShell>
 
       <div className="relative bg-paper">
