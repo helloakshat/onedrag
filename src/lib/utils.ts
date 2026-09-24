@@ -17,3 +17,14 @@ const twMerge = extendTailwindMerge({
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+/**
+ * "https://cal.com/helloakshat/book" -> "helloakshat/book".
+ *
+ * The embed addresses a booking page by path while every CTA links to the
+ * full URL, so both read from the one `links.bookCall` key (CLAUDE.md §9)
+ * rather than the path being restated in content.
+ */
+export function calLinkFrom(bookCallUrl: string): string {
+  return bookCallUrl.replace(/^https?:\/\/(app\.)?cal\.com\//, "").replace(/\/$/, "");
+}

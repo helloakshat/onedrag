@@ -7,6 +7,8 @@ import { Grid } from "@/components/layout/Grid";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { TopoTexture } from "@/components/ui/TopoTexture";
+import { CalEmbed } from "@/components/ui/CalEmbed";
+import { calLinkFrom } from "@/lib/utils";
 import { SplitLines } from "@/components/ui/SplitLines";
 import type { HomeContent, NavLink, SiteContent } from "@/lib/content";
 
@@ -94,18 +96,30 @@ export function Footer({ site, home, number, navLinks }: FooterProps) {
           </div>
 
           {/* There is no form and no form backend — booking is the only
-              path in, so the right half of the band is the booking slot. */}
-          <div className="flex flex-col justify-between gap-10 md:col-span-2">
+              path in, and the booker itself sits in the row below. */}
+          <div className="md:col-span-2">
             <p className="font-mono text-label leading-[1.45] text-text-primary uppercase">
               <SplitLines lines={booking.note} />
             </p>
+          </div>
+        </div>
 
-            {/* TODO: replace — the cal.com embed goes here; until the booking
-                URL is supplied this falls back to the button. */}
+        {/*
+          The booker spans the whole content field (C2->C6). A month view
+          needs ~600px and the half-field slot it used to sit in is ~506px at
+          1920, so it gets its own row rather than being squeezed beside the
+          links.
+        */}
+        <div className="mt-14">
+          <CalEmbed
+            calLink={calLinkFrom(site.links.bookCall)}
+            className="h-[560px] border border-grid-line-solid bg-bg-raised md:h-[680px]"
+          />
+          <noscript>
             <Button href={site.links.bookCall} external variant="secondary" className="w-full">
               {booking.ctaLabel}
             </Button>
-          </div>
+          </noscript>
         </div>
       </SectionShell>
 
