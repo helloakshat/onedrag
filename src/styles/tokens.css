@@ -9,6 +9,7 @@
   --paper: #f2f0ee;
   --paper-alt: #dbdbd3;
   --dark: #202020;
+  --cal-surface: #171717;
   --bg-raised: #ffffff;
   --bg-overlay: #ededea;
   --border-subtle: rgba(207, 206, 204, 0.5);
@@ -84,6 +85,7 @@
   --color-paper: var(--paper);
   --color-paper-alt: var(--paper-alt);
   --color-dark: var(--dark);
+  --color-cal-surface: var(--cal-surface);
   --color-bg-raised: var(--bg-raised);
   --color-bg-overlay: var(--bg-overlay);
   --color-border-subtle: var(--border-subtle);

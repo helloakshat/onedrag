@@ -34,7 +34,11 @@ lockup.** Layout patterns and mood are fine; assets are generated in-project.
   not a decorative one.
 - **Zero radius, always.** No component may render a rounded corner. Tailwind's
   `rounded-*` utilities are disabled at the theme level (§6) so this can't
-  happen by accident.
+  happen by accident. The one exception is the cal.com booker in the contacts
+  band: it renders in an iframe, so its own rounded controls are beyond our
+  CSS. The block around it is square, and it is pinned to cal's dark theme so
+  `--cal-surface` can match its surface exactly — no seam, and it reads as
+  dark punctuation rather than a pasted-in widget.
 - **Two-family type system.** Inter (weight 500 for display type) for
   headings and body copy. Geist Mono, uppercase, for section chips, nav,
   buttons, labels, and stat lines — anything that reads as a "system" label
@@ -329,6 +333,7 @@ then update here. Never fork them into a component.
   --paper:          #F2F0EE;   /* default section background */
   --paper-alt:      #DBDBD3;   /* results, testimonials bands */
   --dark:           #202020;   /* work band, secondary buttons */
+  --cal-surface:    #171717;   /* matches the cal.com booker's own surface */
   --bg-raised:      #FFFFFF;   /* cards */
   --bg-overlay:     #EDEDEA;   /* hover states, inputs */
   --border-subtle:  rgba(207, 206, 204, 0.5);

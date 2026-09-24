@@ -55,14 +55,17 @@ export function CalEmbed({ calLink, className }: CalEmbedProps) {
       const spine = getComputedStyle(document.documentElement)
         .getPropertyValue("--spine")
         .trim();
+      // cal-bg is not honoured by the embed, so the booker keeps its own
+      // #171717 surface — --cal-surface matches it on our side instead.
+      const vars: Record<string, string> = spine ? { "cal-brand": spine } : {};
       api("ui", {
-        theme: "light",
+        // pinned so the surrounding surface can match it — otherwise the
+        // booker follows each viewer's system preference and the seam shows
+        theme: "dark",
         hideEventTypeDetails: false,
         layout: "month_view",
-        // the type requires both themes; the booker is pinned light either way
-        ...(spine
-          ? { cssVarsPerTheme: { light: { "cal-brand": spine }, dark: { "cal-brand": spine } } }
-          : {}),
+        // the type requires both themes; the booker is pinned dark either way
+        cssVarsPerTheme: { light: vars, dark: vars },
       });
     })();
 
@@ -78,7 +81,7 @@ export function CalEmbed({ calLink, className }: CalEmbedProps) {
           namespace={NAMESPACE}
           calLink={calLink}
           style={{ width: "100%", height: "100%", overflow: "scroll" }}
-          config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true" }}
+          config={{ layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "dark" }}
         />
       ) : null}
     </div>

@@ -113,7 +113,7 @@ export function Footer({ site, home, number, navLinks }: FooterProps) {
         <div className="mt-14">
           <CalEmbed
             calLink={calLinkFrom(site.links.bookCall)}
-            className="h-[560px] border border-grid-line-solid bg-bg-raised md:h-[680px]"
+            className="h-[560px] bg-cal-surface md:h-[620px]"
           />
           <noscript>
             <Button href={site.links.bookCall} external variant="secondary" className="w-full">
